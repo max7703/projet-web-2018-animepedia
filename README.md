@@ -1,3 +1,9 @@
+Lien du site:
+http://animepedia.fr/
+
+Lien du site dev:
+http://dev.animepedia.fr/
+
 Lien Wordpress Blog:
 https://animepedia809509274.wordpress.com/
 
