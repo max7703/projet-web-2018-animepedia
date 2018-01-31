@@ -1,6 +1,6 @@
 <header>
     <div class="navbar">
-        <a>Acceuil</a>
+        <a href="#">Acceuil</a>
         <a>Anime</a>
         <a>Communauté</a>
         <a>Boutique</a>
