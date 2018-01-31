@@ -1,32 +1,33 @@
 /*
 COULEURS :
-fond : grey;
-rouge : ee0000
-orange : ff8533
+fond : #24333c;
+vert : #1ab188;
+gris : #435358;
+gris 2 : #92a3a0;
 */
 
 html {
-  background-color: dimgrey;
+  background-color: #24333c;
 }
 
 .navbar {
     overflow: hidden;
     display: block;
-    background-color: #ee0000 ;
+    background-color: #435358 ;
 }
 
 .navbar a {
     display: inline-block;
     float: left;
-    color: #ffff00;
+    color: #92a3a0;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .navbar a:hover {
-    background-color: #ffff00;
-    color: #ee0000;
+    background-color: #1ab188;
+    color: white;
 }
     
 .navbar input[type=text] {
