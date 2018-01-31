@@ -26,7 +26,24 @@
 							</label>
 							<input type="text" required autocomplete="off" />
 						</div>
-			
+					</div>
+					
+					<div class="field-wrap">
+						<label>
+							Email<span class="req">*</span>
+						</label>
+						<input type="email"required autocomplete="off"/>
+					</div>
+					
+					<div class="field-wrap">
+						<label>
+							Mot de passe<span class="req">*</span>
+						</label>
+						<input type="password"required autocomplete="off"/>
+					</div>
+						
+				<button type="submit" class="button button-block"/>Inscription !</button>
+				
 				</form>
 			
 			</div>
