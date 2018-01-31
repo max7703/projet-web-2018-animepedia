@@ -1,6 +1,21 @@
-.navbar : {
+.navbar {
+    overflow: hidden;
     display: block;
+    background-color: black;
 }
-.navbar a: {
+.navbar a {
     display: inline-block;
+    float: left;
+    color: gray;
+    text-align: center;
+    padding: 14px 16px;
+}
+.navbar input[type=text] {
+    display: inline-block;
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    
 }
