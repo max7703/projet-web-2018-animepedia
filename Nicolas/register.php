@@ -6,7 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 	<title>Inscription</title>
+	<link rel="stylesheet" href="register.css">
 	
+</head>
+<body>
 	<div class="form">
 	
 		<ul class="tab-group">
@@ -51,13 +54,8 @@
 		
 		
 	</div>
-	
-	<!-- <link rel="stylesheet" href="assets/styles/main.css"> -->
-	
-</head>
-<body>
 
-	<!-- <script src="assets/scripts/main.js"></script> -->
+	<script src="register.js"></script>
 
 </body>
 </html>
