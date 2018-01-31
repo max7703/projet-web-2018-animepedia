@@ -5,14 +5,42 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<title></title>
+	<title>Inscription</title>
 	
-	<link rel="stylesheet" href="assets/styles/main.css">
+	<div class="form">
+	
+		<ul class="tab-group">
+			<li class="tab active"><a href="#signup">Inscription</a></li>
+		</ul>
+	  
+		<div class="tab-content">
+			<div id="signup"> 
+				<h1>Inscris-toi !</h1>
+			
+				<form action="/" method="post">
+				
+					<div class="top-row">
+						<div class="field-wrap">
+							<label>
+								Pseudo<span class="req">*</span>
+							</label>
+							<input type="text" required autocomplete="off" />
+						</div>
+			
+				</form>
+			
+			</div>
+		</div>
+		
+		
+	</div>
+	
+	<!-- <link rel="stylesheet" href="assets/styles/main.css"> -->
 	
 </head>
 <body>
 
-	<script src="assets/scripts/main.js"></script>
+	<!-- <script src="assets/scripts/main.js"></script> -->
 
 </body>
 </html>
