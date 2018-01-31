@@ -1,0 +1,6 @@
+.navbar : {
+    display: block;
+}
+.navbar a: {
+    display: inline-block;
+}
