@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style.css">
 <header>
     <div class="navbar">
         <a>Acceuil</a>
