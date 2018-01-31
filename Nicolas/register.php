@@ -26,6 +26,15 @@
 							</label>
 							<input type="text" required autocomplete="off" />
 						</div>
+					</div>
+					
+					<div class="field-wrap">
+						<label>
+							Email Address<span class="req">*</span>
+						</label>
+						<input type="email"required autocomplete="off"/>
+					</div>
+						
 			
 				</form>
 			
