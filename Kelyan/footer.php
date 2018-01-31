@@ -5,7 +5,7 @@
             <a href="about">A propos</a>
         </div>
         <div>
-            Copyright © 2018 Animepedia.fr
+            Copyright © 2018 Animepedia.fr  
         </div>
     </div>
 </footer>
