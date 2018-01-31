@@ -30,9 +30,16 @@
 					
 					<div class="field-wrap">
 						<label>
-							Email Address<span class="req">*</span>
+							Email<span class="req">*</span>
 						</label>
 						<input type="email"required autocomplete="off"/>
+					</div>
+					
+					<div class="field-wrap">
+						<label>
+							Mot de passe<span class="req">*</span>
+						</label>
+						<input type="password"required autocomplete="off"/>
 					</div>
 						
 			
