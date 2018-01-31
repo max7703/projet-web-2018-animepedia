@@ -42,7 +42,8 @@
 						<input type="password"required autocomplete="off"/>
 					</div>
 						
-			
+				<button type="submit" class="button button-block"/>Inscription !</button>
+				
 				</form>
 			
 			</div>
