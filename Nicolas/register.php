@@ -5,16 +5,30 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<title>Register</title>
+	<title>Inscription</title>
 	
 	<div class="form">
 	
 		<ul class="tab-group">
-			<li class="tab active"><a href="#signup">Sign Up</a></li>
+			<li class="tab active"><a href="#signup">Inscription</a></li>
 		</ul>
 	  
 		<div class="tab-content">
 			<div id="signup"> 
+				<h1>Inscris-toi !</h1>
+			
+				<form action="/" method="post">
+				
+					<div class="top-row">
+						<div class="field-wrap">
+							<label>
+								Pseudo<span class="req">*</span>
+							</label>
+							<input type="text" required autocomplete="off" />
+						</div>
+			
+				</form>
+			
 			</div>
 		</div>
 		
