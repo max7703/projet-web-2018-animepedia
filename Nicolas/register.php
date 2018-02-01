@@ -10,15 +10,10 @@
 	
 </head>
 <body>
-	<div class="form">
-	
-		<ul class="tab-group">
-			<li class="tab active"><a href="#signup">Inscription</a></li>
-		</ul>
-	  
+	<div class="form">	  
 		<div class="tab-content">
 			<div id="signup"> 
-				<h1>Inscris-toi !</h1>
+				<h1>Inscription :</h1>
 			
 				<form action="/" method="post">
 				
@@ -45,7 +40,7 @@
 						<input type="password"required autocomplete="off"/>
 					</div>
 						
-				<button type="submit" class="button button-block"/>Inscription !</button>
+				<button type="submit" class="button button-block"/>Confirmer l'inscription</button>
 				
 				</form>
 			
