@@ -7,7 +7,7 @@
 	
 	<title>About</title>
 	
-	<!-- <link rel="stylesheet" href="assets/styles/main.css"> -->
+	<link rel="stylesheet" href="about.css">
 	
 </head>
 <body>
