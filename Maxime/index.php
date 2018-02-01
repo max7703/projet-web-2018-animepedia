@@ -4,7 +4,8 @@
     <title>Animepedia</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <?php include 'links.html' ?>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -12,9 +13,11 @@
     <script src="https://mdbootstrap.com/previews/docs/latest/js/jarallax.js"></script>
     <script src="https://mdbootstrap.com/previews/docs/latest/js/jarallax-video.js"></script>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">-->
 	<link rel="stylesheet" href="index.css">
 </head>
+    <?php include 'header.php' ?>
+    <!--
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <a class="navbar-brand" href="javascript:void(0)">Logo</a>
@@ -44,6 +47,7 @@
 	  </div>
 	</nav>
 </header>
+-->
 <body>  
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -156,7 +160,8 @@
 </section>
 </body>
 <!--   FOOTER START================== --> 
-<footer class="footer">
+    <?php include 'footer.php' ?>
+<!--<footer class="footer">
     <div class="container">
         <div class="row">
         <div class="col-sm-3">
@@ -207,5 +212,5 @@
         <hr>
         <div class="row text-center"><a href="http://dev.animepedia.fr/" style="color: #fff;">Copyright © Animepedia 2018</a></div>
     </div>	
-</footer>
+</footer>-->
 </html> 
