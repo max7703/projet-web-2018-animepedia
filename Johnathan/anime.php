@@ -41,9 +41,16 @@
     </ul>
 </div>
 
-<div>
-
-</div>
+    <!-- Left-aligned media object -->
+    <div class="media">
+        <div class="media-left">
+            <img src="https://fr.wikipedia.org/wiki/One_Piece#/media/File:Logo_One_piece.svg" class="media-object" style="width:128px">
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Left-aligned</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
 
 </body>
 </html>
