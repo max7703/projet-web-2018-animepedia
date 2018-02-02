@@ -1,0 +1,133 @@
+
+
+/*Main Style*/
+
+section.section-padding {
+    padding: 80px 0;
+}
+.section-title {
+    margin-bottom: 50px;
+    text-align: center;
+}
+.section-title h2 {
+    font-size: 30px;
+    position: relative;
+}
+
+.section-title h2 span {
+    color: #9b59b6;
+}
+
+
+.section-title h2:before {
+    background: #9b59b6;
+    bottom: -10px;
+    content: "";
+    height: 3px;
+    left: 50%;
+    margin-left: -45px;
+    position: absolute;
+    width: 90px;
+}
+.section-title h2:after {
+    background: #333;
+    bottom: -10px;
+    content: "";
+    height: 3px;
+    left: 50%;
+    margin-left: -15px;
+    position: absolute;
+    width: 30px;
+}
+
+
+
+.section-title p {
+  font-size: 17px;
+}
+
+.single-pricing-box {
+    border: 2px solid #D6DDD9;
+    padding: 20px;
+    text-align: center;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.single-pricing-box:hover{
+    border-color: #9b59b6;
+    box-shadow: 0 0 30px #f1f1f1;
+}
+
+.single-pricing-box h3 {
+    background: #ddd none repeat scroll 0 0;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.pricing-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.single-pricing-box:hover .pricing-icon {
+	color: #9b59b6;
+}
+
+.pricing-list {
+    margin-bottom: 25px;
+    text-align: left;
+}
+.pricing-list ul {
+    line-height: 26px;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0 0 0 16px;
+}
+
+.pricing-list ul li{
+    font-size: 15px;
+    -webkit-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
+}
+
+.pricing-list ul li:hover{
+    padding-left: 5px;
+}
+
+.pricing-list ul li:before{
+    font-family: fontAwesome;
+    content: "\f00c";
+    color: #9b59b6;
+    padding-right: 8px;
+}
+
+.pricing-list ul li.off:before{
+    content: "\f00d";
+    color: red;
+}
+
+.single-pricing-box h3.pricing-count {
+    text-transform: none;
+}
+a.bordered-btn {
+    border: 1px solid #ddd;
+    color: #333;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 50px;
+    -webkit-transition: .3s;
+    transition: .3s;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+
+a.bordered-btn:hover{
+    background: #9b59b6;
+    color: #fff;
+    border-color: #9b59b6;
+}
+
