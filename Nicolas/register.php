@@ -1,15 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
+﻿<?php include 'links.html' ?>
+<?php include 'header.php' ?>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-	<title>Inscription</title>
-	<link rel="stylesheet" href="register.css">
-	
-</head>
-<body>
+	<link rel="stylesheet" href="register_.css">
 	<div class="form">	  
 		<div class="tab-content">
 			<div id="signup"> 
@@ -49,8 +41,4 @@
 		
 		
 	</div>
-
-	<script src="register.js"></script>
-
-</body>
-</html>
+	<?php include 'footer.php' ?>
