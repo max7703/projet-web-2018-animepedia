@@ -1,9 +1,19 @@
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="login_.css">
-<div class="logo"></div>
-<div class="login-block">
-    <h1>Login</h1>
-    <input type="text" value="" placeholder="Username" id="username" />
-    <input type="password" value="" placeholder="Password" id="password" />
-    <button>Submit</button>
-</div>
+<?php include 'links.html' ?>
+<?php include 'header.php' ?>
+<link rel="stylesheet" href="login_.css">
+<div class="container">
+  <form class="form-signin">
+	<h2 class="form-signin-heading">Please sign in</h2>
+	<label for="inputEmail" class="sr-only">Email address</label>
+	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+	<label for="inputPassword" class="sr-only">Password</label>
+	<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+	<div class="checkbox">
+	  <label>
+		<input type="checkbox" value="remember-me"> Remember me
+	  </label>
+	</div>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+</div> <!-- /container -->
+<?php include 'footer.php' ?>
