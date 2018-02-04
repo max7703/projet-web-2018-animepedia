@@ -2,10 +2,11 @@
 
 /*Main Style*/
 
-section.section-padding {
-    padding: 80px 0;
+.section-padding {
+  margin: 0 auto;
 }
 .section-title {
+	margin-top: 20px;
     margin-bottom: 50px;
     text-align: center;
 }
@@ -52,6 +53,7 @@ section.section-padding {
     text-align: center;
     -webkit-transition: .2s;
     transition: .2s;
+	margin-bottom: 10px;
 }
 
 .single-pricing-box:hover{
@@ -78,7 +80,7 @@ section.section-padding {
 
 .pricing-list {
     margin-bottom: 25px;
-    text-align: left;
+    text-align: center;
 }
 .pricing-list ul {
     line-height: 26px;
