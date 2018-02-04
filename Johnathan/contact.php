@@ -10,7 +10,7 @@
 
 <form id="contact-form" method="post" action="contact.php" role="form">
 
-    <div class="messages"></div>
+    <div class="messages padding-10"></div>
 
     <div class="controls offset-2">
 
