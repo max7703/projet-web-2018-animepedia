@@ -10,9 +10,15 @@
 		  <li class="nav-item">
 			<a class="nav-link" href="animes">Animes</a>
 		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="forum">Forum</a>
-		  </li>
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  Community
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+			  <a class="dropdown-item" href="forum">Forum</a>
+			  <a class="dropdown-item" href="discord">Discord</a>
+			</div>
+		   </li>
 		  <li class="nav-item">
 			<a class="nav-link" href="subscribe">Subscribe</a>
 		  </li>
@@ -36,13 +42,13 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="/login">
+						<a href="login">
 							<i class="fa fa-sign-in fa-fw"></i>
 							Login
 						</a>
 					</li>
 					<li>
-						<a href="/register">
+						<a href="register">
 							<i class="fa fa-pencil fa-fw"></i>
 							Register
 						</a>
