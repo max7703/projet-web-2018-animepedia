@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div class="container padding-10">
+    <div class="container pt-4">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Tous</a></li>
             <li class="page-item"><a class="page-link" href="#">A</a></li>
