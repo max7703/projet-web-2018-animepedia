@@ -10,3 +10,4 @@ RewriteRule ^register$ register.php
 RewriteRule ^forum$ forum.php
 RewriteRule ^admin$ admin.php
 RewriteRule ^profile$ profile.php
+ErrorDocument 404 /404.php
