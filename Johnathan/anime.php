@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <title>Anime</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <script src="assets/js/bootstrap.min.js"></script>
+    <title>Anime</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 </head>
 <body>
 
@@ -41,6 +43,63 @@
         </ul>
     </div>
 
+
+    <div class="row offset-6">
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#genre">Voir plus</button>
+    </div>
+
+    <div class="container col-md-7 offset-3">
+        <div id="genre" class="collapse">
+            <input id="genre-1" name="genre[]" type="checkbox" value="1"><label for="genre-1" id="label_for_genre-1">Action</label>
+            <input id="genre-2" name="genre[]" type="checkbox" value="2"><label for="genre-2" id="label_for_genre-2">Adventure</label>
+            <input id="genre-3" name="genre[]" type="checkbox" value="3"><label for="genre-3" id="label_for_genre-3">Cars</label>
+            <input id="genre-4" name="genre[]" type="checkbox" value="4"><label for="genre-4" id="label_for_genre-4">Comedy</label>
+            <input id="genre-5" name="genre[]" type="checkbox" value="5"><label for="genre-5" id="label_for_genre-5">Dementia</label>
+            <input id="genre-6" name="genre[]" type="checkbox" value="6"><label for="genre-6" id="label_for_genre-6">Demons</label>
+            <input id="genre-7" name="genre[]" type="checkbox" value="7"><label for="genre-7" id="label_for_genre-7">Mystery</label>
+            <input id="genre-8" name="genre[]" type="checkbox" value="8"><label for="genre-8" id="label_for_genre-8">Drama</label>
+            <input id="genre-9" name="genre[]" type="checkbox" value="9"><label for="genre-9" id="label_for_genre-9">Ecchi</label>
+            <input id="genre-10" name="genre[]" type="checkbox" value="10"><label for="genre-10" id="label_for_genre-10">Fantasy</label>
+            <input id="genre-11" name="genre[]" type="checkbox" value="11"><label for="genre-11" id="label_for_genre-11">Game</label>
+            <input id="genre-12" name="genre[]" type="checkbox" value="12"><label for="genre-12" id="label_for_genre-12">Hentai</label>
+            <input id="genre-13" name="genre[]" type="checkbox" value="13"><label for="genre-13" id="label_for_genre-13">Historical</label>
+            <div class="row"></div>
+            <input id="genre-14" name="genre[]" type="checkbox" value="14"><label for="genre-14" id="label_for_genre-14">Horror</label>
+            <input id="genre-15" name="genre[]" type="checkbox" value="15"><label for="genre-15" id="label_for_genre-15">Kids</label>
+            <input id="genre-16" name="genre[]" type="checkbox" value="16"><label for="genre-16" id="label_for_genre-16">Magic</label>
+            <input id="genre-17" name="genre[]" type="checkbox" value="17"><label for="genre-17" id="label_for_genre-17">Martial Arts</label>
+            <input id="genre-18" name="genre[]" type="checkbox" value="18"><label for="genre-18" id="label_for_genre-18">Mecha</label>
+            <input id="genre-19" name="genre[]" type="checkbox" value="19"><label for="genre-19" id="label_for_genre-19">Music</label>
+            <input id="genre-20" name="genre[]" type="checkbox" value="20"><label for="genre-20" id="label_for_genre-20">Parody</label>
+            <input id="genre-21" name="genre[]" type="checkbox" value="21"><label for="genre-21" id="label_for_genre-21">Samurai</label>
+            <input id="genre-22" name="genre[]" type="checkbox" value="22"><label for="genre-22" id="label_for_genre-22">Romance</label>
+            <input id="genre-23" name="genre[]" type="checkbox" value="23"><label for="genre-23" id="label_for_genre-23">School</label>
+            <input id="genre-24" name="genre[]" type="checkbox" value="24"><label for="genre-24" id="label_for_genre-24">Sci-Fi</label>
+            <input id="genre-25" name="genre[]" type="checkbox" value="25"><label for="genre-25" id="label_for_genre-25">Shoujo</label>
+            <input id="genre-26" name="genre[]" type="checkbox" value="26"><label for="genre-26" id="label_for_genre-26">Shoujo Ai</label>
+            <input id="genre-27" name="genre[]" type="checkbox" value="27"><label for="genre-27" id="label_for_genre-27">Shounen</label>
+            <input id="genre-28" name="genre[]" type="checkbox" value="28"><label for="genre-28" id="label_for_genre-28">Shounen Ai</label>
+            <div class="row"></div>
+            <input id="genre-29" name="genre[]" type="checkbox" value="29"><label for="genre-29" id="label_for_genre-29">Space</label>
+            <input id="genre-30" name="genre[]" type="checkbox" value="30"><label for="genre-30" id="label_for_genre-30">Sports</label>
+            <input id="genre-31" name="genre[]" type="checkbox" value="31"><label for="genre-31" id="label_for_genre-31">Super Power</label>
+            <input id="genre-32" name="genre[]" type="checkbox" value="32"><label for="genre-32" id="label_for_genre-32">Vampire</label>
+            <input id="genre-33" name="genre[]" type="checkbox" value="33"><label for="genre-33" id="label_for_genre-33">Yaoi</label>
+            <input id="genre-34" name="genre[]" type="checkbox" value="34"><label for="genre-34" id="label_for_genre-34">Yuri</label>
+            <input id="genre-35" name="genre[]" type="checkbox" value="35"><label for="genre-35" id="label_for_genre-35">Harem</label>
+            <input id="genre-36" name="genre[]" type="checkbox" value="36"><label for="genre-36" id="label_for_genre-36">Slice of Life</label>
+            <input id="genre-37" name="genre[]" type="checkbox" value="37"><label for="genre-37" id="label_for_genre-37">Supernatural</label>
+            <input id="genre-38" name="genre[]" type="checkbox" value="38"><label for="genre-38" id="label_for_genre-38">Military</label>
+            <input id="genre-39" name="genre[]" type="checkbox" value="39"><label for="genre-39" id="label_for_genre-39">Police</label>
+            <input id="genre-40" name="genre[]" type="checkbox" value="40"><label for="genre-40" id="label_for_genre-40">Psychological</label>
+            <input id="genre-41" name="genre[]" type="checkbox" value="41"><label for="genre-41" id="label_for_genre-41">Thriller</label>
+            <input id="genre-42" name="genre[]" type="checkbox" value="42"><label for="genre-42" id="label_for_genre-42">Seinen</label>
+            <input id="genre-43" name="genre[]" type="checkbox" value="43"><label for="genre-43" id="label_for_genre-43">Josei</label>
+            <div class="row"></div>
+            <button type="button" class="btn btn-success offset-5">Rechercher</button>
+        </div>
+    </div>
+    
     <!-- Left-aligned media object -->
     <div class= "col-md-8 offset-2 media">
         <div class="media-left">
