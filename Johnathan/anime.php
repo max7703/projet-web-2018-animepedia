@@ -43,6 +43,14 @@
         </ul>
     </div>
 
+    <div class="input-group col-md-6 offset-3">
+        <input type="text" class="search-query form-control" placeholder="Search" />
+        <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">
+                <i class="fas fa-search"></i>
+            </button>
+        </span>
+    </div>
 
     <div class="row offset-6">
         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#genre">Voir plus</button>
@@ -99,7 +107,7 @@
             <button type="button" class="btn btn-success offset-5">Rechercher</button>
         </div>
     </div>
-    
+
     <!-- Left-aligned media object -->
     <div class= "col-md-8 offset-2 media">
         <div class="media-left">
