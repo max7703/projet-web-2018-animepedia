@@ -35,10 +35,10 @@ $listeAnime = $animeDAO->getListeAnimes();
 foreach ($listeAnime as $anime)
 {
     echo '<tr>';
-    echo '<td>' + $anime->getNom() +'</td>';
-    echo '<td>' + $anime->getGenre() + '</td>';
-    echo '<td>' + $anime->getAuteur() + '</td>';
-    echo '<td>' + $anime->getStudio() +'</td>';
+    echo '<td><a href="VueAnime?&id='. strval($anime->getId()) .'">' . $anime->getNom() . '</a></td>';
+    echo '<td><a href="VueAnime?&id='. strval($anime->getId()) .'">' . $anime->getGenre() . '</a></td>';
+    echo '<td><a href="VueAnime?&id='. strval($anime->getId()) .'">' . $anime->getAuteur() . '</a></td>';
+    echo '<td><a href="VueAnime?&id='. strval($anime->getId()) .'">' . $anime->getStudio() . '</a></td>';
     echo '</tr>';
 }
 
