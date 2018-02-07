@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Kelyan Chauffourier
+ * Date: 07/02/2018
+ * Time: 09:48
+ */
 
 class Anime
 {
