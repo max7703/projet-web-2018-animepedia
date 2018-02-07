@@ -20,4 +20,39 @@ class Anime
         $this->studio = $studio;
         $this->nbEpisodes = $nbEpisodes;
     }
+        
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+    
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+    
+    public function getStudio()
+    {
+        return $this->studio;
+    }
+    
+    public function getNbEpisodes()
+    {
+        returnn $this->nbEpisodes;
+    }
 }
