@@ -53,6 +53,6 @@ class Anime
     
     public function getNbEpisodes()
     {
-        returnn $this->nbEpisodes;
+        return $this->nbEpisodes;
     }
 }
