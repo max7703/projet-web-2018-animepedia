@@ -5,7 +5,8 @@
 
 	try {
 	$dbh = new PDO($dsn, $user, $password);
-
+	if($dbh != NULL)
+		echo("Connexion reussie");
 
 	} catch (PDOException $e) {
 	echo 'Connexion échouée : ' . $e->getMessage();
