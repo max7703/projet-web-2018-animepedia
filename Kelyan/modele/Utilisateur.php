@@ -5,12 +5,14 @@ class Utilisateur
 	private id;
 	private pseudo;
 	private mdp;
+	private email;
 	
-	 public function __construct($id, $pseudo, $mdp)
+	 public function __construct($id, $pseudo, $mdp, $email)
     {
 		$this->id = $id;
 		$this->pseudo = $pseudo;
 		$this->mdp = $mdp;
+		$this->email = $email;
 	}
 	
 	public function getId()
@@ -41,6 +43,16 @@ class Utilisateur
 	public function setMdp()
 	{
 		$this->mdp = $mdp;
+	}
+	
+	public function getEmail()
+    {
+        return $this->email;
+    }
+	
+	public function setEmail()
+	{
+		$this->email = $email;
 	}
 	
 }
