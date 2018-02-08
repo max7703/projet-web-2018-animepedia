@@ -29,6 +29,23 @@ class AnimeDAO
      */
     public function getListeAnimes()
     {
+		$list = [];
+        $db = Db::getInstance();
+		
+        $req = $db->query('SELECT * FROM anime');
+
+        foreach($req->fetchAll() as $anime) {
+            $list[] = new Anime($anime['id'], 
+			$anime['nom_anime'], 
+			$anime['description_anime'], 
+			$anime['genre_anime'], 
+			$anime['auteur_anime'], 
+			$anime['studio_anime'], 
+			$anime['nb_episodes_anime']););
+        }
+
+        return $list;
+		
         /*$this->remplirListeAnimes();
         return $this->listeAnimes;*/
     }
