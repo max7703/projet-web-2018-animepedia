@@ -8,8 +8,9 @@ class Utilisateur
 	private email;
 	private id_privilege;
 	private image;
+	private description;
 	
-	 public function __construct($id, $pseudo, $mdp, $email, $id_privilege, $image)
+	 public function __construct($id, $pseudo, $mdp, $email, $id_privilege, $image, $description)
     {
 		$this->id = $id;
 		$this->pseudo = $pseudo;
@@ -17,6 +18,7 @@ class Utilisateur
 		$this->email = $email;
 		$this->id_privilege = $id_privilege;
 		$this->image = $image;
+		$this->description = $description;
 	}
 	
 	public function getId()
@@ -77,6 +79,16 @@ class Utilisateur
 	public function setImage()
 	{
 		$this->image = $image;
+	}
+	
+	public function getDescription()
+    {
+        return $this->description;
+    }
+	
+	public function setDescription()
+	{
+		$this->description = $description;
 	}
 	
 }
