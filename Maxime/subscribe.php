@@ -1,4 +1,3 @@
-<?php include 'links.html' ?>
 <?php include 'header.php' ?>
 
 <link rel="stylesheet" href="subscribe_.css">

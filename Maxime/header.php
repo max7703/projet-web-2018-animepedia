@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Nom de la page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php include 'links.html' ?>
+</head>
+<body>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <a class="navbar-brand" href="index">Animepedia</a>
@@ -29,12 +38,14 @@
 			<a class="nav-link" href="admin">Admin</a>
 		  </li>
 		</ul>
-		<form class="form-inline my-2 my-lg-0">
+		<form class="form-inline pr-2 my-lg-0">
 		  <input class="form-control mr-sm-2" placeholder="Search" type="text">
-		  <button class="btn btn-success my-2 my-sm-0" type="button">Search</button>
+		  <button class="btn-lg btn-success" type="button">
+		  <i class="fa fa-search"></i>
+		  </button>
 		</form>
-		<ul class="nav navbar-nav navbar-right">
-			<li class="dropdown open">
+		<ul class="nav navbar-nav navbar-right pr-2">
+			<li class="dropdown">
 				<a href="#" class="dropdown-toggle visible-lg visible-sm visible-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
 					<i class="fa fa-user fa-fw"></i>
 					Guest

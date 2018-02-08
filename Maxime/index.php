@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Animepedia</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php include 'links.html' ?>
-</head>
-    <?php include 'header.php' ?>
-<body>  
+<?php include 'header.php' ?>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -62,11 +53,11 @@
 		<div class="col-lg-3 col-md-4 col-sm-6">
 			<article class="card">
 				<header class="title-header">
-					<h3>Anime Title</h3>
+					<h3>Naruto</h3>
 				</header>
 				<div class="card-block">
 					<div class="img-card">
-						<img src="//placehold.it/300x250" alt="Anime" class="w-100" />
+						<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" class="w-100" />
 					</div>
 					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
@@ -80,7 +71,7 @@
 				</header>
 				<div class="card-block">
 					<div class="img-card">
-						<img src="https://placehold.it/300x250" alt="Anime" class="w-100" />
+						<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" class="w-100" />
 					</div>
 					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
@@ -94,7 +85,7 @@
 				</header>
 				<div class="card-block">
 					<div class="img-card">
-						<img src="https://placehold.it/300x250" alt="Anime" class="w-100" />
+						<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" class="w-100" />
 					</div>
 					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
@@ -108,7 +99,7 @@
 				</header>
 				<div class="card-block">
 					<div class="img-card">
-						<img src="https://placehold.it/300x250" alt="Anime" title="Anime" class="w-100" />
+						<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" title="Anime" class="w-100" />
 					</div>
 					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
@@ -117,6 +108,4 @@
 		</div>
 	</div>
 </section>
-</body>
-    <?php include 'footer.php' ?>
-</html> 
+<?php include 'footer.php' ?>
