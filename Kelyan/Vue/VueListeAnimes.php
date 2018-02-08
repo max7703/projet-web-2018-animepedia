@@ -8,8 +8,8 @@
 
 require_once '../modele/Anime.php';
 require_once '../DAO/AnimeDAO.php';
-
-echo '<!DOCTYPE html>
+require_once 'VueHeader.php';
+/*echo '<!DOCTYPE html>
 <html>
 <head>
 <title>Animepedia</title>
@@ -18,7 +18,9 @@ echo '<!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="../admin.css">';
 include '../links.html';
 echo '</head>';
-include '../header.php';
+include '../header.php';*/
+$header = new VueHeader();
+$header->printHeader("Liste des animes");
 echo '<body>
             <table class="table  table-sm">
             <thead class="table-info">
