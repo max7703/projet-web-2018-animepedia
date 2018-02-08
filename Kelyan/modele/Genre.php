@@ -3,6 +3,7 @@
 class Genre
 {
 	private id;
+	private nom;
 	
 	 public function __construct($id, $nom)
     {
