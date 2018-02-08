@@ -6,13 +6,15 @@ class Utilisateur
 	private pseudo;
 	private mdp;
 	private email;
+	private id_privilege;
 	
-	 public function __construct($id, $pseudo, $mdp, $email)
+	 public function __construct($id, $pseudo, $mdp, $email, $id_privilege)
     {
 		$this->id = $id;
 		$this->pseudo = $pseudo;
 		$this->mdp = $mdp;
 		$this->email = $email;
+		$this->id_privilege = $id_privilege;
 	}
 	
 	public function getId()
@@ -53,6 +55,16 @@ class Utilisateur
 	public function setEmail()
 	{
 		$this->email = $email;
+	}
+	
+	public function getId_Privilege()
+    {
+        return $this->id_privilege;
+    }
+	
+	public function setId_Privilege()
+	{
+		$this->id_privilege = $id_privilege;
 	}
 	
 }
