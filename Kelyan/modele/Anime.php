@@ -9,7 +9,7 @@ class Anime
     private $studio;
     private $nbEpisodes;
     
-    public function __construct($id, $nom, $description, $genre, $auteur, $studio,$nbEpisodes)
+    public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes)
     {
         $this->id = $id;
         $this->nom = $nom;
