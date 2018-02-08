@@ -37,10 +37,10 @@ $listeAnime = $animeDAO->getListeAnimes();
 foreach ($listeAnime as $anime)
 {
     echo '<tr>';
-    echo '<td><a href="VueAnime?&id='. strval($anime->getId()) .'">' . $anime->getNom() . '</a></td>';
-    echo '<td><a href="VueAnime?&id='. strval($anime->getId()) .'">' . $anime->getGenre() . '</a></td>';
-    echo '<td><a href="VueAnime?&id='. strval($anime->getId()) .'">' . $anime->getAuteur() . '</a></td>';
-    echo '<td><a href="VueAnime?&id='. strval($anime->getId()) .'">' . $anime->getStudio() . '</a></td>';
+    echo '<td><a href="VueAnime?id='. strval($anime->getId()) .'">' . $anime->getNom() . '</a></td>';
+    echo '<td><a href="VueAnime?id='. strval($anime->getId()) .'">' . $anime->getGenre() . '</a></td>';
+    echo '<td><a href="VueAnime?id='. strval($anime->getId()) .'">' . $anime->getAuteur() . '</a></td>';
+    echo '<td><a href="VueAnime?id='. strval($anime->getId()) .'">' . $anime->getStudio() . '</a></td>';
     echo '</tr>';
 }
 

@@ -75,6 +75,10 @@ class AnimeDAO
             if($anime.getId() == $id);
             return $anime;
         }
+<<<<<<< HEAD
+        return null;
+=======
         echo "ERROR, not found";*/
+>>>>>>> 8c4d6f306052f904402fd712991f0f407f60a123
     }
 }
