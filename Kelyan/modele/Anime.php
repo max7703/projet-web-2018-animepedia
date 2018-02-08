@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kelyan Chauffourier
- * Date: 07/02/2018
- * Time: 09:48
- */
 class Anime
 {
     private $id;
@@ -15,7 +9,7 @@ class Anime
     private $studio;
     private $nbEpisodes;
     
-    public function __construct($id, $nom, $description, $genre, $auteur, $studio,$nbEpisodes)
+    public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes)
     {
         $this->id = $id;
         $this->nom = $nom;
@@ -30,34 +24,69 @@ class Anime
     {
         return $this->id;
     }
+	
+	public function setId()
+    {
+        $this->id = $id;
+    }
 
     public function getNom()
     {
         return $this->nom;
+    }
+	
+	public function setNom()
+    {
+        $this->nom = $nom
     }
 
     public function getDescription()
     {
         return $this->description;
     }
+	
+	public function setDescription()
+    {
+        $this->description = $description
+    }
     
     public function getGenre()
     {
         return $this->genre;
+    }
+	
+	public function setGenre()
+    {
+        $this->genre = $genre
     }
     
     public function getAuteur()
     {
         return $this->auteur;
     }
+	
+	public function setAuteur()
+    {
+        $this->auteur = $auteur
+    }
     
     public function getStudio()
     {
         return $this->studio;
     }
+	
+	public function setStudio()
+    {
+        $this->studio = $studio
+    }
     
     public function getNbEpisodes()
     {
         return $this->nbEpisodes;
+    }
+	
+	public function setNbEpisodes()
+    {
+        $this->nbEpisodes = $nbEpisodes
     }
 }

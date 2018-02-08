@@ -29,18 +29,39 @@ class AnimeDAO
      */
     public function getListeAnimes()
     {
-        $this->remplirListeAnimes();
-        return $this->listeAnimes;
+        /*$this->remplirListeAnimes();
+        return $this->listeAnimes;*/
     }
 
-    public function getAnimeById( $id)
+    public function getAnimeById($id)
     {
-        $this->remplirListeAnimes();
+		$db = Db::getInstance();
+        $id = intval($id);
+		
+        $req = $db->prepare('SELECT * FROM anime WHERE id = :id');
+		
+        $req->execute(array('id' => $id));
+		
+        $anime = $req->fetch();
+
+        return new Anime($anime['id'], 
+		$anime['nom_anime'], 
+		$anime['description_anime'], 
+		$anime['genre_anime'], 
+		$anime['auteur_anime'], 
+		$anime['studio_anime'], 
+		$anime['nb_episodes_anime']);
+		
+        /*$this->remplirListeAnimes();
         foreach ($this->listeAnimes as $anime)
         {
             if($anime.getId() == $id);
             return $anime;
         }
+<<<<<<< HEAD
         return null;
+=======
+        echo "ERROR, not found";*/
+>>>>>>> 8c4d6f306052f904402fd712991f0f407f60a123
     }
 }
