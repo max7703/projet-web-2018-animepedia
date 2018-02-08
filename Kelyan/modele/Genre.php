@@ -4,7 +4,7 @@ class Genre
 {
 	private id;
 	
-	 public function __construct($id)
+	 public function __construct($id, $nom)
     {
 		$this->id = $id;
 		$this->nom = $nom;
@@ -25,7 +25,7 @@ class Genre
         return $this->nom;
     }
 	
-	public function setId()
+	public function setNom()
 	{
 		$this->nom = $nom;
 	}
