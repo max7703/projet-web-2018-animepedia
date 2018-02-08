@@ -4,11 +4,13 @@ class Utilisateur
 {
 	private id;
 	private pseudo;
+	private mdp;
 	
-	 public function __construct($id, $pseudo)
+	 public function __construct($id, $pseudo, $mdp)
     {
 		$this->id = $id;
 		$this->pseudo = $pseudo;
+		$this->mdp = $mdp;
 	}
 	
 	public function getId()
@@ -29,6 +31,16 @@ class Utilisateur
 	public function setPseudo()
 	{
 		$this->pseudo = $pseudo;
+	}
+	
+	public function getMdp()
+    {
+        return $this->mdp;
+    }
+	
+	public function setMdp()
+	{
+		$this->mdp = $mdp;
 	}
 	
 }
