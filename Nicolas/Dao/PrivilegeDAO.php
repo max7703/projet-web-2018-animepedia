@@ -53,4 +53,14 @@ class PrivilegeDAO
 		
 		$req->execute(array('id_privilege' => $privilege->getId()));	
 	}
+	
+	public function ModifierUnPrivilege(Privilege $privilege)
+	{
+		$db = Db::getInstance();
+		
+		$req = $db->prepare('UPDATE INTO privilege 
+		SET nom_privilege = :nom_privilege');
+		
+        $req->execute(array('nom_privilege' => $privilege->getNom()));
+	}
 }
