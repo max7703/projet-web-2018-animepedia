@@ -12,7 +12,7 @@ class GenreDAO
 
         foreach($req->fetchAll() as $genre) 
 		{
-            $list[] = new Genre($genre['id'], 
+            $list[] = new Genre($genre['id_genre'], 
 			$genre['nom_genre']);
         }
 
@@ -24,13 +24,13 @@ class GenreDAO
 		$db = Db::getInstance();
         $id = intval($id);
 		
-        $req = $db->prepare('SELECT * FROM genre WHERE id = :id');
+        $req = $db->prepare('SELECT * FROM genre WHERE id_genre = :id_genre');
 		
-        $req->execute(array('id' => $id));
+        $req->execute(array('id_genre' => $id));
 		
         $genre = $req->fetch();
 
-        return new Genre($genre['id'], 
+        return new Genre($genre['id_genre'], 
 		$genre['nom_genre']);	
     }
 	
@@ -52,5 +52,15 @@ class GenreDAO
 		WHERE id_genre=:id_genre');
 		
 		$req->execute(array('id_genre' => $genre->getId()));	
+	}
+	
+	public function ModifierUnGenre(Genre $genre)
+	{
+		$db = Db::getInstance();
+		
+		$req = $db->prepare('UPDATE INTO genre 
+		SET nom_genre = :nom_genre');
+		
+        $req->execute(array('nom_genre' => $genre->getNom()));
 	}
 }
