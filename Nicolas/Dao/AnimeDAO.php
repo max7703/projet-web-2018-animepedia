@@ -101,7 +101,7 @@ class AnimeDAO
 		
 	}
 	
-	public function AjouterUnAnime($nom, $description, $genre, $auteur, $studio, $nb_episodes_anime)
+	public function ModifierUnAnime($nom, $description, $genre, $auteur, $studio, $nb_episodes_anime)
 	{
 		$db = Db::getInstance();
 		
