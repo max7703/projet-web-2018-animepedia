@@ -28,7 +28,7 @@ class AnimeDAO
 
         foreach($req->fetchAll() as $anime) 
 		{
-            $list[] = new Anime($anime['id'], 
+            $list[] = new Anime($anime['id_anime'], 
 			$anime['nom_anime'], 
 			$anime['description_anime'], 
 			$anime['genre_anime'], 
@@ -51,7 +51,7 @@ class AnimeDAO
 		
         $anime = $req->fetch();
 
-        return new Anime($anime['id'], 
+        return new Anime($anime['id_anime'], 
 		$anime['nom_anime'], 
 		$anime['description_anime'], 
 		$anime['genre_anime'], 

@@ -19,7 +19,7 @@ class GenreDAO
         return $list;
     }
 	
-	 public function GetGenreById($id)
+	public function GetGenreById($id)
     {
 		$db = Db::getInstance();
         $id = intval($id);
@@ -31,7 +31,6 @@ class GenreDAO
         $genre = $req->fetch();
 
         return new Genre($genre['id'], 
-		$genre['nom_genre']);
-		
+		$genre['nom_genre']);	
     }
 }
