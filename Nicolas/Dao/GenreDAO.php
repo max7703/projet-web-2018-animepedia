@@ -43,4 +43,14 @@ class GenreDAO
 
         $req->execute(array('nom_genre' => $genre->getNom()));
     }
+	
+	public function SupprimerUnGenre(Genre $genre)
+	{
+		$db = Db::getInstance();
+		
+		$req = $db->prepare('DELETE FROM genre 
+		WHERE id_genre=:id_genre');
+		
+		$req->execute(array('id_genre' => $genre->getId()));	
+	}
 }
