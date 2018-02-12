@@ -68,6 +68,15 @@ class UtilisateurDAO
 		'id_privilege'=> $utilisateur->getId_Privilege(),
 		'image_utilisateur'=> $utilisateur->getImage(),
 		'description_utilisateur'=> $utilisateur->getDescription()));
-
     }
+	
+	public function SupprimerUnUtilisateur(Utilisateur $utilisateur)
+	{
+		$db = Db::getInstance();
+		
+		$req = $db->prepare('DELETE FROM utilisateur 
+		WHERE id_utilisateur=:id_utilisateur');
+		
+		$req->execute(array('id_utilisateur' => $utilisateur->getId()));	
+	}
 	
