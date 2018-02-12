@@ -45,7 +45,7 @@ class AnimeDAO
 		$db = Db::getInstance();
         $id = intval($id);
 		
-        $req = $db->prepare('SELECT * FROM anime WHERE id = :id');
+        $req = $db->prepare('SELECT * FROM anime WHERE id_anime = :id_anime');
 		
         $req->execute(array('id' => $id));
 		
@@ -61,7 +61,7 @@ class AnimeDAO
 		
     }
 	
-	public function AjouterUnAnime($nom, $description, $genre, $auteur, $studio, $nb_episodes_anime) 
+	public function AjouterUnAnime(Anime $anime) 
 	{
         $db = Db::getInstance();
 
@@ -87,19 +87,17 @@ class AnimeDAO
         'nb_episodes_anime'=> $anime->getNbEpisodes()));
     }
 	
-	public function SupprimerUnAnime($id)
+	public function SupprimerUnAnime(Anime $anime)
 	{
 		$db = Db::getInstance();
 		
-		$req = $db->prepare('DELETE FROM anime WHERE id=:id');
+		$req = $db->prepare('DELETE FROM anime 
+		WHERE id_anime=:id_anime');
 		
-		$req->bindParam(':id', $id);
-		
-		$req->execute();
-		
+		$req->execute(array('id_anime' => $anime->getId()));	
 	}
 	
-	public function ModifierUnAnime($nom, $description, $genre, $auteur, $studio, $nb_episodes_anime)
+	public function ModifierUnAnime(Anime $anime)
 	{
 		$db = Db::getInstance();
 		
@@ -111,14 +109,12 @@ class AnimeDAO
         studio_anime = :studio_anime, 
 		nb_episodes_anime = :nb_episodes_anime');
 		
-		$req->bindParam(':nom_anime', $nom);
-        $req->bindParam(':description_anime', $description);
-        $req->bindParam(':genre_anime', $genre);
-        $req->bindParam(':auteur_anime', $auteur);
-        $req->bindParam(':studio_anime', $studio);
-        $req->bindParam(':nb_episodes_anime', $nb_variable);
-		
-		$req->execute();
+        $req->execute(array('nom_anime' => $anime->getNom(), 
+		'description_anime' => $anime->getDescription(),
+		'genre_anime'=> $anime->getGenre(),
+        'auteur_anime'=> $anime->getAuteur(),
+        'studio_anime'=> $anime->getStudio(),
+        'nb_episodes_anime'=> $anime->getNbEpisodes()));
 	}
 	
 }
