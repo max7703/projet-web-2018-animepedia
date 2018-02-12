@@ -74,19 +74,17 @@ class AnimeDAO
 		
 		VALUES(:nom_anime, 
 		:description_anime, 
-		genre_anime, 
+		:genre_anime, 
 		:auteur_anime, 
         :studio_anime, 
 		:nb_episodes_anime');
 
-        $req->bindParam(':nom_anime', $nom);
-        $req->bindParam(':description_anime', $description);
-        $req->bindParam(':genre_anime', $genre);
-        $req->bindParam(':auteur_anime', $auteur);
-        $req->bindParam(':studio_anime', $studio);
-        $req->bindParam(':nb_episodes_anime', $nb_variable);
-
-        $req->execute();
+        $req->execute(array('nom_anime' => $anime->getNom(), 
+		'description_anime' => $anime->getDescription(),
+		'genre_anime'=> $anime->getGenre(),
+        'auteur_anime'=> $anime->getAuteur(),
+        'studio_anime'=> $anime->getStudio(),
+        'nb_episodes_anime'=> $anime->getNbEpisodes()));
     }
 	
 	public function SupprimerUnAnime($id)
