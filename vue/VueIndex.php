@@ -73,23 +73,29 @@ echo '
       </a>
     </div>';
 
-foreach ($listeAnime as $anime)
-{
-    echo '<div class="col-lg-3 col-md-4 col-sm-6">
-        <article class="card">
-            <header class="title-header">';
-                echo '<h3>' . $anime->getNom() . '</h3>';
-            echo '</header>
-            <div class="card-block">
-                <div class="img-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" class="w-100" />
-                </div>
-                <p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-            </div>
-        </article>
-    </div>';
-}
+echo '<section class="animes" id="animes">
+	<h2>Featured Animes</h2>
+	<div class="row">';
+	foreach ($listeAnime as $anime)
+    {
+        echo '<div class="col-lg-3 col-md-4 col-sm-6 pb-3">
+			<article class="card">
+				<header class="title-header">';
+        echo '<h3>' . $anime->getNom() . '</h3>';
+        echo '</header>
+				<div class="card-block">
+					<div class="img-card">';
+						echo '<img src="' . $anime->getImgPath() . '" alt="Anime" class="w-100" />
+					</div>';
+					echo '<p class="tagline card-text text-xs-center">' . $anime->getDescription() . '</p>';
+					echo '<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Plus de details</a>
+				</div>
+			</article>
+		</div>';
+    }
+    echo '
+	</div>
+</section>';
 
 
 include 'VueFooter.php';
