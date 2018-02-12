@@ -80,7 +80,7 @@ class AnimeDAO
         echo "ERROR, not found";*/
     }
 	
-	public function ajouterAnime($nom, $description, $genre, $auteur, $studio, $nb_variable) {
+	public function ajouterAnime($nom, $description, $genre, $auteur, $studio, $nbEpisodes) {
         $db = Db::getInstance();
 
         $req = $db->prepare('INSERT INTO anime(nom_anime, description_anime, genre_anime, auteur_anime, 
@@ -96,4 +96,17 @@ class AnimeDAO
 
         $req->execute();
     }
+	
+	public function supprimerAnime($id)
+	{
+		$db = Db::getInstance();
+		
+		$req = $db->prepare('DELETE FROM anime WHERE id=:id');
+		
+		$req->bindParam(':id', $id);
+		
+		$req->execute();
+		
+	}
+	
 }
