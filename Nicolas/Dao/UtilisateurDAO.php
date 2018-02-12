@@ -80,3 +80,23 @@ class UtilisateurDAO
 		$req->execute(array('id_utilisateur' => $utilisateur->getId()));	
 	}
 	
+	public function ModifierUnUtilisateur(Utilisateur $utilisateur)
+	{
+		$db = Db::getInstance();
+		
+		$req = $db->prepare('UPDATE INTO utilisateur 
+		SET pseudo_utilisateur = :pseudo_utilisateur, 
+		mdp_utilisateur = :mdp_utilisateur, 
+		email_utilisateur = :email_utilisateur, 
+		id_privilege = :id_privilege, 
+        image_utilisateur = :image_utilisateur, 
+		description_utilisateur = :description_utilisateur');
+		
+        $req->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(), 
+		'mdp_utilisateur' => $utilisateur->getMdp(),
+		'email_utilisateur'=> $utilisateur->getEmail(),
+        'id_privilege'=> $utilisateur->getId_Privilege(),
+        'image_utilisateur'=> $utilisateur->getImage(),
+        'description_utilisateur'=> $utilisateur->getDescription()));
+	}
+	
