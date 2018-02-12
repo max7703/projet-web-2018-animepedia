@@ -43,4 +43,14 @@ class PrivilegeDAO
 
         $req->execute(array('nom_privilege' => $privilege->getNom()));
     }
+	
+	public function SupprimerUnPrivilege(Privilege $privilege)
+	{
+		$db = Db::getInstance();
+		
+		$req = $db->prepare('DELETE FROM privilege 
+		WHERE id_privilege=:id_privilege');
+		
+		$req->execute(array('id_privilege' => $privilege->getId()));	
+	}
 }
