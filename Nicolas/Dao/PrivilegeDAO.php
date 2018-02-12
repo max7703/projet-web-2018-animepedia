@@ -24,13 +24,23 @@ class PrivilegeDAO
 		$db = Db::getInstance();
         $id = intval($id);
 		
-        $req = $db->prepare('SELECT * FROM privilege WHERE id = :id');
+        $req = $db->prepare('SELECT * FROM privilege WHERE id_privilege = :id_privilege');
 		
-        $req->execute(array('id' => $id));
+        $req->execute(array('id_privilege' => $id));
 		
         $privilege = $req->fetch();
 
         return new Privilege($privilege['id_privilege'], 
-		$privilege['nom_privilege']);	
+		$privilege['nom_privilege']);
+    }
+	
+	public function AjouterUnPrivilege(Privilege $privilege) 
+	{
+        $db = Db::getInstance();
+
+        $req = $db->prepare('INSERT INTO privilege(nom_privilege)
+		VALUES(:nom_privilege');
+
+        $req->execute(array('nom_privilege' => $privilege->getNom()));
     }
 }
