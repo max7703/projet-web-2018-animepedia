@@ -23,3 +23,19 @@ class UtilisateurDAO
 
         return $list;
     }
+	
+	public function GetUtilisateurById($id)
+    {
+		$db = Db::getInstance();
+        $id = intval($id);
+		
+        $req = $db->prepare('SELECT * FROM utilisateur WHERE id = :id');
+		
+        $req->execute(array('id' => $id));
+		
+        $utilisateur = $req->fetch();
+
+        return new Utilisateur($utilisateur['id_utilisateur'], 
+		$utilisateur['nom_utilisateur']);	
+    }
+	
