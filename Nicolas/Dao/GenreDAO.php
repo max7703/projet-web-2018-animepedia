@@ -33,4 +33,14 @@ class GenreDAO
         return new Genre($genre['id'], 
 		$genre['nom_genre']);	
     }
+	
+	public function AjouterUnGenre(Genre $genre) 
+	{
+        $db = Db::getInstance();
+
+        $req = $db->prepare('INSERT INTO genre(nom_genre)
+		VALUES(:nom_genre');
+
+        $req->execute(array('nom_genre' => $genre->getNom()));
+    }
 }
