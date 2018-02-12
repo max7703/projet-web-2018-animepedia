@@ -34,7 +34,7 @@ class AnimeDAO
 			$anime['genre_anime'], 
 			$anime['auteur_anime'], 
 			$anime['studio_anime'], 
-			$anime['nb_episodes_anime']););
+			$anime['nb_episodes_anime']);
         }
 
         return $list;
