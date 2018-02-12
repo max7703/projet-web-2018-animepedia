@@ -9,16 +9,7 @@
 require_once '../modele/Anime.php';
 require_once '../DAO/AnimeDAO.php';
 require_once 'VueHeader.php';
-/*echo '<!DOCTYPE html>
-<html>
-<head>
-<title>Animepedia</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../admin.css">';
-include '../links.html';
-echo '</head>';
-include '../header.php';*/
+
 $header = new VueHeader();
 $header->printHeader("Liste des animes");
 echo '<body>

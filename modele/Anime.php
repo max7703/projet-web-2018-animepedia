@@ -8,7 +8,7 @@ class Anime
     private $auteur;
     private $studio;
     private $nbEpisodes;
-    
+
     public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes)
     {
         $this->id = $id;
@@ -19,13 +19,13 @@ class Anime
         $this->studio = $studio;
         $this->nbEpisodes = $nbEpisodes;
     }
-        
+
     public function getId()
     {
         return $this->id;
     }
-	
-	public function setId()
+
+	public function setId($id)
     {
         $this->id = $id;
     }
@@ -34,59 +34,59 @@ class Anime
     {
         return $this->nom;
     }
-	
-	public function setNom()
+
+	public function setNom($nom)
     {
-        $this->nom = $nom
+        $this->nom = $nom;
     }
 
     public function getDescription()
     {
         return $this->description;
     }
-	
-	public function setDescription()
+
+	public function setDescription($description)
     {
-        $this->description = $description
+        $this->description = $description;
     }
-    
+
     public function getGenre()
     {
         return $this->genre;
     }
-	
-	public function setGenre()
+
+	public function setGenre($genre)
     {
-        $this->genre = $genre
+        $this->genre = $genre;
     }
-    
+
     public function getAuteur()
     {
         return $this->auteur;
     }
-	
-	public function setAuteur()
+
+	public function setAuteur($auteur)
     {
-        $this->auteur = $auteur
+        $this->auteur = $auteur;
     }
-    
+
     public function getStudio()
     {
         return $this->studio;
     }
-	
-	public function setStudio()
+
+	public function setStudio($studio)
     {
-        $this->studio = $studio
+        $this->studio = $studio;
     }
-    
+
     public function getNbEpisodes()
     {
         return $this->nbEpisodes;
     }
-	
-	public function setNbEpisodes()
+
+	public function setNbEpisodes($nbEpisodes)
     {
-        $this->nbEpisodes = $nbEpisodes
+        $this->nbEpisodes = $nbEpisodes;
     }
 }

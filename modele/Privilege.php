@@ -2,8 +2,8 @@
 
 class Privilege
 {
-	private id;
-	private nom;
+	private $id;
+	private $nom;
 	
 	 public function __construct($id, $nom)
     {
@@ -16,7 +16,7 @@ class Privilege
         return $this->id;
     }
 	
-	public function setId()
+	public function setId($id)
 	{
 		$this->id = $id;
 	}
@@ -26,9 +26,8 @@ class Privilege
         return $this->nom;
     }
 	
-	public function setNom()
+	public function setNom($nom)
 	{
 		$this->nom = $nom;
 	}
-}
 }

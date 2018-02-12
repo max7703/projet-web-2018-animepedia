@@ -1,6 +1,7 @@
 <?php
 
-require_once '../Modele/Anime.php';
+require_once '../modele/Anime.php';
+require_once '../bdd/Db.php';
 
 class AnimeDAO
 {

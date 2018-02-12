@@ -2,13 +2,13 @@
 
 class Utilisateur
 {
-	private id;
-	private pseudo;
-	private mdp;
-	private email;
-	private id_privilege;
-	private image;
-	private description;
+	private $id;
+	private $pseudo;
+	private $mdp;
+	private $email;
+	private $id_privilege;
+	private $image;
+	private $description;
 	
 	 public function __construct($id, $pseudo, $mdp, $email, $id_privilege, $image, $description)
     {
@@ -26,7 +26,7 @@ class Utilisateur
         return $this->id;
     }
 	
-	public function setId()
+	public function setId($id)
 	{
 		$this->id = $id;
 	}
@@ -36,7 +36,7 @@ class Utilisateur
         return $this->pseudo;
     }
 	
-	public function setPseudo()
+	public function setPseudo($pseudo)
 	{
 		$this->pseudo = $pseudo;
 	}
@@ -46,7 +46,7 @@ class Utilisateur
         return $this->mdp;
     }
 	
-	public function setMdp()
+	public function setMdp($mdp)
 	{
 		$this->mdp = $mdp;
 	}
@@ -56,7 +56,7 @@ class Utilisateur
         return $this->email;
     }
 	
-	public function setEmail()
+	public function setEmail($email)
 	{
 		$this->email = $email;
 	}
@@ -66,7 +66,7 @@ class Utilisateur
         return $this->id_privilege;
     }
 	
-	public function setId_Privilege()
+	public function setId_Privilege($id_privilege)
 	{
 		$this->id_privilege = $id_privilege;
 	}
@@ -76,7 +76,7 @@ class Utilisateur
         return $this->image;
     }
 	
-	public function setImage()
+	public function setImage($image)
 	{
 		$this->image = $image;
 	}
@@ -86,7 +86,7 @@ class Utilisateur
         return $this->description;
     }
 	
-	public function setDescription()
+	public function setDescription($description)
 	{
 		$this->description = $description;
 	}

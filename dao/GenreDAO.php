@@ -1,5 +1,6 @@
 <?php
 require_once '../Modele/Genre.php';
+require_once '../bdd/Db.php';
 
 class GenreDAO
 {

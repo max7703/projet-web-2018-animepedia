@@ -8,18 +8,17 @@
 
 class VueHeader
 {
-
-
-
     public function printHeader($pagename) {
-        echo '<!DOCTYPE html>
+        echo '
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <title>'. $pagename . '</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">';
-    include '../links.html';
-echo '</head>
+        include '../links.html';
+echo '
+</head>
 <body>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -83,6 +82,7 @@ echo '</head>
 		</ul>
 	  </div>
 	</nav>
-</header>';
+</header>
+';
     }
 }
