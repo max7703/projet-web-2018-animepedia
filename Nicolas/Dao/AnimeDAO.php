@@ -1,40 +1,33 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kelyan Chauffourier
- * Date: 07/02/2018
- * Time: 09:48
- */
-require_once '../modele/Anime.php';
+
+require_once '../Modele/Anime.php';
+
 class AnimeDAO
 {
+	
     private $listeAnimes = array();
 
-    private function remplirListeAnimes()
-    {
-        array_push(
-            $this->listeAnimes, new Anime(0, "one piece",
-                "les aventures de Luffy, le pirate au chapeau de paille", "Shonen", "Eichiro Oda",
-                "Toei", 900)
-        );
-        array_push(
-            $this->listeAnimes, new Anime(1, "naruto",
-                "La quete de naruto uzumaki pour devenir Konoha", "shonen", "Masashi kishimoto",
-                "Studio Pierrot", 1500)
-        );
-    }
+    //private function RemplirListeAnimes()
+    //{
+    //    array_push(
+    //        $this->listeAnimes, new Anime(0, "one piece",
+    //            "Les aventures de Luffy, le pirate au chapeau de paille", "Shonen", "Eichiro Oda", "Toei", 850));
+	//			
+    //    array_push(
+    //        $this->listeAnimes, new Anime(1, "naruto",
+    //            "La quete de Naruto Uzumaki pour devenir Hokage", "Shonen", "Masashi Kishimoto", "Studio Pierrot", 740));
+    //}
 
-    /**
-     * @return array
-     */
-    public function getListeAnimes()
+	
+    public function GetListeAnimes()
     {
 		$list = [];
         $db = Db::getInstance();
 		
         $req = $db->query('SELECT * FROM anime');
 
-        foreach($req->fetchAll() as $anime) {
+        foreach($req->fetchAll() as $anime) 
+		{
             $list[] = new Anime($anime['id'], 
 			$anime['nom_anime'], 
 			$anime['description_anime'], 
@@ -45,12 +38,9 @@ class AnimeDAO
         }
 
         return $list;
-		
-        /*$this->remplirListeAnimes();
-        return $this->listeAnimes;*/
     }
 
-    public function getAnimeById($id)
+    public function GetAnimeById($id)
     {
 		$db = Db::getInstance();
         $id = intval($id);
@@ -69,23 +59,25 @@ class AnimeDAO
 		$anime['studio_anime'], 
 		$anime['nb_episodes_anime']);
 		
-        /*$this->remplirListeAnimes();
-        foreach ($this->listeAnimes as $anime)
-        {
-            if($anime.getId() == $id);
-            return $anime;
-        }
-
-        return null;
-        echo "ERROR, not found";*/
     }
 	
-	public function ajouterAnime($nom, $description, $genre, $auteur, $studio, $nbEpisodes) {
+	public function AjouterUnAnime($nom, $description, $genre, $auteur, $studio, $nb_episodes_anime) 
+	{
         $db = Db::getInstance();
 
-        $req = $db->prepare('INSERT INTO anime(nom_anime, description_anime, genre_anime, auteur_anime, 
-        studio_anime, nb_episodes_anime) VALUES(:nom_anime, :description_anime, :genre_anime, :auteur_anime, 
-        :studio_anime, :nb_episodes_anime');
+        $req = $db->prepare('INSERT INTO anime(nom_anime, 
+		description_anime, 
+		genre_anime, 
+		auteur_anime, 
+        studio_anime, 
+		nb_episodes_anime) 
+		
+		VALUES(:nom_anime, 
+		:description_anime, 
+		genre_anime, 
+		:auteur_anime, 
+        :studio_anime, 
+		:nb_episodes_anime');
 
         $req->bindParam(':nom_anime', $nom);
         $req->bindParam(':description_anime', $description);
@@ -97,7 +89,7 @@ class AnimeDAO
         $req->execute();
     }
 	
-	public function supprimerAnime($id)
+	public function SupprimerUnAnime($id)
 	{
 		$db = Db::getInstance();
 		
@@ -107,6 +99,28 @@ class AnimeDAO
 		
 		$req->execute();
 		
+	}
+	
+	public function AjouterUnAnime($nom, $description, $genre, $auteur, $studio, $nb_episodes_anime)
+	{
+		$db = Db::getInstance();
+		
+		$req = $db->prepare('UPDATE INTO anime 
+		SET nom_anime = :nom_anime, 
+		description_anime = :description_anime, 
+		genre_anime = :genre_anime, 
+		auteur_anime = :auteur_anime, 
+        studio_anime = :studio_anime, 
+		nb_episodes_anime = :nb_episodes_anime');
+		
+		$req->bindParam(':nom_anime', $nom);
+        $req->bindParam(':description_anime', $description);
+        $req->bindParam(':genre_anime', $genre);
+        $req->bindParam(':auteur_anime', $auteur);
+        $req->bindParam(':studio_anime', $studio);
+        $req->bindParam(':nb_episodes_anime', $nb_variable);
+		
+		$req->execute();
 	}
 	
 }
