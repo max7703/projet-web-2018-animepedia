@@ -20,9 +20,10 @@ class VueHeader
 echo '
 </head>
 <body>
+<link rel="stylesheet" href="../css/index_.css">
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="index">Animepedia</a>
+	  <a class="navbar-brand" href="home">Animepedia</a>
 	  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
 		<span class="navbar-toggler-icon"></span>
 	  </button>

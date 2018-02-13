@@ -13,15 +13,8 @@ echo '
         <div class="row">
         <div class="col-sm-3">
             <h4 class="title">A propos</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, sapien elit lacinia mi.</p>
-            <ul class="social-icon">
-                <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
-                <a href="#" class="social"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-            </ul>
+            <p> Nous sommes une équipe de 4 étudiants en DEC Technique de l\'Informatique - Informatique de Gestion. Nous avons eu l\'idée de créer un site qui redirige l\'utilisateur
+                vers un lien fiable où il pourra regarder son animé, le tout sans pub.</p>
         </div>
         <div class="col-sm-3">
             <h4 class="title">Navigation</h4>
@@ -47,7 +40,7 @@ echo '
         </div>
         <div class="col-sm-3">
             <h4 class="title">Moyens de paiement</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <p>Divers moyens de paiement sont disponible sur notre site</p>
             <ul class="payment">
                 <li><a href="#"><i class="fa fa-cc-amex" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li>            

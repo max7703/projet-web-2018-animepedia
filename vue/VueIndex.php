@@ -6,7 +6,7 @@
  * Time: 13:21
  */
 
-require_once 'VueHeader.php';
+require_once '../vue/VueHeader.php';
 require_once '../modele/Anime.php';
 require_once '../dao/AnimeDAO.php';
 
@@ -24,7 +24,6 @@ catch(Throwable $e) {
 }
 
 echo '
-<link rel="stylesheet" href="../css/index_.css">
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -74,28 +73,28 @@ echo '
     </div>';
 
 echo '<section class="animes" id="animes">
-	<h2>Featured Animes</h2>
+	<h2>Animes aleatoire</h2>
 	<div class="row">';
-	foreach ($listeAnime as $anime)
-    {
-        echo '<div class="col-lg-3 col-md-4 col-sm-6 pb-3">
+foreach ($listeAnime as $anime)
+{
+    echo '<div class="col-lg-3 col-md-4 col-sm-6 pb-3">
 			<article class="card">
 				<header class="title-header">';
-        echo '<h3>' . $anime->getNom() . '</h3>';
-        echo '</header>
+    echo '<h3>' . $anime->getNom() . '</h3>';
+    echo '</header>
 				<div class="card-block">
 					<div class="img-card">';
-						echo '<img src="' . $anime->getImgPath() . '" alt="Anime" class="w-100" />
+    echo '<img src="' . $anime->getImgPath() . '" alt="Anime" class="w-100" />
 					</div>';
-					echo '<p class="tagline card-text text-xs-center">' . $anime->getDescription() . '</p>';
-					echo '<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Plus de details</a>
+    echo '<p class="tagline card-text text-xs-center">' . $anime->getDescription() . '</p>';
+    echo '<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Plus de details</a>
 				</div>
 			</article>
 		</div>';
-    }
-    echo '
+}
+echo '
 	</div>
 </section>';
 
 
-include 'VueFooter.php';
+include '../vue/VueFooter.php';
