@@ -9,11 +9,8 @@
 	color:#fff;
 	font-size:25px;
 }
-.footer .social-icon{
-	padding:0px;
-	margin:0px;
-}
-.footer .social-icon a{
+
+.footer .social a{
 	display:inline-block;
 	color:#fff;
 	font-size:25px;
