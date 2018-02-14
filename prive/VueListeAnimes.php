@@ -8,7 +8,7 @@
 
 require_once '../modele/Anime.php';
 require_once '../DAO/AnimeDAO.php';
-require_once 'VueHeader.php';
+require_once '../vue/VueHeader.php';
 
 $header = new VueHeader();
 $header->printHeader("Liste des animes");

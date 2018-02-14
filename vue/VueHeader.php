@@ -16,7 +16,7 @@ class VueHeader
     <title>'. $pagename . '</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">';
-        include '../links.html';
+        include '../public/links.html';
 echo '
 </head>
 <body>
