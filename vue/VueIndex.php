@@ -32,31 +32,31 @@ echo '
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-          <img class="first-slide" src="https://media.boingboing.net/wp-content/uploads/2018/02/usagi.jpg" alt="First slide">
+          <img class="first-slide" src="../img/NarutoBanner.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption d-none d-md-block text-left">
-              <h1>Usagi Yojimbo, adaptée en série animée</h1>
-              <p>Usagi Yojimbo, série de l\'auteur japano-américain Stan Sakai fera prochainement l\'objet d\'une adaptation animée, sous forme de série entièrement en CGI.</p>
+              <h1>Tous les épisodes de Naruto sont disponibles sur le site !</h1>
+              <p>Nous avons mis à jour les épisodes de la série Naruto et Naruto Shippuden, désormais tous les épisodes sont disponibles sur le site !</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Lire la news</a></p>
             </div>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="second-slide" src="http://www.manga-sama.com/img/report/385/cover.jpg" alt="Second slide">
+          <img class="second-slide" src="../img/DanganronpaBanner.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption d-none d-md-block">
-              <h1>Flying Witch remporte le Tournoi Jeunesse 2017 </h1>
-              <p>La série de Chihiro Ishizuka, qui a plutôt survolé le tournoi, n\'a laissé absolument aucune chance à Jane Eyre en finale.</p>
+              <h1>Danganronpa The End Of Kibougamine Gakuen Mirai-Hen & Zetsubo-Hen</h1>
+              <p>Les arcs Désespoir et Espoir de Danganronpa sont maintenant disponibles sur le site !</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Lire la news</a></p>
             </div>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="third-slide" src="https://a248.e.akamai.net/ib.huluim.com/show_key_art/25326?size=1600x600&region=US" alt="Third slide">
+          <img class="third-slide" src="../img/OnePieceBanner.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption d-none d-md-block text-right">
-              <h1>Diffusion de Concrete Revolutio sur Game One</h1>
-              <p>La série Concrete Revolutio débarque à partir d\'aujourd\'hui sur la chaine Game One en vf.</p>
+              <h1>Nouvel épisode de OnePiece disponible !</h1>
+              <p>Un nouvel épisode de OnePiece est disponible sur le site !</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Lire la news</a></p>
             </div>
           </div>
