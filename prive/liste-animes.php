@@ -7,7 +7,7 @@
  */
 
 require_once '../modele/Anime.php';
-require_once '../DAO/AnimeDAO.php';
+require_once '../dao/AnimeDAO.php';
 require_once '../vue/VueHeader.php';
 
 $header = new VueHeader();
@@ -38,6 +38,7 @@ foreach ($listeAnime as $anime)
 echo        '</tbody>
         </table>
         </div>
+        <a href="VueAnime.php">Ajouter un anime</a>
     </div>
 </body>
 </html>';
