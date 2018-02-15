@@ -1,5 +1,5 @@
 <?php
-require_once '../Modele/Utilisateur.php';
+require_once '../modele/Utilisateur.php';
 require_once '../bdd/Db.php';
 
 class UtilisateurDAO
@@ -44,6 +44,43 @@ class UtilisateurDAO
             $utilisateur['description_utilisateur']);
     }
 
+    public function GetUtilisateurByString($username)
+    {
+        $db = Db::getInstance();
+
+        $req = $db->prepare('SELECT * FROM utilisateur WHERE pseudo_utilisateur = :pseudo_utilisateur');
+
+        $req->execute(array('pseudo_utilisateur' => $username));
+
+        $utilisateur = $req->fetch();
+
+        return new Utilisateur($utilisateur['pseudo_utilisateur'],
+            $utilisateur['mdp_utilisateur'],
+            $utilisateur['email_utilisateur'],
+            $utilisateur['id_privilege'],
+            $utilisateur['image_utilisateur'],
+            $utilisateur['description_utilisateur']);
+    }
+
+    public function CheckIfUserExist(Utilisateur $utilisateur)
+    {
+        $db = Db::getInstance();
+
+        $req = $db->prepare('SELECT * FROM utilisateur WHERE email_utilisateur = :email_utilisateur 
+        OR pseudo_utilisateur = :pseudo_utilisateur');
+
+        $req->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(),
+            'email_utilisateur' => $utilisateur->getEmail()));
+
+        if ( $req->rowCount() > 0 )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public function AjouterUnUtilisateur(Utilisateur $utilisateur)
     {
         $db = Db::getInstance();
@@ -60,14 +97,16 @@ class UtilisateurDAO
 		:email_utilisateur, 
         :id_privilege, 
 		:image_utilisateur,
-		:description_utilisateur');
+		:description_utilisateur)');
 
-        $req->execute(array('pseudo_utilisateur' => $utilisateur->getNom(),
+        $req->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(),
             'mdp_utilisateur' => $utilisateur->getMdp(),
             'email_utilisateur' => $utilisateur->getEmail(),
             'id_privilege' => $utilisateur->getId_Privilege(),
             'image_utilisateur' => $utilisateur->getImage(),
             'description_utilisateur' => $utilisateur->getDescription()));
+
+        return $req;
     }
 
     public function SupprimerUnUtilisateur(Utilisateur $utilisateur)
