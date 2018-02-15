@@ -9,18 +9,22 @@
 class VueHeader
 {
     public function printHeader($pagename) {
+        session_start();
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
         echo '
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <title>'. $pagename . '</title>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">';
-        include '../public/links.html';
+        include '../links.html';
 echo '
 </head>
 <body>
 <link rel="stylesheet" href="../css/index_.css">
+<link rel="stylesheet" href="../css/header_.css">
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <a class="navbar-brand" href="home">Animepedia</a>
@@ -43,41 +47,67 @@ echo '
 			</div>
 		   </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="subscribe">Subscribe</a>
+			<a class="nav-link" href="subscribe">Abonnement</a>
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link" href="contact">Contact</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="admin">Admin</a>
-		  </li>
+		  </li>';
+        if( isset($_SESSION['logged_in']) && !empty($_SESSION['logged_in']))
+            echo '
+                <li class="nav-item">
+			        <a class="nav-link" href="admin">Admin</a>
+		        </li>';
+        echo '
 		</ul>
 		<form class="form-inline pr-2 my-lg-0">
-		  <input class="form-control mr-sm-2" placeholder="Search" type="text">
-		  <button class="btn-lg btn-success" type="button">
+		  <input class="form-control mr-sm-2" placeholder="Rechercher" type="text">
+		  <button class="btn-lg btn-success search-index" type="button">
 		  <i class="fa fa-search"></i>
 		  </button>
 		</form>
 		<ul class="nav navbar-nav navbar-right pr-2">
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle visible-lg visible-sm visible-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-					<i class="fa fa-user fa-fw"></i>
-					Guest
+					<i class="fa fa-user fa-fw"></i>';
+                if( isset($_SESSION['logged_in']) && !empty($_SESSION['logged_in']) ) {
+                    echo $_SESSION['username'];
+                }
+                else {
+                    echo 'Invité';
+                }
+                echo '
 					<span class="caret"></span>
 				</a>
-				<ul class="dropdown-menu">
+				<ul class="dropdown-menu">';
+        if( isset($_SESSION['logged_in']) && !empty($_SESSION['logged_in'])) {
+            echo '	<li>
+						<a href="profile">
+							<i class="fa fa-user fa-fw"></i>
+							Profile
+						</a>
+					</li>
 					<li>
+						<a href="logout">
+							<i class="fa fa-sign-out fa-fw"></i>
+							Deconnexion
+						</a>
+					</li>';
+        }
+        else {
+            echo '	<li>
 						<a href="login">
 							<i class="fa fa-sign-in fa-fw"></i>
-							Login
+							Connexion
 						</a>
 					</li>
 					<li>
 						<a href="register">
 							<i class="fa fa-pencil fa-fw"></i>
-							Register
+							Inscription
 						</a>
-					</li>
+					</li>';
+        }
+        echo '
 				</ul>
 			</li>
 		</ul>
