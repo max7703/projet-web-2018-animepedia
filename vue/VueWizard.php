@@ -33,11 +33,11 @@ echo '
               <h3> Etape 1</h3>
               <div class="form-group">
             <label class="control-label">Nom</label>
-            <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Entrer nom"  />
+            <input  type="text" required="required" class="form-control" placeholder="Entrer nom"  />
           </div>
               <div class="form-group">
             <label class="control-label">Prenom</label>
-            <input maxlength="100" type="text" required="required" class="form-control" placeholder="Entrer prenom" />
+            <input type="text" required="required" class="form-control" placeholder="Entrer prenom" />
           </div>
               <div class="form-group">
             <label class="control-label">Adresse</label>

@@ -46,7 +46,7 @@ echo '
 		   </ul>
 		   </div>
 		   <h3 class="pricing-count">$5/mo</h3>
-		   <a href="" class="bordered-btn">Commander</a>
+		   <a href="wizard" class="bordered-btn">Commander</a>
 	   </div>
    </div>
 </section>
