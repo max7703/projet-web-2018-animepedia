@@ -5,21 +5,6 @@ require_once '../bdd/Db.php';
 
 class AnimeDAO
 {
-	
-    private $listeAnimes = array();
-
-    //private function RemplirListeAnimes()
-    //{
-    //    array_push(
-    //        $this->listeAnimes, new Anime(0, "one piece",
-    //            "Les aventures de Luffy, le pirate au chapeau de paille", "Shonen", "Eichiro Oda", "Toei", 850));
-	//			
-    //    array_push(
-    //        $this->listeAnimes, new Anime(1, "naruto",
-    //            "La quete de Naruto Uzumaki pour devenir Hokage", "Shonen", "Masashi Kishimoto", "Studio Pierrot", 740));
-    //}
-
-	
     public function GetListeAnimes()
     {
 		$list = [];
@@ -29,13 +14,16 @@ class AnimeDAO
 
         foreach($req->fetchAll() as $anime) 
 		{
-            $list[] = new Anime($anime['id_anime'], 
-			$anime['nom_anime'], 
-			$anime['description_anime'], 
-			$anime['genre_anime'], 
-			$anime['auteur_anime'], 
-			$anime['studio_anime'], 
-			$anime['nb_episodes_anime']);
+            if (isset($anime)) {
+                $list[] = new Anime($anime['id_anime'],
+                $anime['nom_anime'],
+                $anime['description_anime'],
+                $anime['id_genre'],
+                $anime['auteur_anime'],
+                $anime['studio_anime'],
+                $anime['nb_episodes_anime'],
+                $anime['img_path_anime']);
+            }
         }
 
         return $list;
@@ -57,8 +45,9 @@ class AnimeDAO
 		$anime['description_anime'], 
 		$anime['genre_anime'], 
 		$anime['auteur_anime'], 
-		$anime['studio_anime'], 
-		$anime['nb_episodes_anime']);
+		$anime['studio_anime'],
+        $anime['nb_episodes_anime'],
+        $anime['img_path_anime']);
 		
     }
 	
@@ -71,21 +60,24 @@ class AnimeDAO
 		genre_anime, 
 		auteur_anime, 
         studio_anime, 
-		nb_episodes_anime) 
+		nb_episodes_anime,
+		img_path_anime) 
 		
 		VALUES(:nom_anime, 
 		:description_anime, 
 		:genre_anime, 
 		:auteur_anime, 
         :studio_anime, 
-		:nb_episodes_anime');
+		:nb_episodes_anime,
+		:img_path_anime');
 
         $req->execute(array('nom_anime' => $anime->getNom(), 
 		'description_anime' => $anime->getDescription(),
 		'genre_anime'=> $anime->getGenre(),
         'auteur_anime'=> $anime->getAuteur(),
         'studio_anime'=> $anime->getStudio(),
-        'nb_episodes_anime'=> $anime->getNbEpisodes()));
+        'nb_episodes_anime'=> $anime->getNbEpisodes(),
+        'img_path_anime'=> $anime->getImgPath()));
     }
 	
 	public function SupprimerUnAnime(Anime $anime)
@@ -102,20 +94,22 @@ class AnimeDAO
 	{
 		$db = Db::getInstance();
 		
-		$req = $db->prepare('UPDATE INTO anime 
+		$req = $db->prepare('UPDATE anime 
 		SET nom_anime = :nom_anime, 
 		description_anime = :description_anime, 
 		genre_anime = :genre_anime, 
 		auteur_anime = :auteur_anime, 
         studio_anime = :studio_anime, 
-		nb_episodes_anime = :nb_episodes_anime');
+		nb_episodes_anime = :nb_episodes_anime,
+		img_path_anime = :img_path_anime');
 		
         $req->execute(array('nom_anime' => $anime->getNom(), 
 		'description_anime' => $anime->getDescription(),
 		'genre_anime'=> $anime->getGenre(),
         'auteur_anime'=> $anime->getAuteur(),
         'studio_anime'=> $anime->getStudio(),
-        'nb_episodes_anime'=> $anime->getNbEpisodes()));
+        'nb_episodes_anime'=> $anime->getNbEpisodes(),
+        'img_path_anime'=> $anime->getImgPath()));
 	}
 	
 }
