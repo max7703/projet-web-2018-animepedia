@@ -1,5 +1,5 @@
 <?php
-require_once '../Modele/Privilege.php';
+require_once '../modele/Privilege.php';
 require_once '../bdd/Db.php';
 
 class PrivilegeDAO
