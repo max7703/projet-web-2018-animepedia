@@ -10,9 +10,8 @@ class Utilisateur
 	private $image;
 	private $description;
 	
-	 public function __construct($id, $pseudo, $mdp, $email, $id_privilege, $image, $description)
+	 public function __construct($pseudo, $mdp, $email, $id_privilege, $image, $description)
     {
-		$this->id = $id;
 		$this->pseudo = $pseudo;
 		$this->mdp = $mdp;
 		$this->email = $email;

@@ -8,8 +8,9 @@ class Anime
     private $auteur;
     private $studio;
     private $nbEpisodes;
+    private $imgPath;
 
-    public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes)
+    public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
     {
         $this->id = $id;
         $this->nom = $nom;
@@ -18,6 +19,8 @@ class Anime
         $this->auteur = $auteur;
         $this->studio = $studio;
         $this->nbEpisodes = $nbEpisodes;
+        $this->imgPath = $imgPath;
+
     }
 
     public function getId()
@@ -88,5 +91,15 @@ class Anime
 	public function setNbEpisodes($nbEpisodes)
     {
         $this->nbEpisodes = $nbEpisodes;
+    }
+
+    public function getImgPath()
+    {
+        return $this->imgPath;
+    }
+
+    public function setImgPath($imgPath)
+    {
+        $this->imgPath = $imgPath;
     }
 }
