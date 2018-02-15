@@ -1,0 +1,17 @@
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://dev.animepedia.fr/$1 [R,L]
+RewriteRule ^subscribe$ /vue/VueSubscribe.php
+RewriteRule ^animes$ /vue/animes.php
+RewriteRule ^contact$ /vue/VueContact.php
+RewriteRule ^login$ /vue/VueLogin.php
+RewriteRule ^register$ /vue/VueRegister.php
+RewriteRule ^forum$ /vue/forum.php
+RewriteRule ^admin$ /vue/admin.php
+RewriteRule ^home$ /vue/VueIndex.php
+RewriteRule ^index.php /vue/VueIndex.php
+RewriteRule ^wizard$ /vue/VueWizard.php
+RewriteRule ^discord$ /vue/VueDiscord.php
+RewriteRule ^logout$ /controleur/ControleurLogout.php
+RewriteRule ^profile$ /vue/VueProfil.php
+ErrorDocument 404 /vue/Vue404.php
