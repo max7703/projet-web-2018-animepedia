@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Anime</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <script type="text/javascript" src="assets/js/afficher_cacher.js"></script>
-     <link rel="stylesheet" href="assets/css/afficher_cacher.css" />
-</head>
-<body>
-
+<?php include '/config.php'?>
+<?php include 'header.php' ?>
         <div class="container pt-4">
             <ul class="pagination pagination-sm justify-content-center">
                 <li class="page-item"><a class="page-link" href="#">Tous</a></li>
@@ -192,5 +180,4 @@
             <p><a href="#" class="btn btn-primary" role="button">Voir »</a></p>
         </div>
     </div>
-</body>
-</html>
+<?php include 'footer.php' ?>
