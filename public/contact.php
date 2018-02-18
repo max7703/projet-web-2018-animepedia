@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <input type="submit" class="btn btn-success btn-send" value="Envoyer">
+                <input type="submit" name="submit" class="btn btn-success btn-send" value="Envoyer">
             </div>
         </div>
     </div>
