@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form id="contact-form" method="post" action="contact.php" role="form">
+<form action="contact_verif.php" method="post" role="form">
 
     <div class="messages pt-4"></div>
 
@@ -17,41 +17,36 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="form-group">
-                    <label for="form_name">Prénom *</label>
-                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Entrez votre prénom *" required="required" data-error="Le prénom est requis.">
-                    <div class="help-block with-errors"></div>
+                    <label>Prénom *</label>
+                    <input type="text" name="prenom" class="form-control" placeholder="Entrez votre prénom *">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group">
-                    <label for="form_lastname">Nom *</label>
-                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Entrez votre nom *" required="required" data-error="Le nom est requis.">
-                    <div class="help-block with-errors"></div>
+                    <label>Nom *</label>
+                    <input type="text" name="nom" class="form-control" placeholder="Entrez votre nom *">
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-5">
                 <div class="form-group">
-                    <label for="form_email">Email *</label>
-                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Entrez votre email *" required="required" data-error="Un email valide est requis.">
-                    <div class="help-block with-errors"></div>
+                    <label>Email *</label>
+                    <input type="email" name="email" class="form-control" placeholder="Entrez votre email *">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group">
-                    <label for="form_phone">Téléphone</label>
-                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Entrez votre numéro de téléphone">
-                    <div class="help-block with-errors"></div>
+                    <label>Téléphone</label>
+                    <input type="tel" name="telephone" class="form-control" placeholder="Entrez votre numéro de téléphone">
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-10">
                 <div class="form-group">
-                    <label for="form_message">Message *</label>
-                    <textarea id="form_message" name="message" class="form-control" placeholder="Tapez votre message *" rows="4" required="required" data-error="S'il vous plaît, laissez un meaage."></textarea>
-                    <div class="help-block with-errors"></div>
+                    <label>Message *</label>
+                    <textarea name="message" class="form-control" placeholder="Tapez votre message *" rows="4"></textarea>
                 </div>
             </div>
             <div class="col-md-12">
@@ -59,6 +54,5 @@
             </div>
         </div>
     </div>
-
 </form>
 </body>
