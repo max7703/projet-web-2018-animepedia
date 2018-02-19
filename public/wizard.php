@@ -1,27 +1,63 @@
-<?php include 'header.php' ?>
-<link href="wizard_.css" rel="stylesheet">
+<?php
+/**
+ * Created by PhpStorm.
+ * User: max77
+ * Date: 12/02/2018
+ * Time: 19:41
+ */
+
+define("NOMDEPAGE", _("Abonnement en cours..."));
+include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
+require ENTETE;?>
+
+<link rel="stylesheet" href=<?php echo CSS_WIZARD?>>
 <div class="container pt-3">
-	<div class='row'>
-		<div>
-			<ul class='nav nav-wizard nav-wizard-backnav'>
-				<li><a href='#step1' data-toggle="tab">Step 1</a></li>
-				<li><a href='#step2' data-toggle="tab">Step 2</a></li>
-				<li class='active'><a href='#step3' data-toggle="tab">Step 3</a></li>
-				<li><a>Step 4</a></li>
-			  </ul>
-			  <hr/>
-				<div id="myTabContent" class="tab-content">
-					<div class="tab-pane fade" id="step1">
-					  <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-					</div>
-					<div class="tab-pane fade" id="step2">
-					  <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-					</div>
-					<div class="tab-pane fade active in" id="step3">
-					  <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-					</div>
-					</div>
-			</div>
-	  </div>
-</div>
-<?php include 'footer.php' ?>
+
+      <div class="stepwizard">
+    <div class="stepwizard-row setup-panel">
+          <div class="stepwizard-step">
+        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+        <p><?php echo _("Etape 1");?></p>
+      </div>
+        <div class="stepwizard-step">
+        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+        <p><?php echo _("Etape 2")?></p>
+      </div>
+        </div>
+  </div>
+      <form role="form" action="" method="post">
+    <div class="row setup-content" id="step-1">
+        <div class="col-md-12">
+              <h3> <?php echo _("Etape 1")?></h3>
+              <div class="form-group">
+            <label class="control-label"><?php echo _("Nom")?></label>
+            <input  type="text" required="required" class="form-control" placeholder=<?php echo _("Entrer nom");?>  />
+          </div>
+              <div class="form-group">
+            <label class="control-label"><?php echo _("Prenom")?></label>
+            <input type="text" required="required" class="form-control" placeholder=<?php echo _("Entrer prenom")?> />
+          </div>
+              <div class="form-group">
+            <label class="control-label"><?php echo _("Adresse")?></label>
+            <textarea required="required" class="form-control" placeholder=<?php echo _("Entrer adresse")?> ></textarea>
+          </div>
+              <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" ><?php echo _("Suivant")?></button>
+            </div>
+        </div>
+    <div class="row setup-content" id="step-2">
+        <div class="col-md-12">
+              <h3> <?php echo _("Etape 2")?></h3>
+              <div class="form-group">
+             <label class="control-label"><?php echo _("Email PayPal")?></label>
+             <input type="email" required="required" class="form-control" placeholder=<?php echo _("Entrer email")?> />
+             </div>
+              <button class="btn btn-success btn-lg pull-right pt-2" type="submit"><?php echo _("Payer")?></button>
+            </div>
+      </div>
+  </form>
+    </div>
+    
+    <script type="text/javascript" src=<?php echo JSWIZARD?>></script>
+';
+
+<?php include 'VueFooter.php';?>
