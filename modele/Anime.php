@@ -12,14 +12,14 @@ class Anime
 
     public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
     {
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->description = $description;
-        $this->genre = $genre;
-        $this->auteur = $auteur;
-        $this->studio = $studio;
-        $this->nbEpisodes = $nbEpisodes;
-        $this->imgPath = $imgPath;
+        $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+        $this->nom = filter_var($nom, FILTER_SANITIZE_STRING);
+        $this->description = filter_var($description, FILTER_SANITIZE_STRING);
+        $this->genre = filter_var($genre, FILTER_SANITIZE_NUMBER_INT);
+        $this->auteur = filter_var($auteur, FILTER_SANITIZE_STRING);
+        $this->studio = filter_var($studio, FILTER_SANITIZE_STRING);
+        $this->nbEpisodes = filter_var($nbEpisodes, FILTER_SANITIZE_NUMBER_INT);
+        $this->imgPath = filter_var($imgPath, FILTER_SANITIZE_STRING);
 
     }
 
@@ -30,7 +30,7 @@ class Anime
 
 	public function setId($id)
     {
-        $this->id = $id;
+        $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
     }
 
     public function getNom()
@@ -40,7 +40,7 @@ class Anime
 
 	public function setNom($nom)
     {
-        $this->nom = $nom;
+        $this->nom = filter_var($nom, FILTER_SANITIZE_STRING);
     }
 
     public function getDescription()
@@ -50,7 +50,7 @@ class Anime
 
 	public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = filter_var($description, FILTER_SANITIZE_STRING);
     }
 
     public function getGenre()
@@ -60,7 +60,7 @@ class Anime
 
 	public function setGenre($genre)
     {
-        $this->genre = $genre;
+        $this->genre = filter_var($genre, FILTER_SANITIZE_STRING);
     }
 
     public function getAuteur()
@@ -70,7 +70,7 @@ class Anime
 
 	public function setAuteur($auteur)
     {
-        $this->auteur = $auteur;
+        $this->auteur = filter_var($auteur, FILTER_SANITIZE_STRING);
     }
 
     public function getStudio()
@@ -80,7 +80,7 @@ class Anime
 
 	public function setStudio($studio)
     {
-        $this->studio = $studio;
+        $this->studio = filter_var($studio, FILTER_SANITIZE_STRING);
     }
 
     public function getNbEpisodes()
@@ -90,7 +90,7 @@ class Anime
 
 	public function setNbEpisodes($nbEpisodes)
     {
-        $this->nbEpisodes = $nbEpisodes;
+        $this->nbEpisodes = filter_var($nbEpisodes, FILTER_SANITIZE_NUMBER_INT);
     }
 
     public function getImgPath()
@@ -100,6 +100,6 @@ class Anime
 
     public function setImgPath($imgPath)
     {
-        $this->imgPath = $imgPath;
+        $this->imgPath = filter_var($imgPath, FILTER_SANITIZE_STRING);
     }
 }
