@@ -5,19 +5,19 @@
  * Date: 13/02/2018
  * Time: 11:01
  */
-
-require_once '../modele/Anime.php';
-require_once '../dao/AnimeDAO.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
+require_once MODELEANIME;
+require_once ANIMEDAO;
 
 class ControleurIndex
 {
-    public function printAnimesAleatoire()
+    public function afficherAnimesAleatoire()
     {
         $listeAnime = null;
         $animeDAO = new AnimeDAO();
 
         try{
-            $listeAnime = $animeDAO->getListeAnimes();
+            $listeAnime = $animeDAO->obtenirListeAnimes();
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
