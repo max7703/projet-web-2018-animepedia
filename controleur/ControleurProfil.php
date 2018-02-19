@@ -16,7 +16,7 @@ class ControleurProfil
         try{
             $utilisateurDAO = new UtilisateurDAO();
 
-            $utilisateur = $utilisateurDAO->obtenirUtilisateurByString($_SESSION['username']);
+            $utilisateur = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
 
             return $utilisateur;
         }
