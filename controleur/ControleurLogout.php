@@ -5,8 +5,7 @@
  * Date: 14/02/2018
  * Time: 19:32
  */
-
-session_start();
+include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 session_destroy();
 
 header("location: https://www.dev.animepedia.fr/home");
