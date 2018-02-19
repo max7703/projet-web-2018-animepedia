@@ -1,15 +1,17 @@
 <?php
-require_once '../modele/Privilege.php';
-require_once '../bdd/Db.php';
+require_once MODELEPRIVILEGE;
+/*require_once '../bdd/Db.php';*/
 
 class PrivilegeDAO
 {
-	public function GetListePrivileges()
+	public function obtenirListePrivileges()
     {
 		$list = [];
-        $db = Db::getInstance();
+        $db = BaseDeDonnees::getInstance();
 		
-        $req = $db->query('SELECT * FROM privilege');
+        $req = $db->prepare('SELECT * FROM privilege');
+
+        $req->execute();
 
         foreach($req->fetchAll() as $privilege) 
 		{
@@ -20,9 +22,9 @@ class PrivilegeDAO
         return $list;
     }
 	
-	public function GetPrivilegeById($id)
+	public function obtenirPrivilegeById($id)
     {
-		$db = Db::getInstance();
+		$db = BaseDeDonnees::getInstance();
         $id = intval($id);
 		
         $req = $db->prepare('SELECT * FROM privilege WHERE id_privilege = :id_privilege');
@@ -34,20 +36,34 @@ class PrivilegeDAO
         return new Privilege($privilege['id_privilege'], 
 		$privilege['nom_privilege']);
     }
-	
-	public function AjouterUnPrivilege(Privilege $privilege) 
+
+    public function obtenirPrivilegeParString($nom)
+    {
+        $db = BaseDeDonnees::getInstance();
+
+        $req = $db->prepare('SELECT * FROM privilege WHERE nom_privilege = :nom_privilege');
+
+        $req->execute(array('nom_privilege' => $nom));
+
+        $privilege = $req->fetch();
+
+        return new Privilege($privilege['id_privilege'],
+            $privilege['nom_privilege']);
+    }
+
+	public function ajouterUnPrivilege(Privilege $privilege)
 	{
-        $db = Db::getInstance();
+        $db = BaseDeDonnees::getInstance();
 
         $req = $db->prepare('INSERT INTO privilege(nom_privilege)
-		VALUES(:nom_privilege');
+		VALUES(:nom_privilege)');
 
         $req->execute(array('nom_privilege' => $privilege->getNom()));
     }
 	
-	public function SupprimerUnPrivilege(Privilege $privilege)
+	public function supprimerUnPrivilege(Privilege $privilege)
 	{
-		$db = Db::getInstance();
+		$db = BaseDeDonnees::getInstance();
 		
 		$req = $db->prepare('DELETE FROM privilege 
 		WHERE id_privilege=:id_privilege');
@@ -55,11 +71,11 @@ class PrivilegeDAO
 		$req->execute(array('id_privilege' => $privilege->getId()));	
 	}
 	
-	public function ModifierUnPrivilege(Privilege $privilege)
+	public function modifierUnPrivilege(Privilege $privilege)
 	{
-		$db = Db::getInstance();
+		$db = BaseDeDonnees::getInstance();
 		
-		$req = $db->prepare('UPDATE INTO privilege 
+		$req = $db->prepare('UPDATE privilege 
 		SET nom_privilege = :nom_privilege');
 		
         $req->execute(array('nom_privilege' => $privilege->getNom()));
