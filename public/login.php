@@ -24,7 +24,7 @@ if( isset($_SESSION['message']) && !empty($_SESSION['message']))
     $_SESSION['message'] = null;
     echo '</div>';
 }?>
-	<label for="loginUser" class="sr-only">Nom d\'utilisateur</label>
+	<label for="loginUser" class="sr-only">Nom d'utilisateur</label>
 	<input type="text" id="loginUser" name="loginUser" class="form-control" placeholder="nom d'utilisateur" required autofocus>
 	<label for="loginPassword" class="sr-only">Mot de passe</label>
 	<input type="password" id="loginPassword" name="loginPassword" class="form-control" placeholder="mot de passe" required>

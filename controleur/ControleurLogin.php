@@ -11,7 +11,7 @@ require_once UTILISATEURDAO;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    if (isset($_POST['buttonLogin'])) { 
+    if (isset($_POST['buttonLogin'])) { //user registering
 
         try{
 
@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $_SESSION['username'] = $_POST['loginUser'];
 
-            $utilisateurTemporaire = new Utilisateur($username, "", "none", 0,"","");
+            $utilisateurTemporaire = new Utilisateur("",$username, "", "none", 0,"","");
 
             if($utilisateurDAO->estExistant($utilisateurTemporaire))
             {
-                $utilisateur = $utilisateurDAO->obtenirUtilisateurByString($utilisateurTemporaire->getPseudo());
+                $utilisateur = $utilisateurDAO->obtenirUtilisateurParString($utilisateurTemporaire->getPseudo());
 
                 $_SESSION['message'] = $utilisateur->getPseudo() . ' '. $utilisateur->getMdp() . ' ' . $utilisateur->getEmail();
                 if ( password_verify($pass, $utilisateur->getMdp()) )
