@@ -68,7 +68,7 @@ $genres = $controleur->obtenirListesGenres();
                                 echo '<td>' . $anime->getNbEpisodes() . '</td>';
                                 echo '<td>' . $anime->getImgPath() . '</td>';
                                 echo '<td>';?>
-                                <a href="#modifierAnimeModal" onclick="afficherAnime('<?php echo $anime->getNom()?>','<?php echo htmlspecialchars($anime->getDescription())?>','<?php echo $anime->getGenre()?>','<?php echo $anime->getAuteur()?>','<?php echo $anime->getStudio()?>','<?php echo $anime->getNbEpisodes()?>','<?php echo $anime->getImgPath()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
+                                <a href="#modifierAnimeModal" onclick="afficherAnime('<?php echo $anime->getId()?>','<?php echo $anime->getNom()?>','<?php echo htmlspecialchars($anime->getDescription())?>','<?php echo $anime->getGenre()?>','<?php echo $anime->getAuteur()?>','<?php echo $anime->getStudio()?>','<?php echo $anime->getNbEpisodes()?>','<?php echo $anime->getImgPath()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
                                 <a href="#supprimerAnimeModal" onclick="afficherAnimeSupprimer('<?php echo $anime->getNom()?>')" class="delete pl-2" data-toggle="modal"><span class="fa fa-trash"></span></a>
                                 </td>
                                 </tr>
@@ -146,6 +146,10 @@ $genres = $controleur->obtenirListesGenres();
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Nom</label>
+                                        <input id="modifierIdAnime" name="modifierIdAnime" type="text" class="form-control" required>
+                                    </div>
                                     <div class="form-group">
                                         <label>Nom</label>
                                         <input id="modifierNomAnime" name="modifierNomAnime" type="text" class="form-control" required>
@@ -244,7 +248,7 @@ $genres = $controleur->obtenirListesGenres();
                                 echo '<td>' . $membre->getImage() . '</td>';
                                 echo '<td>' . $membre->getDescription() . '</td>';
                                 echo '<td>';?>
-                                <a href="#modifierMembreModal" onclick="afficherMembre('<?php echo $membre->getPseudo()?>','<?php echo $membre->getEmail()?>','<?php echo $membre->getId_Privilege()?>', '<?php echo $membre->getImage()?>', '<?php echo $membre->getDescription()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
+                                <a href="#modifierMembreModal" onclick="afficherMembre('<?php echo $membre->getId()?>','<?php echo $membre->getPseudo()?>','<?php echo $membre->getEmail()?>','<?php echo $membre->getId_Privilege()?>', '<?php echo $membre->getImage()?>', '<?php echo $membre->getDescription()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
                                 <a href="#supprimerMembreModal" onclick="afficherMembreSupprimer('<?php echo $membre->getPseudo()?>')" class="delete pl-2" data-toggle="modal"><span class="fa fa-trash"></span></a>
                                 </td>
                                 </tr>
@@ -302,6 +306,10 @@ $genres = $controleur->obtenirListesGenres();
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Id</label>
+                                        <input id="modifierIdMembre" name="modifierIdMembre" type="text" class="form-control" required>
+                                    </div>
                                     <div class="form-group">
                                         <label>Pseudo</label>
                                         <input id="modifierPseudoMembre" name="modifierPseudoMembre" type="text" class="form-control" required>
@@ -384,7 +392,7 @@ $genres = $controleur->obtenirListesGenres();
                                 echo '<tr>';
                                 echo '<td>' . $genre->getNom() . '</td>';
                                 echo '<td>';?>
-                                <a href="#modifierGenreModal" onclick="afficherGenre('<?php echo $genre->getNom()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
+                                <a href="#modifierGenreModal" onclick="afficherGenre('<?php echo $genre->getId()?>','<?php echo $genre->getNom()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
                                 <a href="#supprimerGenreModal" onclick="afficherGenreSupprimer('<?php echo $genre->getNom()?>')" class="delete pl-2" data-toggle="modal"><span class="fa fa-trash"></span></a>
                                 </td>
                                 </tr>
@@ -426,6 +434,10 @@ $genres = $controleur->obtenirListesGenres();
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Id</label>
+                                        <input id="modifierIdGenre" name="modifierIdGenre" type="text" class="form-control" required>
+                                    </div>
                                     <div class="form-group">
                                         <label>Nom</label>
                                         <input id="modifierNomGenre" name="modifierNomGenre" type="text" class="form-control" required>
@@ -492,7 +504,7 @@ $genres = $controleur->obtenirListesGenres();
                                 echo '<tr>';
                                 echo '<td>' . $privilege->getNom() . '</td>';
                                 echo '<td>';?>
-                                <a href="#modifierPrivilegeModal" onclick="afficherPrivilege('<?php echo $privilege->getNom()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
+                                <a href="#modifierPrivilegeModal" onclick="afficherPrivilege('<?php echo $privilege->getId()?>','<?php echo $privilege->getNom()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
                                 <a href="#supprimerPrivilegeModal" onclick="afficherPrivilegeSupprimer('<?php echo $privilege->getNom()?>')" class="delete pl-2" data-toggle="modal"><span class="fa fa-trash"></span></a>
                                 </td>
                                 </tr>
@@ -535,6 +547,10 @@ $genres = $controleur->obtenirListesGenres();
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
+                                        <label>Id</label>
+                                        <input id="modifierIdPrivilege" name="modifierIdPrivilege" type="text" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Nom</label>
                                         <input id="modifierNomPrivilege" name="modifierNomPrivilege" type="text" class="form-control" required>
                                     </div>
@@ -558,7 +574,7 @@ $genres = $controleur->obtenirListesGenres();
                                 </div>
                                 <div class="modal-body">
                                     <p>Voulez-vous vraiment supprimer ce privilege ?</p>
-                                    <input id="supprimerPrivilegeNom" name="supprimerGenreNom">
+                                    <input id="supprimerPrivilegeNom" name="supprimerPrivilegeNom">
                                     <p class="text-warning"><small>Cette action est irréversible !</small></p>
                                 </div>
                                 <div class="modal-footer">
@@ -574,7 +590,8 @@ $genres = $controleur->obtenirListesGenres();
     </div>
 </div>
 <script>
-    function afficherAnime(nom, description, genre, auteur, studio, nbepisodes, cheminimg) {
+    function afficherAnime(id, nom, description, genre, auteur, studio, nbepisodes, cheminimg) {
+        document.getElementById('modifierIdAnime').value = id;
         document.getElementById('modifierNomAnime').value = nom;
         document.getElementById('modifierDescriptionAnime').value = description.replace(/&#(\d+);/g, function(match, dec) {
             return String.fromCharCode(dec);
@@ -589,7 +606,8 @@ $genres = $controleur->obtenirListesGenres();
         document.getElementById('supprimerAnimeNom').value = nom;
     }
 
-    function afficherMembre(pseudo, email, privilege, image, description) {
+    function afficherMembre(id, pseudo, email, privilege, image, description) {
+        document.getElementById('modifierIdMembre').value = id;
         document.getElementById('modifierPseudoMembre').value = pseudo;
         document.getElementById('modifierEmailMembre').value = email;
         document.getElementById('modifierPrivilegeMembre').value = privilege;
@@ -600,14 +618,16 @@ $genres = $controleur->obtenirListesGenres();
         document.getElementById('supprimerMembrePseudo').value = pseudo;
     }
 
-    function afficherGenre(nom) {
+    function afficherGenre(id, nom) {
+        document.getElementById('modifierIdGenre').value = id;
         document.getElementById('modifierNomGenre').value = nom;
     }
     function afficherGenreSupprimer(nom) {
         document.getElementById('supprimerGenreNom').value = nom;
     }
 
-    function afficherPrivilege(nom) {
+    function afficherPrivilege(id, nom) {
+        document.getElementById('modifierIdPrivilege').value = id;
         document.getElementById('modifierNomPrivilege').value = nom;
     }
     function afficherPrivilegeSupprimer(nom) {

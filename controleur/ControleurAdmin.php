@@ -120,18 +120,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         try {
             $animeDAO= new AnimeDAO();
 
+            $id = $_POST['modifierIdAnime'];
             $nom = $_POST['modifierNomAnime'];
             $description = $_POST['modifierDescriptionAnime'];
             $genre = $_POST['modifierGenreAnime'];
             $auteur = $_POST['modifierAuteurAnime'];
             $studio = $_POST['modifierStudioAnime'];
             $nbepisode = $_POST['modifierNbEpisodeAnime'];
-            $cheminepisode = $_POST['modifierCheminImageAnime'];
+            $cheminImage = $_POST['modifierCheminImageAnime'];
 
-            $animeTemporaire = $animeDAO->obtenirAnimeParString($nom);
-            $id = $animeTemporaire->getId();
+            /*$animeTemporaire = $animeDAO->obtenirAnimeParId($id);
+            $id = $animeTemporaire->getId();*/
 
-            $anime = new Anime(intval($id), $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
+            $anime = new Anime($id, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage);
 
             $animeDAO->modifierUnAnime($anime);
 
@@ -147,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         try {
             $utilisateurDAO = new UtilisateurDAO();
 
-            $pseudo = $_POST['supprimerPseudoMembre'];
+            $pseudo = $_POST['supprimerMembrePseudo'];
 
             $membreTemporaire = $utilisateurDAO->obtenirUtilisateurParString($pseudo);
 
@@ -175,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $mdp = password_hash('test', PASSWORD_BCRYPT);
 
             $utilisateur = new Utilisateur(0, $pseudo, $mdp, $email, $privilege, $image, $description);
-            $utilisateurDAO->AjouterUnUtilisateur($utilisateur);
+            $utilisateurDAO->ajouterUnUtilisateur($utilisateur);
 
             header("location: https://dev.animepedia.fr/admin");
         }
@@ -190,14 +191,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         try {
             $utilisateurDAO = new UtilisateurDAO();
 
+            $id = $_POST['modifierIdMembre'];
             $pseudo = $_POST['modifierPseudoMembre'];
             $email = $_POST['modifierEmailMembre'];
             $privilege = $_POST['modifierPrivilegeMembre'];
             $image = $_POST['modifierImageMembre'];
             $description = $_POST['modifierDescriptionMembre'];
 
-            $utilisateurTemporaire = $utilisateurDAO->obtenirUtilisateurParString($pseudo);
-            $id = $utilisateurTemporaire->getId();
+            /*$utilisateurTemporaire = $utilisateurDAO->obtenirUtilisateurParString($pseudo);
+            $id = $utilisateurTemporaire->getId();*/
 
             $utilisateur = new Utilisateur($id, $pseudo, '', $email, $privilege, $image, $description);
 
@@ -219,7 +221,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $genreTemporaire = $genreDAO->obtenirGenreParString($nom);
 
-            $genreDAO->SupprimerUnGenre($genreTemporaire);
+            $genreDAO->supprimerUnGenre($genreTemporaire);
 
             header("location: https://dev.animepedia.fr/admin");
         }
@@ -234,10 +236,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         try {
             $genreDAO = new GenreDAO();
 
-            $nom = $_POST['ajouterGenreNom'];
+            $nom = $_POST['ajouterNomGenre'];
 
             $genre = new Genre(0, $nom);
-            $genreDAO->AjouterUnGenre($genre);
+            $genreDAO->ajouterUnGenre($genre);
 
             header("location: https://dev.animepedia.fr/admin");
         }
@@ -252,12 +254,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         try {
             $genreDAO = new GenreDAO();
 
-            $nom = $_POST['modifierGenreNom'];
+            $id = $_POST['modifierIdGenre'];
+            $nom = $_POST['modifierNomGenre'];
 
-            $genreTemporaire = $genreDAO->obtenirGenreParString($nom);
+            /*$genreTemporaire = $genreDAO->obtenirGenreParString($nom);*/
 
-            $genre = new Genre($genreTemporaire->getId(), $nom);
-            $genreDAO->ModifierUnGenre($genre);
+            $genre = new Genre($id, $nom);
+            $genreDAO->modifierUnGenre($genre);
 
             header("location: https://dev.animepedia.fr/admin");
         }
@@ -275,7 +278,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $privilegeTemporaire = $privilegeDAO->obtenirPrivilegeParString($nom);
 
-            $privilegeDAO->SupprimerUnPrivilege($privilegeTemporaire);
+            $privilegeDAO->supprimerUnPrivilege($privilegeTemporaire);
 
             header("location: https://dev.animepedia.fr/admin");
         }
@@ -290,11 +293,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         try {
             $privilegeDAO = new PrivilegeDAO();
 
-            $nom = $_POST['ajouterPrivilegeNom'];
+            $nom = $_POST['ajouterNomPrivilege'];
 
             $privilege = new Privilege(0, $nom);
 
-            $privilegeDAO->AjouterUnPrivilege($privilege);
+            $privilegeDAO->ajouterUnPrivilege($privilege);
 
             header("location: https://dev.animepedia.fr/admin");
         }
@@ -309,13 +312,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         try {
             $privilegeDAO = new PrivilegeDAO();
 
-            $nom = $_POST['modifierPrivilegeNom'];
+            $id = $_POST['modifierIdPrivilege'];
+            $nom = $_POST['modifierNomPrivilege'];
 
-            $privilegeTemporaire = $privilegeDAO->obtenirPrivilegeParString($nom);
+            /*$privilegeTemporaire = $privilegeDAO->obtenirPrivilegeParString($nom);*/
 
-            $privilege = new Privilege($privilegeTemporaire->getId(), $nom);
+            $privilege = new Privilege($id, $nom);
 
-            $privilegeDAO->ModifierUnPrivilege($privilege);
+            $privilegeDAO->modifierUnPrivilege($privilege);
 
             header("location: https://dev.animepedia.fr/admin");
         }
