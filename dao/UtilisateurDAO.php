@@ -115,7 +115,7 @@ class UtilisateurDAO
 
     public function SupprimerUnUtilisateur(Utilisateur $utilisateur)
     {
-        $db = Db::getInstance();
+        $db = BaseDeDonnees::getInstance();
 
         $req = $db->prepare('DELETE FROM utilisateur 
 		WHERE id_utilisateur=:id_utilisateur');
