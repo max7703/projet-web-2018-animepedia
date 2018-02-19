@@ -1,5 +1,18 @@
-<?php include '/config.php'?>
-<?php include 'header.php' ?>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: max77
+ * Date: 12/02/2018
+ * Time: 13:21
+ */
+define("NOMDEPAGE", "Index");
+include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
+require ENTETE;
+require_once CONTROLEURINDEX;
+
+$controleur = new ControleurIndex();
+$animes = $controleur->afficherAnimesAleatoire();
+?>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -8,105 +21,69 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-          <img class="first-slide" src="https://static.comicvine.com/uploads/scale_super/11127/111275532/5436341-4183275962-momon.jpg" alt="First slide">
+          <img class="first-slide" src="https://media.boingboing.net/wp-content/uploads/2018/02/usagi.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption d-none d-md-block text-left">
-              <h1>Example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <h1>Usagi Yojimbo, adaptée en série animée</h1>
+              <p>Usagi Yojimbo, série de l\'auteur japano-américain Stan Sakai fera prochainement l\'objet d\'une adaptation animée, sous forme de série entièrement en CGI.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Lire la news</a></p>
             </div>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="second-slide" src="https://static.comicvine.com/uploads/original/14/146991/4835141-8035351198-overl.jpg" alt="Second slide">
+          <img class="second-slide" src="http://www.manga-sama.com/img/report/385/cover.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption d-none d-md-block">
-              <h1>Another example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <h1>Flying Witch remporte le Tournoi Jeunesse 2017 </h1>
+              <p>La série de Chihiro Ishizuka, qui a plutôt survolé le tournoi, n\'a laissé absolument aucune chance à Jane Eyre en finale.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Lire la news</a></p>
             </div>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="third-slide" src="https://res.cloudinary.com/teepublic/image/private/s--dAB6qwDA--/t_Preview/b_rgb:484849,c_limit,f_jpg,h_630,q_90,w_630/v1446245005/production/designs/299446_1.jpg" alt="Third slide">
+          <img class="third-slide" src="https://a248.e.akamai.net/ib.huluim.com/show_key_art/25326?size=1600x600&region=US" alt="Third slide">
           <div class="container">
             <div class="carousel-caption d-none d-md-block text-right">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <h1>Diffusion de Concrete Revolutio sur Game One</h1>
+              <p>La série Concrete Revolutio débarque à partir d\'aujourd\'hui sur la chaine Game One en vf.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Lire la news</a></p>
             </div>
           </div>
         </div>
       </div>
       <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">Precedent</span>
       </a>
       <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">Suivant</span>
       </a>
     </div>
-	
-	<section class="animes" id="animes">
-    <h2>Featured Animes</h2>
+
+<section class="animes" id="animes">
+	<h2>Animes aleatoire</h2>
 	<div class="row">
-		<div class="col-lg-3 col-md-4 col-sm-6">
+        <?php
+foreach ($animes as $anime)
+{
+    echo '<div class="col-lg-3 col-md-4 col-sm-6 pb-3">
 			<article class="card">
-				<header class="title-header">
-					<h3>Naruto</h3>
-				</header>
+				<header class="title-header">';
+    echo '<h3>' . $anime->getNom() . '</h3>';
+    echo '</header>
 				<div class="card-block">
-					<div class="img-card">
-						<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
+					<div class="img-card">';
+    echo '<img src="' . $anime->getImgPath() . '" alt="Anime" class="w-100" />
+					</div>';
+    echo '<p class="tagline card-text text-xs-center">' . $anime->getDescription() . '</p>';
+    echo '<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Plus de details</a>
 				</div>
 			</article>
-		</div>
-		<div class="col-lg-3 col-md-4 col-sm-6">
-    		<article class="card">
-				<header class="title-header">
-					<h3>Anime Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
-		</div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-    		<article class="card">
-				<header class="title-header">
-					<h3>Anime Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
-		</div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-    		<article class="card">
-				<header class="title-header">
-					<h3>Anime Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/1280px-Logo_Naruto_Shipp%C5%ABden.svg.png" alt="Anime" title="Anime" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
-		</div>
+		</div>';
+}?>
 	</div>
 </section>
-<?php include 'footer.php' ?>
+
+
+<?php include PIEDDEPAGE;?>
