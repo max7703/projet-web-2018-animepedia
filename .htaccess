@@ -12,6 +12,6 @@ RewriteRule ^home$ /public/index.php
 RewriteRule ^index.php /public/index.php
 RewriteRule ^wizard$ /public/wizard.php
 RewriteRule ^discord$ /public/discord.php
-RewriteRule ^logout$ /controleur/logout.php
+RewriteRule ^logout$ /controleur/ControleurLogout.php
 RewriteRule ^profile$ /public/profil.php
 ErrorDocument 404 /public/404.php
