@@ -10,14 +10,15 @@ class Utilisateur
 	private $image;
 	private $description;
 	
-	 public function __construct($pseudo, $mdp, $email, $id_privilege, $image, $description)
+	 public function __construct($id, $pseudo, $mdp, $email, $id_privilege, $image, $description)
     {
-		$this->pseudo = $pseudo;
-		$this->mdp = $mdp;
-		$this->email = $email;
-		$this->id_privilege = $id_privilege;
-		$this->image = $image;
-		$this->description = $description;
+        $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+		$this->pseudo = filter_var($pseudo, FILTER_SANITIZE_STRING);
+		$this->mdp = filter_var($mdp, FILTER_SANITIZE_STRING);
+		$this->email = filter_var($email, FILTER_SANITIZE_EMAIL);
+		$this->id_privilege = filter_var($id_privilege, FILTER_SANITIZE_NUMBER_INT);
+		$this->image = filter_var($image, FILTER_SANITIZE_STRING);
+		$this->description = filter_var($description, FILTER_SANITIZE_STRING);
 	}
 	
 	public function getId()
@@ -27,7 +28,7 @@ class Utilisateur
 	
 	public function setId($id)
 	{
-		$this->id = $id;
+		$this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 	}
 	
 	public function getPseudo()
@@ -37,7 +38,7 @@ class Utilisateur
 	
 	public function setPseudo($pseudo)
 	{
-		$this->pseudo = $pseudo;
+		$this->pseudo = filter_var($pseudo, FILTER_SANITIZE_STRING);
 	}
 	
 	public function getMdp()
@@ -47,7 +48,7 @@ class Utilisateur
 	
 	public function setMdp($mdp)
 	{
-		$this->mdp = $mdp;
+		$this->mdp = filter_var($mdp, FILTER_SANITIZE_STRING);
 	}
 	
 	public function getEmail()
@@ -57,7 +58,7 @@ class Utilisateur
 	
 	public function setEmail($email)
 	{
-		$this->email = $email;
+		$this->email = filter_var($email, FILTER_SANITIZE_EMAIL);
 	}
 	
 	public function getId_Privilege()
@@ -67,7 +68,7 @@ class Utilisateur
 	
 	public function setId_Privilege($id_privilege)
 	{
-		$this->id_privilege = $id_privilege;
+		$this->id_privilege = filter_var($id_privilege, FILTER_SANITIZE_NUMBER_INT);
 	}
 	
 	public function getImage()
@@ -77,7 +78,7 @@ class Utilisateur
 	
 	public function setImage($image)
 	{
-		$this->image = $image;
+		$this->image = filter_var($image, FILTER_SANITIZE_STRING);
 	}
 	
 	public function getDescription()
@@ -87,7 +88,7 @@ class Utilisateur
 	
 	public function setDescription($description)
 	{
-		$this->description = $description;
+		$this->description = filter_var($description, FILTER_SANITIZE_STRING);
 	}
 	
 }
