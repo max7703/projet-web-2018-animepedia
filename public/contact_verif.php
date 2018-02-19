@@ -4,7 +4,7 @@ $nomErreur ="";
 $prenomErreur ="";
 $emailErreur ="";
 $telephoneErreur ="";
-$regexTelephone=array("options"=>array("regexp"=>"/^\s*(?:\+?(\d{1,5}))?[- (]*(\d{3})[- )]*(\d{3})[- ]*(\d{4})(?: *[x/#]{1}(\d+))?\s*$/"));
+$regexTelephone=array("options"=>array("regexp"=>"/(\+|\-|\(|\)|[0-9]{1,5}|\s|)\d*/"));
 
 
 // Initialisation du code lorsque l'on appuie sur le bouton envoyer
@@ -58,13 +58,13 @@ if(isset($_POST["submit"])) {
     --------------------------------------------------------------------*/
     if ($_POST["telephone"] != "") {
         // Nettoyer la valeur prénom de type string
-        $_POST["telephone"] = filter_var($_POST["telephone"], FILTER_SANITIZE_REGEXP, $regexTelephone);
-        $prenomErreur = "<span class=\"valid\">\"" . $_POST["prenom"] . "\" </span>est nettoyé et valide";
+        $_POST["telephone"] = filter_var($_POST["telephone"], FILTER_VALIDATE_REGEXP, $regexTelephone);
+        $telephoneErreur = "<span class=\"valid\">\"" . $_POST["telephone"] . "\" </span>est nettoyé et valide";
         if ($_POST["telephone"] == "") {
-            $prenomErreur = "<span>S'il vous plaît, entrer un prénom valide.</span>";
+            $telephoneErreur = "<span>S'il vous plaît, entrer un téléphone valide.</span>";
         }
     } else {
-        $prenomErreur = "<span>S'il vous plaît, entrer votre prénom.</span>";
+        $telephoneErreur = "<span>S'il vous plaît, entrer votre téléphone.</span>";
     }
 }
 ?>
