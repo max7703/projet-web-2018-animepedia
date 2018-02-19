@@ -6,16 +6,15 @@
  * Time: 11:27
  */
 
-require_once '../modele/Utilisateur.php';
-require_once '../dao/UtilisateurDAO.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
+require_once MODELEUTILISATEUR;
+require_once UTILISATEURDAO;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if (isset($_POST['buttonRegister'])) { //user registering
 
         try{
-            session_start();
-
             $utilisateurDAO = new UtilisateurDAO();
 
             $username = $_POST['registerUsername'];
@@ -25,11 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $_SESSION['username'] = $_POST['registerUsername'];
             $_SESSION['email'] = $_POST['registerEmail'];
 
-            $utilisateur = new Utilisateur($username, $password, $email, 0,"","");
+            $utilisateur = new Utilisateur(0, $username, $password, $email, 0,"","");
 
-            if(!$utilisateurDAO->CheckIfUserExist($utilisateur))
+            if(!$utilisateurDAO->estExistant($utilisateur))
             {
-                if($utilisateurDAO->AjouterUnUtilisateur($utilisateur))
+                if($utilisateurDAO->ajouterUnUtilisateur($utilisateur))
                 {
                     $_SESSION['logged_in'] = true; // So we know the user has logged in
                     $_SESSION['message'] = "";
@@ -37,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 }
                 else
                 {
-                    $_SESSION['message'] = 'Une erreur c\'est produite durant l\'enregistrement';
+                    $_SESSION['message'] = "Une erreur c'est produite durant l'enregistrement";
                     header("location: https://www.dev.animepedia.fr/register");
 
                 }
