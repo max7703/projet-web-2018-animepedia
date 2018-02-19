@@ -5,16 +5,15 @@
  * Date: 14/02/2018
  * Time: 11:33
  */
-
-require_once '../modele/Utilisateur.php';
-require_once '../dao/UtilisateurDAO.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
+require_once MODELEUTILISATEUR;
+require_once UTILISATEURDAO;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    if (isset($_POST['buttonLogin'])) { //user registering
+    if (isset($_POST['buttonLogin'])) { 
 
         try{
-            session_start();
 
             $utilisateurDAO = new UtilisateurDAO();
 
@@ -25,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $utilisateurTemporaire = new Utilisateur($username, "", "none", 0,"","");
 
-            if($utilisateurDAO->CheckIfUserExist($utilisateurTemporaire))
+            if($utilisateurDAO->estExistant($utilisateurTemporaire))
             {
-                $utilisateur = $utilisateurDAO->GetUtilisateurByString($utilisateurTemporaire->getPseudo());
+                $utilisateur = $utilisateurDAO->obtenirUtilisateurByString($utilisateurTemporaire->getPseudo());
 
                 $_SESSION['message'] = $utilisateur->getPseudo() . ' '. $utilisateur->getMdp() . ' ' . $utilisateur->getEmail();
                 if ( password_verify($pass, $utilisateur->getMdp()) )
