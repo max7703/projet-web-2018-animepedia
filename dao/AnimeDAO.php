@@ -105,7 +105,7 @@ class AnimeDAO
 	
 	public function supprimerUnAnime(Anime $anime)
 	{
-		$db = Db::getInstance();
+		$db = BaseDeDonnees::getInstance();
 		
 		$req = $db->prepare('DELETE FROM anime 
 		WHERE id_anime=:id_anime');

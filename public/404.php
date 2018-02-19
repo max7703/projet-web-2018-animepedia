@@ -19,13 +19,13 @@ require ENTETE;
                 <h1>
                     <?php echo _("Oups!")?></h1>
                 <h2>
-                    <?php echo _("404 Not Found")?></h2>
+                    <?php echo _("404 Page non trouv&eacute;e")?></h2>
                 <div class="error-details">
-                    <?php echo _("Sorry, an error has occured, Requested page not found!")?>
+                    <?php echo _("D&eacute;sol&eacute;, la page que vous avez demand&eacute; n'est pas disponible. ")?>
                 </div>
                 <div class="error-actions">
                     <a href="index" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        <?php echo _("Back to Home")?> </a><a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> <?php echo _("Contact Support")?> </a>
+                        <?php echo _("Retour &agrave; l'accueil")?> </a><a href="contact" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> <?php echo _("Contacter le support")?> </a>
                 </div>
             </div>
         </div>
