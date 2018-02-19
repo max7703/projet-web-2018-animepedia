@@ -7,8 +7,8 @@ class Privilege
 	
 	 public function __construct($id, $nom)
     {
-		$this->id = $id;
-		$this->nom = $nom;
+		$this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+		$this->nom = filter_var($nom, FILTER_SANITIZE_STRING);
 	}
 	
 	public function getId()
@@ -18,7 +18,7 @@ class Privilege
 	
 	public function setId($id)
 	{
-		$this->id = $id;
+		$this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 	}
 	
 	public function getNom()
@@ -28,6 +28,6 @@ class Privilege
 	
 	public function setNom($nom)
 	{
-		$this->nom = $nom;
+		$this->nom = filter_var($nom, FILTER_SANITIZE_STRING);
 	}
 }
