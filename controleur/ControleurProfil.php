@@ -2,28 +2,27 @@
 /**
  * Created by PhpStorm.
  * User: max77
- * Date: 13/02/2018
- * Time: 11:01
+ * Date: 15/02/2018
+ * Time: 08:13
  */
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
-require_once MODELEANIME;
-require_once ANIMEDAO;
+require_once MODELEUTILISATEUR;
+require_once UTILISATEURDAO;
 
-class ControleurIndex
+class ControleurProfil
 {
-    public function afficherAnimesAleatoire()
+    public function obtenirProfilUtilisateurActuel()
     {
-        $listeAnime = null;
-        $animeDAO = new AnimeDAO();
-
         try{
-            $listeAnime = $animeDAO->obtenirListeAnimes();
+            $utilisateurDAO = new UtilisateurDAO();
+
+            $utilisateur = $utilisateurDAO->obtenirUtilisateurByString($_SESSION['username']);
+
+            return $utilisateur;
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
             echo $e->getMessage().' in '.$e->getFile().' on line '.$e->getLine().' called from '.$trace[0]['file'].' on line '.$trace[0]['line'];
         }
-
-        return $listeAnime;
     }
 }
