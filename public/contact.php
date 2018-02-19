@@ -1,12 +1,8 @@
-<html>
-<head>
-    <title>Contact</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <script src="assets/js/bootstrap.min.js"></script>
-</head>
-<body>
+<?php
+define("NOMDEPAGE", "Contact");
+include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
+require ENTETE;
+?>
 
 <form action="contact_verif.php" method="post" role="form">
 
@@ -56,3 +52,5 @@
     </div>
 </form>
 </body>
+
+<?php include PIEDDEPAGE;?>
