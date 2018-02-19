@@ -1,15 +1,17 @@
 <?php
-require_once '../modele/Genre.php';
-require_once '../bdd/Db.php';
+require_once MODELEGENRE;
+/*require_once '../bdd/Db.php';*/
 
 class GenreDAO
 {
-	public function GetListeGenres()
+	public function obtenirListeGenres()
     {
 		$list = [];
-        $db = Db::getInstance();
+        $db = BaseDeDonnees::getInstance();
 		
-        $req = $db->query('SELECT * FROM genre');
+        $req = $db->prepare('SELECT * FROM genre');
+
+        $req->execute();
 
         foreach($req->fetchAll() as $genre) 
 		{
@@ -20,9 +22,9 @@ class GenreDAO
         return $list;
     }
 	
-	public function GetGenreById($id)
+	public function obtenirGenreParId($id)
     {
-		$db = Db::getInstance();
+		$db = BaseDeDonnees::getInstance();
         $id = intval($id);
 		
         $req = $db->prepare('SELECT * FROM genre WHERE id_genre = :id_genre');
@@ -34,20 +36,34 @@ class GenreDAO
         return new Genre($genre['id_genre'], 
 		$genre['nom_genre']);	
     }
-	
-	public function AjouterUnGenre(Genre $genre) 
+
+    public function ObtenirGenreParString($nom)
+    {
+        $db = BaseDeDonnees::getInstance();
+
+        $req = $db->prepare('SELECT * FROM genre WHERE nom_genre = :nom_genre');
+
+        $req->execute(array('nom_genre' => $nom));
+
+        $genre = $req->fetch();
+
+        return new Genre($genre['id_genre'],
+            $genre['nom_genre']);
+    }
+
+	public function ajouterUnGenre(Genre $genre)
 	{
-        $db = Db::getInstance();
+        $db = BaseDeDonnees::getInstance();
 
         $req = $db->prepare('INSERT INTO genre(nom_genre)
-		VALUES(:nom_genre');
+		VALUES(:nom_genre)');
 
         $req->execute(array('nom_genre' => $genre->getNom()));
     }
 	
-	public function SupprimerUnGenre(Genre $genre)
+	public function supprimerUnGenre(Genre $genre)
 	{
-		$db = Db::getInstance();
+		$db = BaseDeDonnees::getInstance();
 		
 		$req = $db->prepare('DELETE FROM genre 
 		WHERE id_genre=:id_genre');
@@ -55,11 +71,11 @@ class GenreDAO
 		$req->execute(array('id_genre' => $genre->getId()));	
 	}
 	
-	public function ModifierUnGenre(Genre $genre)
+	public function modifierUnGenre(Genre $genre)
 	{
-		$db = Db::getInstance();
+		$db = BaseDeDonnees::getInstance();
 		
-		$req = $db->prepare('UPDATE INTO genre 
+		$req = $db->prepare('UPDATE genre 
 		SET nom_genre = :nom_genre');
 		
         $req->execute(array('nom_genre' => $genre->getNom()));
