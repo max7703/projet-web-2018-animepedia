@@ -7,28 +7,28 @@ class AnimeDAO
 {
     public function obtenirListeAnimes()
     {
-		$list = [];
+		$listeAnime = [];
         $db = BaseDeDonnees::getInstance();
 		
-        $req = $db->prepare('SELECT * FROM anime');
+        $requete = $db->prepare('SELECT * FROM anime');
 
-        $req->execute();
+        $requete->execute();
 
-        foreach($req->fetchAll() as $anime) 
+        foreach($requete->fetchAll() as $enregistrementAnime) 
 		{
-            if (isset($anime)) {
-                $list[] = new Anime($anime['id_anime'],
-                $anime['nom_anime'],
-                $anime['description_anime'],
-                $anime['id_genre'],
-                $anime['auteur_anime'],
-                $anime['studio_anime'],
-                $anime['nb_episodes_anime'],
-                $anime['img_path_anime']);
-            }
+			$anime = new Anime()
+			$anime->construireAvecDonneesSecurisees($anime['id_anime'],
+				$anime['nom_anime'],
+				$anime['description_anime'],
+				$anime['id_genre'],
+				$anime['auteur_anime'],
+				$anime['studio_anime'],
+				$anime['nb_episodes_anime'],
+				$anime['img_path_anime'])
+			$listeAnime[] = $anime;
         }
 
-        return $list;
+        return $listeAnime;
     }
 
     public function obtenirAnimeParId($id)
@@ -36,11 +36,11 @@ class AnimeDAO
 		$db = BaseDeDonnees::getInstance();
         $id = intval($id);
 		
-        $req = $db->prepare('SELECT * FROM anime WHERE id_anime = :id_anime');
+        $requete = $db->prepare('SELECT * FROM anime WHERE id_anime = :id_anime');
 		
-        $req->execute(array('id' => $id));
+        $requete->execute(array('id' => $id));
 		
-        $anime = $req->fetch();
+        $anime = $requete->fetch();
 
         return new Anime($anime['id_anime'], 
 		$anime['nom_anime'], 
@@ -57,11 +57,11 @@ class AnimeDAO
     {
         $db = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare('SELECT * FROM anime WHERE nom_anime = :nom_anime');
+        $requete = $db->prepare('SELECT * FROM anime WHERE nom_anime = :nom_anime');
 
-        $req->execute(array('nom_anime' => $nom));
+        $requete->execute(array('nom_anime' => $nom));
 
-        $anime = $req->fetch();
+        $anime = $requete->fetch();
 
         return new Anime($anime['id_anime'],
             $anime['nom_anime'],
@@ -78,7 +78,7 @@ class AnimeDAO
 	{
         $db = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare('INSERT INTO anime(nom_anime, 
+        $requete = $db->prepare('INSERT INTO anime(nom_anime, 
 		description_anime, 
 		id_genre, 
 		auteur_anime, 
@@ -94,7 +94,7 @@ class AnimeDAO
 		:nb_episodes_anime,
 		:img_path_anime)');
 
-        $req->execute(array('nom_anime' => $anime->getNom(), 
+        $requete->execute(array('nom_anime' => $anime->getNom(), 
 		'description_anime' => $anime->getDescription(),
 		'id_genre'=> $anime->getGenre(),
         'auteur_anime'=> $anime->getAuteur(),
@@ -107,17 +107,17 @@ class AnimeDAO
 	{
 		$db = BaseDeDonnees::getInstance();
 		
-		$req = $db->prepare('DELETE FROM anime 
+		$requete = $db->prepare('DELETE FROM anime 
 		WHERE id_anime=:id_anime');
 		
-		$req->execute(array('id_anime' => $anime->getId()));	
+		$requete->execute(array('id_anime' => $anime->getId()));	
 	}
 	
 	public function modifierUnAnime(Anime $anime)
 	{
 		$db = BaseDeDonnees::getInstance();
 		
-		$req = $db->prepare('UPDATE anime 
+		$requete = $db->prepare('UPDATE anime 
 		SET nom_anime = :nom_anime, 
 		description_anime = :description_anime, 
 		id_genre = :id_genre, 
@@ -127,7 +127,7 @@ class AnimeDAO
 		img_path_anime = :img_path_anime
 		WHERE id_anime = :id_anime');
 		
-        $req->execute(array('nom_anime' => $anime->getNom(), 
+        $requete->execute(array('nom_anime' => $anime->getNom(), 
 		'description_anime' => $anime->getDescription(),
 		'id_genre'=> $anime->getGenre(),
         'auteur_anime'=> $anime->getAuteur(),
