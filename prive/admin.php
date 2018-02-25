@@ -68,7 +68,19 @@ $genres = $controleur->obtenirListesGenres();
                                 echo '<td>' . $anime->getNbEpisodes() . '</td>';
                                 echo '<td>' . $anime->getImgPath() . '</td>';
                                 echo '<td>';?>
-                                <a href="#modifierAnimeModal" onclick="afficherAnime('<?php echo $anime->getId()?>','<?php echo $anime->getNom()?>','<?php echo htmlspecialchars($anime->getDescription())?>','<?php echo $anime->getGenre()?>','<?php echo $anime->getAuteur()?>','<?php echo $anime->getStudio()?>','<?php echo $anime->getNbEpisodes()?>','<?php echo $anime->getImgPath()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
+                                <a href="#modifierAnimeModal" 
+									onclick="afficherAnime(
+									'<?php echo $anime->getId()?>',
+									'<?php echo $anime->getNom()?>',
+									'<?php echo htmlspecialchars($anime->getDescription())?>',
+									'<?php echo $anime->getGenre()?>',
+									'<?php echo $anime->getAuteur()?>',
+									'<?php echo $anime->getStudio()?>',
+									'<?php echo $anime->getNbEpisodes()?>',
+									'<?php echo $anime->getImgPath()?>')" 
+								  class="edit" data-toggle="modal">
+									<span class="fa fa-edit"></span>
+								</a>
                                 <a href="#supprimerAnimeModal" onclick="afficherAnimeSupprimer('<?php echo $anime->getNom()?>')" class="delete pl-2" data-toggle="modal"><span class="fa fa-trash"></span></a>
                                 </td>
                                 </tr>
@@ -93,7 +105,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="ajouterAnimeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Ajouter un anime</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -140,16 +152,23 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="modifierAnimeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Modification de l'anime</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
+<<<<<<< HEAD
                                     <div class="form-group">
                                         <label>Id</label>
                                         <input id="modifierIdAnime" name="modifierIdAnime" type="text" class="form-control" required>
                                     </div>
+=======
+                                    
+                                        
+                                        <input id="modifierIdAnime" name="modifierIdAnime" type="hidden" class="form-control" required>
+                                    
+>>>>>>> 54a3cd2b5e355387b146266ed3dc46d1ed79f261
                                     <div class="form-group">
                                         <label>Nom</label>
                                         <input id="modifierNomAnime" name="modifierNomAnime" type="text" class="form-control" required>
@@ -181,7 +200,7 @@ $genres = $controleur->obtenirListesGenres();
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                                    <button type="submit" class="btn btn-info" name="modifierAnime">Sauvegarder</button>
+                                    <input type="submit" class="btn btn-info" name="modifierAnime" value="Sauvegarder" /><!--Sauvegarder</button>-->
                                 </div>
                         </div>
                         </form>
@@ -191,7 +210,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="supprimerAnimeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Suppression de l'anime</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -261,7 +280,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="ajouterMembreModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Ajouter un membre</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -300,7 +319,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="modifierMembreModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Modification du membre</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -343,7 +362,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="supprimerMembreModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Suppression du membre</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -405,7 +424,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="ajouterGenreModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Ajouter un genre</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -428,7 +447,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="modifierGenreModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Modification du genre</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -455,7 +474,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="supprimerGenreModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Suppression du genre</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -517,7 +536,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="ajouterPrivilegeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Ajouter un privilege</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -540,7 +559,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="modifierPrivilegeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Modification du privilege</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -567,7 +586,7 @@ $genres = $controleur->obtenirListesGenres();
                 <div id="supprimerPrivilegeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" action="../controleur/ControleurAdmin.php">
+                            <form method="post" action="admin">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Suppression du privilege</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

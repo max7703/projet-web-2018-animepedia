@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $animeDAO->supprimerUnAnime($animeTemporaire);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -105,9 +105,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $cheminepisode = $_POST['ajouterCheminEpisodeAnime'];
 
             $anime = new Anime(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
+            $anime->estValide();
             $animeDAO->ajouterUnAnime($anime);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -136,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $animeDAO->modifierUnAnime($anime);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -154,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $utilisateurDAO->supprimerUnUtilisateur($membreTemporaire);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -178,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $utilisateur = new Utilisateur(0, $pseudo, $mdp, $email, $privilege, $image, $description);
             $utilisateurDAO->ajouterUnUtilisateur($utilisateur);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -205,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $utilisateurDAO->modifierUnUtilisateur($utilisateur);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -223,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $genreDAO->supprimerUnGenre($genreTemporaire);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -241,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $genre = new Genre(0, $nom);
             $genreDAO->ajouterUnGenre($genre);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -262,7 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $genre = new Genre($id, $nom);
             $genreDAO->modifierUnGenre($genre);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -280,7 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $privilegeDAO->supprimerUnPrivilege($privilegeTemporaire);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -299,7 +300,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $privilegeDAO->ajouterUnPrivilege($privilege);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
@@ -321,7 +322,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $privilegeDAO->modifierUnPrivilege($privilege);
 
-            header("location: https://dev.animepedia.fr/admin");
+            /*header("location: https://dev.animepedia.fr/admin");*/
         }
         catch(Throwable $e) {
             $trace = $e->getTrace();
