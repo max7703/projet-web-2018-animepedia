@@ -30,7 +30,7 @@
                     <a class="nav-link" href="animes"><?php echo _("Animes")?></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="forum" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo _("Communautés")?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -51,15 +51,16 @@
                 </li>';?>
             </ul>
             <form class="form-inline pr-2 my-lg-0">
-                <input class="form-control mr-sm-2" placeholder="Rechercher" type="text">
+            <ul id="livesearch" class="dropdown-menu" style="left: auto"></ul>
+                <input id="animeSearch" class="form-control mr-sm-2" placeholder="Rechercher" onkeyup="trouverAnime(this.value)" type="text">
                 <button class="btn-lg btn-success search-index" type="button">
                     <span class="fa fa-search"></span>
                 </button>
             </form>
             <ul class="nav navbar-nav navbar-right pr-2">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle visible-lg visible-sm visible-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                        <i class="fa fa-user fa-fw"></i>
+                    <a href="profile" class="dropdown-toggle visible-lg visible-sm visible-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                        <span class="fa fa-user fa-fw"></span>
                         <?php if( isset($_SESSION['logged_in']) && !empty($_SESSION['logged_in']) ) {
                         echo $_SESSION['username'];
                         }
@@ -103,3 +104,28 @@
         </div>
     </nav>
 </header>
+<script>
+    function trouverAnime(str) {
+        if (str.length==0) {
+            document.getElementById("livesearch").innerHTML="";
+            document.getElementById("livesearch").style.border="0px";
+            document.getElementById("livesearch").className = "dropdown-menu";
+            return;
+        }
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+        } else {  // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+            if (this.readyState==4 && this.status==200) {
+                document.getElementById("livesearch").innerHTML=this.responseText;
+                document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+                document.getElementById("livesearch").className = "dropdown-menu show";
+            }
+        }
+        xmlhttp.open("GET","../controleur/ControleurAnime.php?q="+str,true);
+        xmlhttp.send();
+    }
+</script>

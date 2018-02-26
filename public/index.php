@@ -77,7 +77,7 @@ foreach ($animes as $anime)
     echo '<img src="' . $anime->getImgPath() . '" alt="Anime" class="w-100" />
 					</div>';
     echo '<p class="tagline card-text text-xs-center">' . $anime->getDescription() . '</p>';
-    echo '<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Plus de details</a>
+    echo '<a href="anime.php?id=' . $anime->getId() . '" class="btn btn-primary btn-block"><span class="fa fa-eye"></span> Plus de details</a>
 				</div>
 			</article>
 		</div>';
