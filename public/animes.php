@@ -1,5 +1,5 @@
 <?php 
-define("NOMDEPAGE", "Anime");
+define("NOMDEPAGE", "Animes");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require ENTETE;
 ?>
