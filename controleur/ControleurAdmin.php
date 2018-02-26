@@ -58,9 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 $animeDAO->ajouterUnAnime($anime);
             }
             else {
-                echo "<script window.onload = function() {
+                echo "<script> window.onload = function() {
                     afficherAnime('". $anime->getId(). "','" . $anime->getNom() . "','" . htmlspecialchars($anime->getDescription()) . "','" . $anime->getGenre() . "','" . $anime->getAuteur() . "','" . $anime->getStudio() . "','" . $anime->getNbEpisodes() . "','" . $anime->getImgPath() . "');
-                };>';";
+                };</script>";
             }
 
 
@@ -94,9 +94,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 $animeDAO->modifierUnAnime($anime);
             }
             else {
-                echo "<script window.onload = function() {
+                echo "<script> window.onload = function() {
                     afficherAnime('". $anime->getId(). "','" . $anime->getNom() . "','" . htmlspecialchars($anime->getDescription()) . "','" . $anime->getGenre() . "','" . $anime->getAuteur() . "','" . $anime->getStudio() . "','" . $anime->getNbEpisodes() . "','" . $anime->getImgPath() . "');
-                };>';";
+                };</script>";
             }
 
 
