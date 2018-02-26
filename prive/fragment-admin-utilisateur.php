@@ -14,7 +14,7 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
 <div class="card">
     <div class="card-header">
         <a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-            Gestion des membres
+            <?php echo _("Gestion des membres")?>
         </a>
     </div>
     <div id="collapseTwo" class="collapse">
@@ -23,18 +23,18 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-12">
-                            <a href="#ajouterMembreModal" class="btn btn-success" data-toggle="modal"><span>Ajouter un membre</span></a>
+                            <a href="#ajouterMembreModal" class="btn btn-success" data-toggle="modal"><span><?php echo _("Ajouter un membre")?></span></a>
                         </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th>Pseudo</th>
-                        <th>Email</th>
-                        <th>Privilège</th>
-                        <th>Chemin image</th>
-                        <th>Description</th>
+                        <th><?php echo _("Pseudo")?></th>
+                        <th><?php echo _("Email")?></th>
+                        <th><?php echo _("Privilège")?></th>
+                        <th><?php echo _("Chemin image")?></th>
+                        <th><?php echo _("Description")?></th>
                         <th></th>
                     </tr>
                     </thead>
@@ -63,34 +63,34 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
                 <div class="modal-content">
                     <form method="post" action="admin">
                         <div class="modal-header">
-                            <h4 class="modal-title">Ajouter un membre</h4>
+                            <h4 class="modal-title"><?php echo _("Ajouter un membre")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Pseudo</label>
+                                <label><?php echo _("Pseudo")?></label>
                                 <input name="ajouterPseudoMembre" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
+                                <label><?php echo _("Email")?></label>
                                 <input name="ajouterEmailMembre" type="email" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Privilege</label>
+                                <label><?php echo _("Privilege")?></label>
                                 <input name="ajouterPrivilegeMembre" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Chemin de l'image</label>
+                                <label><?php echo _("Chemin de l'image")?></label>
                                 <input name="ajouterImageMembre" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label><?php echo _("Description")?></label>
                                 <input name="ajouterDescriptionMembre" type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                            <button type="submit" class="btn btn-success" name="ajouterMembre">Ajouter</button>
+                            <button type="submit" class="btn btn-success" name="ajouterMembre"><?php echo _("Ajouter")?></button>
                         </div>
                 </div>
                 </form>
@@ -102,7 +102,7 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
                 <div class="modal-content">
                     <form method="post" action="admin">
                         <div class="modal-header">
-                            <h4 class="modal-title">Modification du membre</h4>
+                            <h4 class="modal-title"><?php echo _("Modification du membre")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -110,28 +110,28 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
                                 <input id="modifierIdMembre" name="modifierIdMembre" type="hidden" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Pseudo</label>
+                                <label><?php echo _("Pseudo")?></label>
                                 <input id="modifierPseudoMembre" name="modifierPseudoMembre" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
+                                <label><?php echo _("Email")?></label>
                                 <input id="modifierEmailMembre" name="modifierEmailMembre" type="email" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Privilege</label>
+                                <label><?php echo _("Privilege")?></label>
                                 <input id="modifierPrivilegeMembre" name="modifierPrivilegeMembre" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Chemin de l'image</label>
+                                <label><?php echo _("Chemin de l'image")?></label>
                                 <input id="modifierImageMembre" name="modifierImageMembre" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label><?php echo _("Description")?></label>
                                 <input id="modifierDescriptionMembre" name="modifierDescriptionMembre" type="text" class="form-control" required>
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                                <button type="submit" class="btn btn-info" name="modifierMembre">Sauvegarder</button>
+                                <button type="submit" class="btn btn-info" name="modifierMembre"><?php echo _("Sauvegarder")?></button>
                             </div>
                         </div>
                     </form>
@@ -144,17 +144,17 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
                 <div class="modal-content">
                     <form method="post" action="admin">
                         <div class="modal-header">
-                            <h4 class="modal-title">Suppression du membre</h4>
+                            <h4 class="modal-title"><?php echo _("Suppression du membre")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Voulez-vous vraiment supprimer ce membre ?</p>
+                            <p><?php echo _("Voulez-vous vraiment supprimer ce membre ?")?></p>
                             <input id="supprimerMembrePseudo" name="supprimerMembrePseudo">
-                            <p class="text-warning"><small>Cette action est irréversible !</small></p>
+                            <p class="text-warning"><small><?php echo _("Cette action est irréversible !")?></small></p>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                            <button type="submit" class="btn btn-danger" name="supprimerMembre">Supprimer</button>
+                            <button type="submit" class="btn btn-danger" name="supprimerMembre"><?php echo _("Supprimer")?></button>
                         </div>
                     </form>
                 </div>
