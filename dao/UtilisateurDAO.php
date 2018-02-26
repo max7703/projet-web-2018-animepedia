@@ -7,13 +7,13 @@ class UtilisateurDAO
     public function obtenirListeUtilisateurs()
     {
         $list = [];
-        $db = BaseDeDonnees::getInstance();
+        $basededonnee = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare('SELECT * FROM utilisateur');
+        $requete = $basededonnee->prepare('SELECT * FROM utilisateur');
 
-        $req->execute();
+        $requete->execute();
 
-        foreach ($req->fetchAll() as $utilisateur) {
+        foreach ($requete->fetchAll() as $utilisateur) {
             $list[] = new Utilisateur($utilisateur['id_utilisateur'],
                 $utilisateur['pseudo_utilisateur'],
                 $utilisateur['mdp_utilisateur'],
@@ -28,14 +28,14 @@ class UtilisateurDAO
 
     public function obtenirUtilisateurById($id)
     {
-        $db = BaseDeDonnees::getInstance();
+        $basededonnee = BaseDeDonnees::getInstance();
         $id = intval($id);
 
-        $req = $db->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur');
+        $requete = $basededonnee->prepare('SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur');
 
-        $req->execute(array('id_utilisateur' => $id));
+        $requete->execute(array('id_utilisateur' => $id));
 
-        $utilisateur = $req->fetch();
+        $utilisateur = $requete->fetch();
 
         return new Utilisateur($utilisateur['id_utilisateur'],
             $utilisateur['pseudo_utilisateur'],
@@ -48,13 +48,13 @@ class UtilisateurDAO
 
     public function obtenirUtilisateurParString($username)
     {
-        $db = BaseDeDonnees::getInstance();
+        $basededonnee = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare('SELECT * FROM utilisateur WHERE pseudo_utilisateur = :pseudo_utilisateur');
+        $requete = $basededonnee->prepare('SELECT * FROM utilisateur WHERE pseudo_utilisateur = :pseudo_utilisateur');
 
-        $req->execute(array('pseudo_utilisateur' => $username));
+        $requete->execute(array('pseudo_utilisateur' => $username));
 
-        $utilisateur = $req->fetch();
+        $utilisateur = $requete->fetch();
 
         return new Utilisateur($utilisateur['id_utilisateur'],
             $utilisateur['pseudo_utilisateur'],
@@ -67,15 +67,15 @@ class UtilisateurDAO
 
     public function estExistant(Utilisateur $utilisateur)
     {
-        $db = BaseDeDonnees::getInstance();
+        $basededonnee = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare('SELECT * FROM utilisateur WHERE email_utilisateur = :email_utilisateur 
+        $requete = $basededonnee->prepare('SELECT * FROM utilisateur WHERE email_utilisateur = :email_utilisateur 
         OR pseudo_utilisateur = :pseudo_utilisateur');
 
-        $req->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(),
+        $requete->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(),
             'email_utilisateur' => $utilisateur->getEmail()));
 
-        if ( $req->rowCount() > 0 )
+        if ( $requete->rowCount() > 0 )
         {
             return true;
         }
@@ -84,11 +84,11 @@ class UtilisateurDAO
             return false;
         }
     }
-    public function AjouterUnUtilisateur(Utilisateur $utilisateur)
+    public function ajouterUnUtilisateur(Utilisateur $utilisateur)
     {
-        $db = BaseDeDonnees::getInstance();
+        $basededonnee = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare(
+        $requete = $basededonnee->prepare(
             'INSERT INTO utilisateur(pseudo_utilisateur,
             mdp_utilisateur, 
             email_utilisateur, 
@@ -103,31 +103,31 @@ class UtilisateurDAO
             :image_utilisateur,
             :description_utilisateur)');
 
-        $req->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(),
+        $requete->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(),
             'mdp_utilisateur' => $utilisateur->getMdp(),
             'email_utilisateur' => $utilisateur->getEmail(),
             'id_privilege' => $utilisateur->getId_Privilege(),
             'image_utilisateur' => $utilisateur->getImage(),
             'description_utilisateur' => $utilisateur->getDescription()));
 
-        return $req;
+        return $requete;
     }
 
-    public function SupprimerUnUtilisateur(Utilisateur $utilisateur)
+    public function supprimerUnUtilisateur(Utilisateur $utilisateur)
     {
-        $db = BaseDeDonnees::getInstance();
+        $basededonnee = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare('DELETE FROM utilisateur 
+        $requete = $basededonnee->prepare('DELETE FROM utilisateur 
 		WHERE id_utilisateur=:id_utilisateur');
 
-        $req->execute(array('id_utilisateur' => $utilisateur->getId()));
+        $requete->execute(array('id_utilisateur' => $utilisateur->getId()));
     }
 
-    public function ModifierUnUtilisateur(Utilisateur $utilisateur)
+    public function modifierUnUtilisateur(Utilisateur $utilisateur)
     {
-        $db = BaseDeDonnees::getInstance();
+        $basededonnee = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare('UPDATE utilisateur 
+        $requete = $basededonnee->prepare('UPDATE utilisateur 
 		SET pseudo_utilisateur = :pseudo_utilisateur, 
 		email_utilisateur = :email_utilisateur, 
 		id_privilege = :id_privilege, 
@@ -135,7 +135,7 @@ class UtilisateurDAO
 		description_utilisateur = :description_utilisateur
 		WHERE id_utilisateur = :id_utilisateur');
 
-        $req->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(),
+        $requete->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo(),
             'email_utilisateur' => $utilisateur->getEmail(),
             'id_privilege' => $utilisateur->getId_Privilege(),
             'image_utilisateur' => $utilisateur->getImage(),

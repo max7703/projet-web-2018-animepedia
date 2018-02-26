@@ -1,83 +1,84 @@
 <?php
 require_once MODELEPRIVILEGE;
-/*require_once '../bdd/Db.php';*/
 
 class PrivilegeDAO
 {
-	public function obtenirListePrivileges()
+    public function obtenirListePrivileges()
     {
-		$list = [];
-        $db = BaseDeDonnees::getInstance();
-		
-        $req = $db->prepare('SELECT * FROM privilege');
+        $listePrivileges = [];
+        $basededonnee = BaseDeDonnees::getInstance();
 
-        $req->execute();
+        $requete = $basededonnee->prepare('SELECT * FROM privilege');
 
-        foreach($req->fetchAll() as $privilege) 
-		{
-            $list[] = new Privilege($privilege['id_privilege'], 
-			$privilege['nom_privilege']);
+        $requete->execute();
+
+        foreach($requete->fetchAll() as $privilege)
+        {
+            $listePrivileges[] = new Privilege($privilege['id_privilege'],
+                $privilege['nom_privilege']);
         }
 
-        return $list;
+        return $listePrivileges;
     }
-	
-	public function obtenirPrivilegeById($id)
+
+    public function obtenirPrivilegeById($id)
     {
-		$db = BaseDeDonnees::getInstance();
+        $basededonnee = BaseDeDonnees::getInstance();
         $id = intval($id);
-		
-        $req = $db->prepare('SELECT * FROM privilege WHERE id_privilege = :id_privilege');
-		
-        $req->execute(array('id_privilege' => $id));
-		
-        $privilege = $req->fetch();
 
-        return new Privilege($privilege['id_privilege'], 
-		$privilege['nom_privilege']);
-    }
+        $requete = $basededonnee->prepare('SELECT * FROM privilege WHERE id_privilege = :id_privilege');
 
-    public function obtenirPrivilegeParString($nom)
-    {
-        $db = BaseDeDonnees::getInstance();
+        $requete->execute(array('id_privilege' => $id));
 
-        $req = $db->prepare('SELECT * FROM privilege WHERE nom_privilege = :nom_privilege');
-
-        $req->execute(array('nom_privilege' => $nom));
-
-        $privilege = $req->fetch();
+        $privilege = $requete->fetch();
 
         return new Privilege($privilege['id_privilege'],
             $privilege['nom_privilege']);
     }
 
-	public function ajouterUnPrivilege(Privilege $privilege)
-	{
-        $db = BaseDeDonnees::getInstance();
+    public function obtenirPrivilegeParString($nom)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
 
-        $req = $db->prepare('INSERT INTO privilege(nom_privilege)
+        $requete = $basededonnee->prepare('SELECT * FROM privilege WHERE nom_privilege = :nom_privilege');
+
+        $requete->execute(array('nom_privilege' => $nom));
+
+        $privilege = $requete->fetch();
+
+        return new Privilege($privilege['id_privilege'],
+            $privilege['nom_privilege']);
+    }
+
+    public function ajouterUnPrivilege(Privilege $privilege)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('INSERT INTO privilege(nom_privilege)
 		VALUES(:nom_privilege)');
 
-        $req->execute(array('nom_privilege' => $privilege->getNom()));
+        $requete->execute(array('nom_privilege' => $privilege->getNom()));
     }
-	
-	public function supprimerUnPrivilege(Privilege $privilege)
-	{
-		$db = BaseDeDonnees::getInstance();
-		
-		$req = $db->prepare('DELETE FROM privilege 
+
+    public function supprimerUnPrivilege(Privilege $privilege)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('DELETE FROM privilege 
 		WHERE id_privilege=:id_privilege');
-		
-		$req->execute(array('id_privilege' => $privilege->getId()));	
-	}
-	
-	public function modifierUnPrivilege(Privilege $privilege)
-	{
-		$db = BaseDeDonnees::getInstance();
-		
-		$req = $db->prepare('UPDATE privilege 
-		SET nom_privilege = :nom_privilege');
-		
-        $req->execute(array('nom_privilege' => $privilege->getNom()));
-	}
+
+        $requete->execute(array('id_privilege' => $privilege->getId()));
+    }
+
+    public function modifierUnPrivilege(Privilege $privilege)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('UPDATE privilege 
+		SET nom_privilege = :nom_privilege
+		WHERE id_privilege=:id_privilege');
+
+        $requete->execute(array('nom_privilege' => $privilege->getNom(),
+            'id_privilege' => $privilege->getId()));
+    }
 }
