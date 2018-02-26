@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $id = $animeTemporaire->getId();*/
 
             $anime = new Anime(null. null, null, null, null, null, null, null, null);
-            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
+            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage);
             if($anime->valid){
                 $animeDAO->modifierUnAnime($anime);
             }
