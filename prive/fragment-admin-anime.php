@@ -89,27 +89,27 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                                 <input name="ajouterNomAnime" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label><?php echo _("Description")?></label>
                                 <textarea name="ajouterDescriptionAnime" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Genre</label>
+                                <label><?php echo _("Genre")?></label>
                                 <input name="ajouterGenreAnime" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Auteur</label>
+                                <label><?php echo _("Auteur")?></label>
                                 <input name="ajouterAuteurAnime" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Studio</label>
+                                <label><?php echo _("Studio")?></label>
                                 <input name="ajouterStudioAnime" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Nombre d'episode</label>
+                                <label><?php echo _("Nombres d'episodes")?></label>
                                 <input name="ajouterNbEpisodeAnime" type="number" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Chemin de l'episode</label>
+                                <label><?php echo _("Chemin de l'image")?></label>
                                 <input name="ajouterCheminEpisodeAnime" type="text" class="form-control" required>
                             </div>
                         </div>
@@ -127,7 +127,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                 <div class="modal-content">
                     <form method="post" action="admin">
                         <div class="modal-header">
-                            <h4 class="modal-title">Modification de l'anime</h4>
+                            <h4 class="modal-title"><?php echo _("Modification de l'anime")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -135,31 +135,31 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                                 <input id="modifierIdAnime" name="modifierIdAnime" type="hidden" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Nom</label>
+                                <label><?php echo _("Nom")?></label>
                                 <input id="modifierNomAnime" name="modifierNomAnime" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label><?php echo _("Description")?></label>
                                 <textarea id="modifierDescriptionAnime" name="modifierDescriptionAnime" class="form-control" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Genre</label>
+                                <label><?php echo _("Genre")?></label>
                                 <input id="modifierGenreAnime" name="modifierGenreAnime" type="number" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Auteur</label>
+                                <label><?php echo _("Auteur")?></label>
                                 <input id="modifierAuteurAnime" name="modifierAuteurAnime" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Studio</label>
+                                <label><?php echo _("Studio")?></label>
                                 <input id="modifierStudioAnime" name="modifierStudioAnime" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Nombre d'episode</label>
+                                <label><?php echo _("Nombres d'episodes")?></label>
                                 <input id="modifierNbEpisodeAnime" name="modifierNbEpisodeAnime" type="number" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Chemin de l'image</label>
+                                <label><?php echo _("Chemin de l'image")?></label>
                                 <input id="modifierCheminImageAnime" name="modifierCheminImageAnime" type="text" class="form-control" required>
                             </div>
                         </div>
@@ -177,13 +177,13 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                 <div class="modal-content">
                     <form method="post" action="admin">
                         <div class="modal-header">
-                            <h4 class="modal-title">Suppression de l'anime</h4>
+                            <h4 class="modal-title"><?php echo _("Suppression de l'anime")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Voulez-vous vraiment supprimer cet anime ?</p>
+                            <p><?php echo _("Voulez-vous vraiment supprimer cet anime ?")?></p>
                             <input id="supprimerAnimeNom" name="supprimerAnimeNom"></input>
-                            <p class="text-warning"><small>Cette action est irréversible !</small></p>
+                            <p class="text-warning"><small><?php echo _("Cette action est irréversible !")?></small></p>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
