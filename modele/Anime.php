@@ -44,7 +44,7 @@ class Anime
 
     public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
     {
-       $this->construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
+       $this->construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath);
     }
 	
 	public function construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
