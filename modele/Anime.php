@@ -23,7 +23,10 @@ class Anime
     private $listeMessagesErreur = [
         "Nom-vide"=>"le nom de l'anime ne doit pas être vide",
         "Nom-trop-long"=>"le nom de l'anime est trop long",
-        "Nom-contient-chiffre"=>"le nom ne doit pas contenir un chiffre"
+        "Nom-invalide"=>"le nom ne doit contenir que des caracteres alphanumeriques",
+        "Description-vide"=>"la description de l'anime ne doit pas être vide",
+        "Description-trop-longue"=>"la description de l'anime est trop longue",
+        "Description-invalide"=>"le nom ne doit contenir que des caracteres alphanumeriques"
     ];
     private $listeErreursActives = [];
 
@@ -33,9 +36,53 @@ class Anime
 
     }
 	
-	public function construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
+	public function construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
 	{
-		$this->id = $id;
+	    $this->valid = true;
+
+		$this->idTemporaire = $id;
+        $this->nomTemporaire = $nom;
+        $this->descriptionTemporaire = $description;
+        $this->genreTemporaire = $genre;
+        $this->auteurTemporaire = $auteur;
+        $this->studioTemporaire = $studio;
+        $this->nbEpisodesTemporaire = $nbEpisodes;
+        $this->imgPathTemporaire = $imgPath;
+
+        if(ctype_digit($this->idTemporaire)){
+            $this->id = $this->idTemporaire;
+        }
+
+        if(!ctype_alnum($this->nomTemporaire)){
+            $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-invalide"];
+        }
+        if(strlen($this->nomTemporaire)>35){
+            $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-trop-long"];
+        }
+        if(empty($this->nomTemporaire)){
+            $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-vide"];
+        }
+        if(empty($this->listeErreursActives["nom"]))
+        {
+            $this->nom = $this->nomTemporaire;
+        }
+        else {
+            $this->valid = false;
+        }
+
+        $this->description = $this->descriptionTemporaire;
+        $this->genre = $this->genreTemporaire;
+        $this->auteur = $this->auteurTemporaire;
+        $this->studio = $this->studioTemporaire;
+        $this->nbEpisodes = $this->nbEpisodesTemporaire;
+        $this->imgPath = $this->imgPathTemporaire;
+
+        if(!ctype_alnum($this->descriptionTemporaire));
+	}
+
+	public function construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
+    {
+        $this->id = $id;
         $this->nom = $nom;
         $this->description = $description;
         $this->genre = $genre;
@@ -43,16 +90,11 @@ class Anime
         $this->studio = $studio;
         $this->nbEpisodes = $nbEpisodes;
         $this->imgPath = $imgPath;
-	}
+    }
 
     public function getId()
     {
         return $this->id;
-    }
-
-	public function setId($id)
-    {
-        $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
     }
 
     public function getNom()
@@ -67,10 +109,10 @@ class Anime
         if(empty($this->nomTemporaire)) {
             $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-vide"];
         }
-        if(strlen($this->nomTemporaire) > 250) {
+        if(strlen($this->nomTemporaire) > 35) {
             $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-trop-long"];
         }
-        if(!ctype_alpha($this->nomTemporaire))
+        if(!ctype_alnum($this->nomTemporaire))
         {
             $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-contient-chiffres"];
         }
