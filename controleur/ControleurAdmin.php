@@ -16,6 +16,8 @@ require_once GENREDAO;
 require_once PRIVILEGEDAO;
 require_once MODELEPRIVILEGE;
 
+$anime = new Anime();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if (isset($_POST['supprimerAnime'])) {
@@ -50,8 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $nbepisode = $_POST['ajouterNbEpisodeAnime'];
             $cheminepisode = $_POST['ajouterCheminEpisodeAnime'];
 
-            $anime = new Anime(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
-            $animeDAO->ajouterUnAnime($anime);
+            $anime = new Anime();
+            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
+            if($anime->valid){
+                $animeDAO->ajouterUnAnime($anime);
+            }
+            else {
+                echo "<script window.onload = function() {
+                    afficherAnime('". $anime->getId(). "','" . $anime->getNom() . "','" . htmlspecialchars($anime->getDescription()) . "','" . $anime->getGenre() . "','" . $anime->getAuteur() . "','" . $anime->getStudio() . "','" . $anime->getNbEpisodes() . "','" . $anime->getImgPath() . "');
+                };>';";
+            }
 
 
         }

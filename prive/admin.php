@@ -8,8 +8,8 @@
 
 define("NOMDEPAGE", "Admin");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
-include_once CONTROLEURADMIN;
 require ENTETE;
+include_once CONTROLEURADMIN;
 
 ?>
 <link rel="stylesheet" href=<?php echo CSS_ADMIN?>>

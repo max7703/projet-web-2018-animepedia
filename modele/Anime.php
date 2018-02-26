@@ -9,7 +9,7 @@ class Anime
     private $studio;
     private $nbEpisodes;
     private $imgPath;
-    private $valid;
+    public $valid;
 
     private $idTemporaire;
     private $nomTemporaire;
@@ -40,7 +40,7 @@ class Anime
         "Chemin-image-vide"=>"le chemin vers l'image ne doit pas être vide"
 
     ];
-    private $listeErreursActives = [];
+    public $listeErreursActives = [];
 
     public function __construct()
     {
