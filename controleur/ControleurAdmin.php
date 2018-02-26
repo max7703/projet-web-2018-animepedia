@@ -16,7 +16,7 @@ require_once GENREDAO;
 require_once PRIVILEGEDAO;
 require_once MODELEPRIVILEGE;
 
-$anime = new Anime();
+$anime = new Anime(null, null, null, null, null, null, null, null);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
