@@ -29,7 +29,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th>Nom</th>
+                        <th><?php echo _("Nom")?></th>
                         <th></th>
                     </tr>
                     </thead>
