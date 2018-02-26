@@ -18,23 +18,23 @@
         <div class="col-sm-3">
             <h4 class="title"><?php echo _("Navigation")?></h4>
             <span class="acount-icon">          
-            <a href="animes"><span class="fa fa-heart" aria-hidden="true"></span> <?php echo _("Anime")?></a>
-            <a href="forum"><span class="fa fa-users" aria-hidden="true"></span><?php echo _("Forum")?></a>
-            <a href="profile"><span class="fa fa-user" aria-hidden="true"></span> <?php echo _("Profile")?></a>
-            <a href="language"><span class="fa fa-globe" aria-hidden="true"></span> <?php echo _("Langue")?></a>
+            <a href="<?php echo SITE ?>animes"><span class="fa fa-heart" aria-hidden="true"></span> <?php echo _("Anime")?></a>
+            <a href="<?php echo SITE ?>forum"><span class="fa fa-users" aria-hidden="true"></span><?php echo _("Forum")?></a>
+            <a href="<?php echo SITE ?>profile"><span class="fa fa-user" aria-hidden="true"></span> <?php echo _("Profile")?></a>
+            <a href="<?php echo SITE ?>language"><span class="fa fa-globe" aria-hidden="true"></span> <?php echo _("Langue")?></a>
             </span>
         </div>
         <div class="col-sm-3">
             <h4 class="title"><?php echo _("Categories")?></h4>
             <div class="category">
-                <a href="categories"><?php echo _("Ecchi")?></a>
-                <a href="categories"><?php echo _("Seinen")?></a>
-                <a href="categories"><?php echo _("Shōjo")?></a>
-                <a href="categories"><?php echo _("Shōnen")?></a>
-                <a href="categories"><?php echo _("Yaoi")?></a>
-                <a href="categories"><?php echo _("Yandere")?></a>
-                <a href="categories"><?php echo _("Yuri")?></a>
-                <a href="categories"><?php echo _("Magical girl")?></a>
+                <a href="<?php echo SITE ?>categories"><?php echo _("Ecchi")?></a>
+                <a href="<?php echo SITE ?>categories"><?php echo _("Seinen")?></a>
+                <a href="<?php echo SITE ?>categories"><?php echo _("Shōjo")?></a>
+                <a href="<?php echo SITE ?>categories"><?php echo _("Shōnen")?></a>
+                <a href="<?php echo SITE ?>categories"><?php echo _("Yaoi")?></a>
+                <a href="<?php echo SITE ?>categories"><?php echo _("Yandere")?></a>
+                <a href="<?php echo SITE ?>categories"><?php echo _("Yuri")?></a>
+                <a href="<?php echo SITE ?>categories"><?php echo _("Magical girl")?></a>
             </div>
         </div>
         <div class="col-sm-3">

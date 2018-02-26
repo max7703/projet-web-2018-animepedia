@@ -2,8 +2,6 @@
 define("NOMDEPAGE", "Anime");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require ENTETE;
-require CSS_AFFICHERCACHER;
-require JSAFFICHERCACHER;
 ?>
         <div class="container pt-4">
             <ul class="pagination pagination-sm justify-content-center">
@@ -185,5 +183,5 @@ require JSAFFICHERCACHER;
             <p><a href="#" class="btn btn-primary" role="button">Voir »</a></p>
         </div>
     </div>
-    
+<script src=<?php echo JSANIMES?>></script>
 <?php include PIEDDEPAGE;?>

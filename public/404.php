@@ -24,8 +24,8 @@ require ENTETE;
                     <?php echo _("D&eacute;sol&eacute;, la page que vous avez demand&eacute; n'est pas disponible. ")?>
                 </div>
                 <div class="error-actions">
-                    <a href="index" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
-                        <?php echo _("Retour &agrave; l'accueil")?> </a><a href="contact" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> <?php echo _("Contacter le support")?> </a>
+                    <a href="<?php echo SITE ?>home" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        <?php echo _("Retour &agrave; l'accueil")?> </a><a href="<?php echo SITE ?>contact" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> <?php echo _("Contacter le support")?> </a>
                 </div>
             </div>
         </div>

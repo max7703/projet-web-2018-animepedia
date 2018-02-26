@@ -50,7 +50,7 @@ if( isset($_POST['fromPerson']) )
 		   </ul>
 		   </div>
 		   <h3 class="pricing-count">$5/mo</h3>
-		   <a href="wizard" class="bordered-btn">Commander</a>
+		   <a href="<?php echo SITE ?>wizard" class="bordered-btn">Commander</a>
 	   </div>
    </div>
 </section>

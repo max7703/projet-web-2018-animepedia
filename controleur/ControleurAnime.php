@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
             foreach($listeAnimes as $anime) {
                 if (stristr($q, substr($anime->getNom(), 0, $len))) {
                     if ($hint === "") {
-                        $hint='<a href="anime.php?id=' . $anime->getId() .'">' . $anime->getNom(). '</a>';
+                        $hint='<a href="' . SITE . 'anime/' . $anime->getId() .'">' . $anime->getNom(). '</a>';
                     } else {
-                        $hint=$hint.'<br><a href="anime.php?id=' . $anime->getId() . '">' . $anime->getNom() . '</a>';
+                        $hint=$hint.'<br><a href="' . SITE . 'anime/' . $anime->getId() . '">' . $anime->getNom() . '</a>';
                     }
                 }
             }
@@ -39,5 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 
         // Output "no suggestion" if no hint was found or output correct values
         echo $hint === "" ? "no suggestion" : $hint;
+    }
+    else if (isset($_REQUEST['id']))
+    {
+        // get the q parameter from URL
+        $q = $_REQUEST["id"];
+
+        $_SESSION["animeid"] = $q;
     }
 }
