@@ -13,7 +13,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
 <div class="card">
     <div class="card-header">
         <a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-            Gestion des genres
+            <?php echo _("Gestion des genres")?>
         </a>
     </div>
     <div id="collapseThree" class="collapse">
@@ -22,7 +22,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-12">
-                            <a href="#ajouterGenreModal" class="btn btn-success" data-toggle="modal"><span>Ajouter un genre</span></a>
+                            <a href="#ajouterGenreModal" class="btn btn-success" data-toggle="modal"><span><?php echo _("Ajouter un genre")?></span></a>
                         </div>
                     </div>
                 </div>
@@ -54,18 +54,18 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 <div class="modal-content">
                     <form method="post" action="admin">
                         <div class="modal-header">
-                            <h4 class="modal-title">Ajouter un genre</h4>
+                            <h4 class="modal-title"><?php echo _("Ajouter un genre")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Nom</label>
+                                <label><?php echo _("Nom")?></label>
                                 <input name="ajouterNomGenre" type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                            <button type="submit" class="btn btn-success" name="ajouterGenre">Ajouter</button>
+                            <button type="submit" class="btn btn-success" name="ajouterGenre"><?php echo _("Ajouter")?></button>
                         </div>
                 </div>
                 </form>
@@ -77,7 +77,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 <div class="modal-content">
                     <form method="post" action="admin">
                         <div class="modal-header">
-                            <h4 class="modal-title">Modification du genre</h4>
+                            <h4 class="modal-title"><?php echo _("Modification du genre")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -85,12 +85,12 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                                 <input id="modifierIdGenre" name="modifierIdGenre" type="hidden" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Nom</label>
+                                <label><?php echo _("Nom")?></label>
                                 <input id="modifierNomGenre" name="modifierNomGenre" type="text" class="form-control" required>
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                                <button type="submit" class="btn btn-info" name="modifierGenre">Sauvegarder</button>
+                                <button type="submit" class="btn btn-info" name="modifierGenre"><?php echo _("Sauvegarder")?></button>
                             </div>
                         </div>
                     </form>
@@ -103,17 +103,17 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 <div class="modal-content">
                     <form method="post" action="admin">
                         <div class="modal-header">
-                            <h4 class="modal-title">Suppression du genre</h4>
+                            <h4 class="modal-title"><?php echo _("Suppression du genre")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Voulez-vous vraiment supprimer ce genre ?</p>
+                            <p><?php echo _("Voulez-vous vraiment supprimer ce genre ?")?></p>
                             <input id="supprimerGenreNom" name="supprimerGenreNom">
-                            <p class="text-warning"><small>Cette action est irréversible !</small></p>
+                            <p class="text-warning"><small><?php echo _("Cette action est irréversible !")?></small></p>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                            <button type="submit" class="btn btn-danger" name="supprimerMembre">Supprimer</button>
+                            <button type="submit" class="btn btn-danger" name="supprimerMembre"><?php echo _("Supprimer")?></button>
                         </div>
                     </form>
                 </div>
