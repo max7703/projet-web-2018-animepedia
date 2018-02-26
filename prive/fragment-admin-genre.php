@@ -113,7 +113,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                            <button type="submit" class="btn btn-danger" name="supprimerMembre"><?php echo _("Supprimer")?></button>
+                            <button type="submit" class="btn btn-danger" name="supprimerGenre"><?php echo _("Supprimer")?></button>
                         </div>
                     </form>
                 </div>
