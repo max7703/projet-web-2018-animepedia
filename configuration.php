@@ -26,7 +26,8 @@ class BaseDeDonnees {
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-define("HOMEPAGE", "url: https://www.dev.animepedia.fr/home");
+define("HOMEPAGE", "url: https://dev.animepedia.fr/home");
+define("SITE", "https://dev.animepedia.fr/");
 define("LIENS", $_SERVER['DOCUMENT_ROOT'] .'/links.html');
 
 define("MODELE", $_SERVER['DOCUMENT_ROOT'] . '/modele');
@@ -37,6 +38,7 @@ define("MODELEPRIVILEGE", MODELE . '/Privilege.php');
 
 define("CONTROLEUR", '../controleur');
 define("CONTROLEURINDEX", CONTROLEUR . '/ControleurIndex.php');
+define("CONTROLEURANIME", CONTROLEUR . '/ControleurAnime.php');
 define("CONTROLEURPROFIL", CONTROLEUR . '/ControleurProfil.php');
 define("CONTROLEURINSCRIPTION", CONTROLEUR . '/ControleurRegister.php');
 define("CONTROLEURCONNEXION", CONTROLEUR . '/ControleurLogin.php');
@@ -51,15 +53,13 @@ define("UTILISATEURDAO", DAO . '/UtilisateurDAO.php');
 
 define("JS", "../js");
 define("JSWIZARD", JS . "/wizard.js");
-define("JSAFFICHERCACHER", JS . "/afficher_cacher.js");
+define("JSANIMES", JS . "/animes.js");
 define("JSADMIN", JS . "/admin.js");
 
 define("CSS", "../css");
 define("CSS_PROFIL", CSS . "/profil_.css");
 define("CSS_404", CSS . '/404_.css');
 define("CSS_ADMIN", CSS . '/admin_.css');
-define("CSS_AFFICHERCACHER", CSS . '/afficher_cacher_.css');
-define("CSS_DESCRIPTIF_ANIME", CSS . '/descriptifanime_.css');
 define("CSS_ANIMES", CSS . '/animes_.css');
 define("CSS_CONTACT", CSS . '/contact_.css');
 define("CSS_PIEDDEPAGE", CSS . '/footer_.css');
