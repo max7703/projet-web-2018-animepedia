@@ -57,6 +57,7 @@ define("CSS", "../css");
 define("CSS_PROFIL", CSS . "/profil_.css");
 define("CSS_404", CSS . '/404_.css');
 define("CSS_ADMIN", CSS . '/admin_.css');
+define("CSS_DESCRIPTIF_ANIME", CSS . '/descriptifanime_.css');
 define("CSS_ANIMES", CSS . '/animes_.css');
 define("CSS_CONTACT", CSS . '/contact_.css');
 define("CSS_PIEDDEPAGE", CSS . '/footer_.css');
