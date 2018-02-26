@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $nbepisode = $_POST['ajouterNbEpisodeAnime'];
             $cheminepisode = $_POST['ajouterCheminEpisodeAnime'];
 
-            $anime = new Anime();
+            $anime = new Anime(null. null, null, null, null, null, null, null, null);
             $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
             if($anime->valid){
                 $animeDAO->ajouterUnAnime($anime);
