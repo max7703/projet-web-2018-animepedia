@@ -51,12 +51,14 @@ define("UTILISATEURDAO", DAO . '/UtilisateurDAO.php');
 
 define("JS", "../js");
 define("JSWIZARD", JS . "/wizard.js");
+define("JSAFFICHERCACHER", JS . "/afficher_cacher.js");
 define("JSADMIN", JS . "/admin.js");
 
 define("CSS", "../css");
 define("CSS_PROFIL", CSS . "/profil_.css");
 define("CSS_404", CSS . '/404_.css');
 define("CSS_ADMIN", CSS . '/admin_.css');
+define("CSS_AFFICHERCACHER", CSS . '/afficher_cacher_.css');
 define("CSS_DESCRIPTIF_ANIME", CSS . '/descriptifanime_.css');
 define("CSS_ANIMES", CSS . '/animes_.css');
 define("CSS_CONTACT", CSS . '/contact_.css');

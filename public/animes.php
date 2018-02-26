@@ -2,7 +2,8 @@
 define("NOMDEPAGE", "Anime");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require ENTETE;
-require_once CONTROLEURINDEX;
+require CSS_AFFICHERCACHER;
+require JSAFFICHERCACHER;
 ?>
         <div class="container pt-4">
             <ul class="pagination pagination-sm justify-content-center">
