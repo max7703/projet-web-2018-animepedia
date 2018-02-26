@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: lyank
+ * User: lyanke
  * Date: 17/02/2018
  * Time: 09:31
  */
@@ -39,7 +39,7 @@ define("CONTROLEUR", '../controleur');
 define("CONTROLEURINDEX", CONTROLEUR . '/ControleurIndex.php');
 define("CONTROLEURPROFIL", CONTROLEUR . '/ControleurProfil.php');
 define("CONTROLEURINSCRIPTION", CONTROLEUR . '/ControleurRegister.php');
-define ("CONTROLEURCONNEXION", CONTROLEUR . '/ControleurLogin.php');
+define("CONTROLEURCONNEXION", CONTROLEUR . '/ControleurLogin.php');
 define("CONTROLEURDECONNEXION", CONTROLEUR . '/ControleurLogout.php');
 define("CONTROLEURADMIN", CONTROLEUR . '/ControleurAdmin.php');
 
@@ -50,8 +50,8 @@ define("PRIVILEGEDAO", DAO . '/PrivilegeDAO.php');
 define("UTILISATEURDAO", DAO . '/UtilisateurDAO.php');
 
 define("JS", "../js");
-define("JSADMIN", JS . '/admin.js');
 define("JSWIZARD", JS . "/wizard.js");
+define("JSADMIN", JS . "/admin.js");
 
 define("CSS", "../css");
 define("CSS_PROFIL", CSS . "/profil_.css");
