@@ -88,9 +88,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             /*$animeTemporaire = $animeDAO->obtenirAnimeParId($id);
             $id = $animeTemporaire->getId();*/
 
-            $anime = new Anime($id, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage);
-
-            $animeDAO->modifierUnAnime($anime);
+            $anime = new Anime(null. null, null, null, null, null, null, null, null);
+            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
+            if($anime->valid){
+                $animeDAO->modifierUnAnime($anime);
+            }
+            else {
+                echo "<script window.onload = function() {
+                    afficherAnime('". $anime->getId(). "','" . $anime->getNom() . "','" . htmlspecialchars($anime->getDescription()) . "','" . $anime->getGenre() . "','" . $anime->getAuteur() . "','" . $anime->getStudio() . "','" . $anime->getNbEpisodes() . "','" . $anime->getImgPath() . "');
+                };>';";
+            }
 
 
         }
