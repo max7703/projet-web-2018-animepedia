@@ -42,8 +42,8 @@ require ENTETE;
 
       <hr>
 
-      <h1 class="mt-6">Video de <?php echo $anime->getNom() ?></h1>
-      <p>https://oplstream.com/</p>
+      <h1 class="mt-6">Videos</h1>
+      <p></p>
       <hr>
 
     </div>
