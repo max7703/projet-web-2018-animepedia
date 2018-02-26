@@ -8,10 +8,11 @@
 define("NOMDEPAGE", "Index");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require ENTETE;
-require_once CONTROLEURINDEX;
+require_once ANIMEDAO;
 
-$controleur = new ControleurIndex();
-$animes = $controleur->afficherAnimesAleatoire();
+$animeDAO = new AnimeDAO();
+$listeAnimes = $animeDAO->obtenirListeAnimes();
+
 ?>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -65,7 +66,7 @@ $animes = $controleur->afficherAnimesAleatoire();
 	<h2>Animes aleatoire</h2>
 	<div class="row">
         <?php
-foreach ($animes as $anime)
+foreach ($listeAnimes as $anime)
 {
     echo '<div class="col-lg-3 col-md-4 col-sm-6 pb-3">
 			<article class="card">

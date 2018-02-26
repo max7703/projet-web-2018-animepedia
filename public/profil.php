@@ -9,13 +9,14 @@
 define("NOMDEPAGE", "Profil");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require ENTETE;
-require_once CONTROLEURPROFIL;
+require_once UTILISATEURDAO;
 
 if( !isset($_SESSION['logged_in']))
     header( "url: https://www.dev.animepedia.fr/home" );
 
-$controleur = new ControleurProfil();
-$profil = $controleur->obtenirProfilUtilisateurActuel();
+$utilisateurDAO = new UtilisateurDAO();
+$profil = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
+
 ?>
 <link rel="stylesheet" href="<?php echo CSS_PROFIL?>">
 

@@ -60,4 +60,4 @@ require ENTETE;?>
     <script type="text/javascript" src=<?php echo JSWIZARD?>></script>
 ';
 
-<?php include 'VueFooter.php';?>
+<?php include PIEDDEPAGE;?>
