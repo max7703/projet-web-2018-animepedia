@@ -134,30 +134,107 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                             <div class="form-group">
                                 <input id="modifierIdAnime" name="modifierIdAnime" type="hidden" class="form-control" required>
                             </div>
+                            <?php
+                                if(isset($_SESSION["anime"])) {
+                                    $anime = $_SESSION["anime"];
+                                    if(!empty($anime->listeErreursActives['nom'])) {
+                                        foreach ($anime->listeErreursActives['nom'] as $erreur) {
+                                            echo '<div class="alert alert-danger" role="alert">' .
+                                                    $erreur .
+                                                '</div>';
+                                        }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Nom")?></label>
                                 <input id="modifierNomAnime" name="modifierNomAnime" type="text" class="form-control" required>
                             </div>
+                            <?php
+                            if(isset($_SESSION["anime"])) {
+                                $anime = $_SESSION["anime"];
+                                if(!empty($anime->listeErreursActives['description'])) {
+                                    foreach ($anime->listeErreursActives['description'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Description")?></label>
                                 <textarea id="modifierDescriptionAnime" name="modifierDescriptionAnime" class="form-control" required></textarea>
                             </div>
+                            <?php
+                            if(isset($_SESSION["anime"])) {
+                                $anime = $_SESSION["anime"];
+                                if(!empty($anime->listeErreursActives['genre'])) {
+                                    foreach ($anime->listeErreursActives['genre'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Genre")?></label>
                                 <input id="modifierGenreAnime" name="modifierGenreAnime" type="number" class="form-control" required>
                             </div>
+                            <?php
+                            if(isset($_SESSION["anime"])) {
+                                $anime = $_SESSION["anime"];
+                                if(!empty($anime->listeErreursActives['auteur'])) {
+                                    foreach ($anime->listeErreursActives['auteur'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Auteur")?></label>
                                 <input id="modifierAuteurAnime" name="modifierAuteurAnime" type="text" class="form-control" required>
                             </div>
+                            <?php
+                            if(isset($_SESSION["anime"])) {
+                                $anime = $_SESSION["anime"];
+                                if(!empty($anime->listeErreursActives['studio'])) {
+                                    foreach ($anime->listeErreursActives['studio'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Studio")?></label>
                                 <input id="modifierStudioAnime" name="modifierStudioAnime" type="text" class="form-control" required>
                             </div>
+                            <?php
+                            if(isset($_SESSION["anime"])) {
+                                $anime = $_SESSION["anime"];
+                                if(!empty($anime->listeErreursActives['nbEpisodes'])) {
+                                    foreach ($anime->listeErreursActives['nbEpisodes'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Nombres d'episodes")?></label>
                                 <input id="modifierNbEpisodeAnime" name="modifierNbEpisodeAnime" type="number" class="form-control" required>
                             </div>
+                            <?php
+                            if(isset($_SESSION["anime"])) {
+                                $anime = $_SESSION["anime"];
+                                if(!empty($anime->listeErreursActives['cheminImage'])) {
+                                    foreach ($anime->listeErreursActives['cheminImage'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Chemin de l'image")?></label>
                                 <input id="modifierCheminImageAnime" name="modifierCheminImageAnime" type="text" class="form-control" required>

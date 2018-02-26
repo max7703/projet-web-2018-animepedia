@@ -16,7 +16,7 @@ require_once GENREDAO;
 require_once PRIVILEGEDAO;
 require_once MODELEPRIVILEGE;
 
-$anime = new Anime(null, null, null, null, null, null, null, null);
+$_SESSION["anime"] = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -54,15 +54,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $anime = new Anime(null. null, null, null, null, null, null, null, null);
             $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
-            if($anime->valid){
+            if($anime->estValide()){
+                echo "Ajout anime";
                 $animeDAO->ajouterUnAnime($anime);
             }
             else {
-                echo "<script> window.onload = function() {
-                    afficherAnime('". $anime->getId(). "','" . $anime->getNom() . "','" . htmlspecialchars($anime->getDescription()) . "','" . $anime->getGenre() . "','" . $anime->getAuteur() . "','" . $anime->getStudio() . "','" . $anime->getNbEpisodes() . "','" . $anime->getImgPath() . "');
-                };</script>";
+                echo '<script> loadData = function() {
+                    afficherAnime("' . $anime->getId(). '","' . $anime->getNom() . '","' . htmlspecialchars($anime->getDescription(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '");
+                    $("#modifierAnimeModal").modal();
+                };
+                </script>';
             }
-
+            $_SESSION["anime"] = $anime;
 
         }
         catch(Throwable $e) {
@@ -89,14 +92,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $id = $animeTemporaire->getId();*/
 
             $anime = new Anime(null. null, null, null, null, null, null, null, null);
-            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage);
-            if($anime->valid){
+            $anime->construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage);
+
+            if($anime->estValide()){
                 $animeDAO->modifierUnAnime($anime);
             }
             else {
-                echo "<script> window.onload = function() {
-                    afficherAnime('". $anime->getId(). "','" . $anime->getNom() . "','" . htmlspecialchars($anime->getDescription()) . "','" . $anime->getGenre() . "','" . $anime->getAuteur() . "','" . $anime->getStudio() . "','" . $anime->getNbEpisodes() . "','" . $anime->getImgPath() . "');
-                };</script>";
+                echo '<script> loadData =function() {
+                    afficherAnime("'. $anime->getId(). '","' . $anime->getNom() . '","' . $anime->getDescription() . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '");
+                    $("#modifierAnimeModal").modal();
+                };</script>';
+                $_SESSION["anime"] = $anime;
             }
 
 

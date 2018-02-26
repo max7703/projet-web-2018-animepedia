@@ -23,5 +23,6 @@ include_once CONTROLEURADMIN;
     </div>
 </div>
 <script src=<?php echo JSADMIN?>></script>
+<script> loadData();</script>
 <?php include PIEDDEPAGE;?>
 
