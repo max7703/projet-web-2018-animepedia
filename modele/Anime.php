@@ -42,10 +42,9 @@ class Anime
     ];
     public $listeErreursActives = [];
 
-    public function __construct()
+    public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
     {
-       
-
+       $this->construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
     }
 	
 	public function construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
