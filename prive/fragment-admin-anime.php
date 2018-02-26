@@ -115,7 +115,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                            <button type="submit" class="btn btn-success" name="ajouterAnime">Ajouter</button>
+                            <button type="submit" class="btn btn-success" name="ajouterAnime"><?php echo _("Ajouter")?></button>
                         </div>
                 </div>
                 </form>
@@ -165,7 +165,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                            <button type="submit" class="btn btn-info" name="modifierAnime">Sauvegarder</button>
+                            <button type="submit" class="btn btn-info" name="modifierAnime"><?php echo _("Sauvegarder")?></button>
                         </div>
                 </div>
                 </form>
@@ -187,7 +187,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                            <button type="submit" class="btn btn-danger" name="supprimerAnime">Supprimer</button>
+                            <button type="submit" class="btn btn-danger" name="supprimerAnime"><?php echo _("Supprimer")?></button>
                         </div>
                     </form>
                 </div>
