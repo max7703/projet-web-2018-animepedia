@@ -48,11 +48,15 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
     <div class="container">
         <div id="animesListe" class="row">
             <?php
-            foreach ($listeAnimes as $anime)
+            $nb_elem_per_page = 10;
+            $page = isset($_GET['page'])?intval($_GET['page']-1):0;
+            $number_of_pages = intval(count($listeAnimes)/$nb_elem_per_page)+1;
+
+            foreach (array_slice($listeAnimes, $page*$nb_elem_per_page, $nb_elem_per_page) as $anime)
             {
                 echo '<div class="d-flex flex-wrap justify-content-center pt-4 col-md-4">
                 <div class="card" style="width: 22rem;">
-                    <img class="card-img-top" src="'; echo $anime->getImgPath(); echo '" alt="Card image cap">
+                    <img class="card-img-top" src="' . SITE; echo substr($anime->getImgPath(), 3); echo '" alt="anime image">
                     <div class="card-body">
                         <h5 class="card-title">'; echo $anime->getNom(); echo '</h5>
                         <p class="card-text">'; echo $anime->getDescription(); echo '</p>
@@ -64,12 +68,24 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
         </div>
     </div>
 
-    <ul class="pagination pt-4 flex-wrap" style="justify-content: center;">
-        <li class="page-item active"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    <ul id="paginator" class="pagination pt-4 flex-wrap" style="justify-content: center;">
+        <?php
+        for($i=1;$i<=$number_of_pages;$i++){
+            if($i == 1)
+            {
+                echo '
+                <li class="page-item active"><a class="page-link" href="' . SITE . 'animes/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+            else
+            {
+                echo '
+                <li class="page-item"><a class="page-link" href="' . SITE . 'animes/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+        }
+        ?>
     </ul>
+
     <script src=<?php echo JSANIMES?>></script>
 <?php include PIEDDEPAGE;?>

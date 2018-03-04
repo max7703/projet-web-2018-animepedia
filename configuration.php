@@ -51,12 +51,12 @@ define("GENREDAO", DAO . '/GenreDAO.php');
 define("PRIVILEGEDAO", DAO . '/PrivilegeDAO.php');
 define("UTILISATEURDAO", DAO . '/UtilisateurDAO.php');
 
-define("JS", "../js");
+define("JS", SITE . "/js");
 define("JSWIZARD", JS . "/wizard.js");
 define("JSANIMES", JS . "/animes.js");
 define("JSADMIN", JS . "/admin.js");
 
-define("CSS", "../css");
+define("CSS", SITE . "/css");
 define("CSS_PROFIL", CSS . "/profil_.css");
 define("CSS_404", CSS . '/404_.css');
 define("CSS_ADMIN", CSS . '/admin_.css');

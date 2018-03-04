@@ -15,4 +15,5 @@ RewriteRule ^discord$ /public/discord.php
 RewriteRule ^logout$ /controleur/ControleurLogout.php
 RewriteRule ^profile$ /public/profil.php
 RewriteRule ^anime/([0-9]+) public/anime.php?id=$1 [L]
+RewriteRule ^animes/page/([0-9]+) public/animes.php?page=$1 [L]
 ErrorDocument 404 /public/404.php

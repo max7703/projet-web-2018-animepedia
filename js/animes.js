@@ -33,6 +33,6 @@ function afficherAnimesListe(str) {
             }
         }
     }
-    xmlhttp.open("GET","../controleur/ControleurAnime.php?name="+str,true);
+    xmlhttp.open("GET","https://dev.animepedia.fr/controleur/ControleurAnime.php?name="+str,true);
     xmlhttp.send();
 }
