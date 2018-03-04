@@ -52,7 +52,7 @@
             </ul>
             <form class="form-inline pr-2 my-lg-0">
             <ul id="livesearch" class="dropdown-menu" style="left: auto"></ul>
-                <input id="animeSearch" class="form-control mr-sm-2" placeholder="Rechercher" onkeyup="trouverAnime(this.value)" type="text">
+                <input id="animeSearch" class="form-control mr-sm-2" placeholder="Rechercher" autocomplete="off" onkeyup="trouverAnime(this.value)" type="text">
                 <button class="btn-lg btn-success search-index" type="button">
                     <span class="fa fa-search"></span>
                 </button>

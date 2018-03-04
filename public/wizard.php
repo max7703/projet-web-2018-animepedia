@@ -51,13 +51,14 @@ require ENTETE;?>
              <label class="control-label"><?php echo _("Email PayPal")?></label>
              <input type="email" required="required" class="form-control" placeholder=<?php echo _("Entrer email")?> />
              </div>
-              <button class="btn btn-success btn-lg pull-right pt-2" type="submit"><?php echo _("Payer")?></button>
+<!--              <button id="paypal-button" class="btn btn-success btn-lg pull-right pt-2" type="submit" name="paypal-button">--><?php //echo _("Payer")?><!--</button>-->
+            <div id="paypal-button"></div>
             </div>
       </div>
   </form>
     </div>
-    
+
+    <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
     <script type="text/javascript" src=<?php echo JSWIZARD?>></script>
-';
 
 <?php include PIEDDEPAGE;?>
