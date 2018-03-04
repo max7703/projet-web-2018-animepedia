@@ -14,40 +14,20 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
 ?>
     <div class="container pt-4">
         <ul class="pagination pagination-sm justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Tous</a></li>
-            <li class="page-item"><a class="page-link" href="#">A</a></li>
-            <li class="page-item"><a class="page-link" href="#">B</a></li>
-            <li class="page-item"><a class="page-link" href="#">C</a></li>
-            <li class="page-item"><a class="page-link" href="#">D</a></li>
-            <li class="page-item"><a class="page-link" href="#">E</a></li>
-            <li class="page-item"><a class="page-link" href="#">F</a></li>
-            <li class="page-item"><a class="page-link" href="#">G</a></li>
-            <li class="page-item"><a class="page-link" href="#">H</a></li>
-            <li class="page-item"><a class="page-link" href="#">I</a></li>
-            <li class="page-item"><a class="page-link" href="#">J</a></li>
-            <li class="page-item"><a class="page-link" href="#">K</a></li>
-            <li class="page-item"><a class="page-link" href="#">L</a></li>
-            <li class="page-item"><a class="page-link" href="#">M</a></li>
-            <li class="page-item"><a class="page-link" href="#">N</a></li>
-            <li class="page-item"><a class="page-link" href="#">O</a></li>
-            <li class="page-item"><a class="page-link" href="#">P</a></li>
-            <li class="page-item"><a class="page-link" href="#">Q</a></li>
-            <li class="page-item"><a class="page-link" href="#">R</a></li>
-            <li class="page-item"><a class="page-link" href="#">S</a></li>
-            <li class="page-item"><a class="page-link" href="#">T</a></li>
-            <li class="page-item"><a class="page-link" href="#">U</a></li>
-            <li class="page-item"><a class="page-link" href="#">V</a></li>
-            <li class="page-item"><a class="page-link" href="#">W</a></li>
-            <li class="page-item"><a class="page-link" href="#">X</a></li>
-            <li class="page-item"><a class="page-link" href="#">Y</a></li>
-            <li class="page-item"><a class="page-link" href="#">Z</a></li>
+            <li class="page-item"><a class="page-link" href="https://dev.animepedia.fr/animes">Tous</a></li>
+            <?php
+            foreach(range('A','Z') as $letter)
+            {
+                echo '<li class="page-item"><a class="page-link" onclick="afficherAnimeAvecLettre(\'' . $letter . '\')" href="#">'; echo $letter . '</a></li>';
+            }
+            ?>
         </ul>
     </div>
 
 
     <div class="row">
         <div class="col-sm-4"></div>
-        <form class="form-inline col-sm-4">
+        <form method="post" class="form-inline col-sm-4">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <select class="btn btn-secondary" id="inputGroupSelect02">
@@ -59,16 +39,16 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                         }?>
                     </select>
                 </div>
-                <input type="text" class="form-control input-lg" aria-label="Text input with dropdown button" size="40" maxlength="100">
+                <input type="text" class="form-control input-lg" size="40" maxlength="100">
                 <div class="input-group-append">
-                    <button class="btn btn-info" type="submit"><i class="material-icons">search</i></button>
+                    <button class="btn btn-info" type="submit"><span class="fa fa-search"></span></button>
                 </div>
             </div>
         </form>
     </div>
 
     <div class="container">
-        <div class="row">
+        <div id="animesListe" class="row">
             <?php
             foreach ($listeAnimes as $anime)
             {
