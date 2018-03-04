@@ -12,17 +12,15 @@ $animeDAO = new AnimeDAO();
 $listeAnimes = $animeDAO->obtenirListeAnimes();
 
 ?>
-    <div class="container pt-4">
-        <ul class="pagination pagination-sm justify-content-center">
-            <li class="page-item"><a class="page-link" href="https://dev.animepedia.fr/animes">Tous</a></li>
-            <?php
-            foreach(range('A','Z') as $letter)
-            {
-                echo '<li class="page-item"><a class="page-link" onclick="afficherAnimeAvecLettre(\'' . $letter . '\')" href="#">'; echo $letter . '</a></li>';
-            }
-            ?>
-        </ul>
-    </div>
+    <ul class="pagination pt-4 flex-wrap" style="justify-content: center;">
+        <li id="all" class="page-item active"><a class="page-link" href="https://dev.animepedia.fr/animes">Tous</a></li>
+        <?php
+        foreach(range('A','Z') as $letter)
+        {
+            echo '<li id="' . $letter . '" class="page-item"><a class="page-link" onclick="afficherAnimesListe(\'' . $letter . '\')" href="#' .$letter . '">'; echo $letter . '</a></li>';
+        }
+        ?>
+    </ul>
 
 
     <div class="row">
@@ -30,7 +28,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
         <form method="post" class="form-inline col-sm-4">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <select class="btn btn-secondary" id="inputGroupSelect02">
+                    <select class="btn btn-secondary" id="selecteurGenre">
                         <option selected>Genres : none</option>
                         <?php
                         foreach ($listeGenres as $genre)
@@ -39,7 +37,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
                         }?>
                     </select>
                 </div>
-                <input type="text" class="form-control input-lg" size="40" maxlength="100">
+                <input type="text" class="form-control input-lg" size="40" maxlength="100" placeholder="Rechercher" autocomplete="off" onkeyup="afficherAnimesListe(this.value)">
                 <div class="input-group-append">
                     <button class="btn btn-info" type="submit"><span class="fa fa-search"></span></button>
                 </div>
@@ -65,5 +63,13 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
             }?>
         </div>
     </div>
-<script src=<?php echo JSANIMES?>></script>
+
+    <ul class="pagination pt-4 flex-wrap" style="justify-content: center;">
+        <li class="page-item active"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+    <script src=<?php echo JSANIMES?>></script>
 <?php include PIEDDEPAGE;?>

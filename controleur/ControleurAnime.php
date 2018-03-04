@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
         }
 
         // Output "no suggestion" if no hint was found or output correct values
-        echo $hint === "" ? "no suggestion" : $hint;
+        echo $hint === "" ? "Aucun resultat trouvé" : $hint;
     }
     else if (isset($_REQUEST['id']))
     {
@@ -47,10 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 
         $_SESSION["animeid"] = $q;
     }
-    else if (isset($_REQUEST['letter']))
+    else if (isset($_REQUEST['name']))
     {
         // get the q parameter from URL
-        $q = $_REQUEST["letter"];
+        $q = $_REQUEST["name"];
 
         $hint = "";
 
@@ -91,6 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
         }
 
         // Output "no suggestion" if no hint was found or output correct values
-        echo $hint === "" ? "no suggestion" : $hint;
+        echo $hint === "" ? "Aucun resultat trouvé" : $hint;
     }
 }

@@ -1,4 +1,10 @@
-function afficherAnimeAvecLettre(str) {
+activePagination = "all";
+
+function afficherAnimesListe(str) {
+    if(activePagination == "all")
+    {
+        document.getElementById("all").className = "page-item";
+    }
     if (str.length==0) {
         document.getElementById("animesListe").innerHTML="";
         return;
@@ -12,8 +18,21 @@ function afficherAnimeAvecLettre(str) {
     xmlhttp.onreadystatechange=function() {
         if (this.readyState==4 && this.status==200) {
             document.getElementById("animesListe").innerHTML=this.responseText;
+            if (str.length == 1)
+            {
+                if(activePagination != str)
+                {
+                    document.getElementById(activePagination).className = "page-item";
+                }
+                activePagination = str.toUpperCase();
+                document.getElementById(str.toUpperCase()).className = "page-item active";
+            }
+            else if (str.length >= 2)
+            {
+                document.getElementById(activePagination).className = "page-item";
+            }
         }
     }
-    xmlhttp.open("GET","../controleur/ControleurAnime.php?letter="+str,true);
+    xmlhttp.open("GET","../controleur/ControleurAnime.php?name="+str,true);
     xmlhttp.send();
 }
