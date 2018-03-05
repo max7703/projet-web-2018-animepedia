@@ -58,6 +58,17 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
+                            <?php
+                            if(isset($_SESSION["genre"])) {
+                                $genre = $_SESSION["genre"];
+                                if(!empty($genre->listeErreursActives['nom'])) {
+                                    foreach ($genre->listeErreursActives['nom'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Nom")?></label>
                                 <input name="ajouterNomGenre" type="text" class="form-control" required>
@@ -84,6 +95,17 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                             <div class="form-group">
                                 <input id="modifierIdGenre" name="modifierIdGenre" type="hidden" class="form-control" required>
                             </div>
+                            <?php
+                            if(isset($_SESSION["genre"])) {
+                                $genre = $_SESSION["genre"];
+                                if(!empty($genre->listeErreursActives['nom'])) {
+                                    foreach ($genre->listeErreursActives['nom'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } ?>
                             <div class="form-group">
                                 <label><?php echo _("Nom")?></label>
                                 <input id="modifierNomGenre" name="modifierNomGenre" type="text" class="form-control" required>

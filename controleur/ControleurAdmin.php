@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             }
             else {
                 echo '<script> loadData = function() {
-                    afficherAnime("' . $anime->getId(). '","' . $anime->getNom() . '","' . htmlspecialchars($anime->getDescription(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '");
-                    $("#modifierAnimeModal").modal();
+                    afficherAjouterAnime("' . $anime->getNom() . '","' . htmlspecialchars($anime->getDescription(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '");
+                    $("#ajouterAnimeModal").modal();
                 };
                 </script>';
             }
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             /*$animeTemporaire = $animeDAO->obtenirAnimeParId($id);
             $id = $animeTemporaire->getId();*/
 
-            $anime = new Anime(null. null, null, null, null, null, null, null, null);
+            $anime = new Anime(null, null, null, null, null, null, null, null);
             $anime->construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage);
 
             if($anime->estValide()){
@@ -207,8 +207,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $nom = $_POST['ajouterNomGenre'];
 
-            $genre = new Genre(0, $nom);
-            $genreDAO->ajouterUnGenre($genre);
+            $genre = new Genre(null, null);
+            $genre->construireSansDonneesSecurisees(0, $nom);
+            if($genre->estValide()) {
+                echo "Ajout genre";
+                $genreDAO->ajouterUnGenre($genre);
+            }
+            else {
+                echo '<script> loadData = function() {
+                    afficherAjouterGenre("' . $genre->getNom() . '");
+                    $("#ajouterGenreModal").modal();
+                };
+                </script>';
+            }
+            $_SESSION["genre"] = $genre;
 
 
         }
@@ -228,8 +240,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             /*$genreTemporaire = $genreDAO->obtenirGenreParString($nom);*/
 
-            $genre = new Genre($id, $nom);
-            $genreDAO->modifierUnGenre($genre);
+            $genre = new Genre(null, null);
+            $genre->construireSansDonneesSecurisees($id, $nom);
+
+            if($genre->estValide()){
+                $genreDAO->modifierUnGenre($genre);
+            }
+            else {
+                echo '<script> loadData =function() {
+                    afficherGenre("'. $genre->getId(). '","' . $genre->getNom() . '");
+                    $("#modifierGenreModal").modal();
+                };</script>';
+                $_SESSION["genre"] = $genre;
+            }
 
 
         }

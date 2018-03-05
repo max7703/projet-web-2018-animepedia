@@ -10,6 +10,19 @@ function afficherAnime(id, nom, description, genre, auteur, studio, nbepisodes, 
     document.getElementById('modifierNbEpisodeAnime').value = nbepisodes;
     document.getElementById('modifierCheminImageAnime').value = cheminimg;
 }
+
+function afficherAjouterAnime(nom, description, genre, auteur, studio, nbepisodes, cheminimg) {
+    document.getElementById('ajouterNomAnime').value = nom;
+    document.getElementById('ajouterDescriptionAnime').value = description.replace(/&#(\d+);/g, function(match, dec) {
+        return String.fromCharCode(dec);
+    });
+    document.getElementById('ajouterGenreAnime').value = genre;
+    document.getElementById('ajouterAuteurAnime').value = auteur;
+    document.getElementById('ajouterStudioAnime').value = studio;
+    document.getElementById('ajouterNbEpisodeAnime').value = nbepisodes;
+    document.getElementById('ajouterCheminImageAnime').value = cheminimg;
+}
+
 function afficherAnimeSupprimer(nom) {
     document.getElementById('supprimerAnimeNom').value = nom;
 }
@@ -29,6 +42,9 @@ function afficherMembreSupprimer(pseudo) {
 function afficherGenre(id, nom) {
     document.getElementById('modifierIdGenre').value = id;
     document.getElementById('modifierNomGenre').value = nom;
+}
+function afficherAjouterGenre(nom) {
+    document.getElementById('ajouterNomGenre').value = nom
 }
 function afficherGenreSupprimer(nom) {
     document.getElementById('supprimerGenreNom').value = nom;
