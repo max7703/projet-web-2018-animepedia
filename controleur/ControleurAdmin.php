@@ -287,9 +287,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $nom = $_POST['ajouterNomPrivilege'];
 
-            $privilege = new Privilege(0, $nom);
+            $privilege = new Privilege(null, null);
+            $privilege->construireSansDonneesSecurisees(0, $nom);
+            if($privilege->estValide()) {
+                echo "Ajout privilege";
+                $privilegeDAO->ajouterUnPrivilege($privilege);
+            }
+            else {
+                echo '<script> loadData = function() {
+                    afficherAjouterPrivilege("' . $privilege->getNom() . '");
+                    $("#ajouterPrivilegeModal").modal();
+                };
+                </script>';
+            }
+            $_SESSION["privilege"] = $privilege;
 
-            $privilegeDAO->ajouterUnPrivilege($privilege);
+            //$privilege = new Privilege(0, $nom);
+
+            //$privilegeDAO->ajouterUnPrivilege($privilege);
 
 
         }
@@ -308,10 +323,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $nom = $_POST['modifierNomPrivilege'];
 
             /*$privilegeTemporaire = $privilegeDAO->obtenirPrivilegeParString($nom);*/
+            
 
-            $privilege = new Privilege($id, $nom);
+            $privilege = new Privilege(null, null);
+            $privilege->construireSansDonneesSecurisees($id, $nom);
 
-            $privilegeDAO->modifierUnPrivilege($privilege);
+            if($privilege->estValide()){
+                $privilegeDAO->modifierUnPrivilege($privilege);
+            }
+            else {
+                echo '<script> loadData =function() {
+                    afficherPrivilege("'. $privilege->getId(). '","' . $privilege->getNom() . '");
+                    $("#modifierPrivilegeModal").modal();
+                };</script>';
+                $_SESSION["privilege"] = $privilege;
+            }
+
+
+            //$privilege = new Privilege($id, $nom);
+
+            //$privilegeDAO->modifierUnPrivilege($privilege);
 
 
         }

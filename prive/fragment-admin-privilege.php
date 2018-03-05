@@ -57,6 +57,18 @@ $listePrivileges = $privilegeDAO->obtenirListePrivileges();
                             <h4 class="modal-title"><?php echo _("Ajouter un privilege")?></h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
+                        <?php
+                            if(isset($_SESSION["privilege"])) {
+                                $privilege = $_SESSION["privilege"];
+                                if(!empty($privilege->listeErreursActives['nom'])) {
+                                    foreach ($privilege->listeErreursActives['nom'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } 
+                        ?>
                         <div class="modal-body">
                             <div class="form-group">
                                 <label><?php echo _("Nom")?></label>
@@ -84,6 +96,18 @@ $listePrivileges = $privilegeDAO->obtenirListePrivileges();
                             <div class="form-group">
                                 <input id="modifierIdPrivilege" name="modifierIdPrivilege" type="hidden" class="form-control" required>
                             </div>
+                            <?php
+                            if(isset($_SESSION["privilege"])) {
+                                $privilege = $_SESSION["privilege"];
+                                if(!empty($privilege->listeErreursActives['nom'])) {
+                                    foreach ($privilege->listeErreursActives['nom'] as $erreur) {
+                                        echo '<div class="alert alert-danger" role="alert">' .
+                                            $erreur .
+                                            '</div>';
+                                    }
+                                }
+                            } 
+                            ?>
                             <div class="form-group">
                                 <label><?php echo _("Nom")?></label>
                                 <input id="modifierNomPrivilege" name="modifierNomPrivilege" type="text" class="form-control" required>
