@@ -1,6 +1,10 @@
 activePagination = "all";
 
 function afficherAnimesListe(str) {
+    if(document.getElementById("paginator") != null)
+    {
+        document.getElementById("paginator").remove();
+    }
     if(activePagination == "all")
     {
         document.getElementById("all").className = "page-item";
@@ -20,6 +24,9 @@ function afficherAnimesListe(str) {
             document.getElementById("animesListe").innerHTML=this.responseText;
             if (str.length == 1)
             {
+                if(window.location.href.indexOf("page") > -1) {
+                    window.history.pushState(null, null, "https://dev.animepedia.fr/animes#"+str);
+                }
                 if(activePagination != str)
                 {
                     document.getElementById(activePagination).className = "page-item";

@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
                         $hint='
                         <div class="d-flex flex-wrap justify-content-center pt-4 col-md-4">
                             <div class="card" style="width: 22rem;">
-                                <img class="card-img-top" src="' . $anime->getImgPath() . '" alt="Card image cap">
+                                <img class="card-img-top" src="' . SITE . substr($anime->getImgPath(), 3) . '" alt="anime image">
                                 <div class="card-body">
                                     <h5 class="card-title">' . $anime->getNom() . '</h5>
                                     <p class="card-text">' . $anime->getDescription() . '</p>
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
                         $hint=$hint.'
                         <div class="d-flex flex-wrap justify-content-center pt-4 col-md-4">
                             <div class="card" style="width: 22rem;">
-                                <img class="card-img-top" src="' . $anime->getImgPath() . '" alt="Card image cap">
+                                <img class="card-img-top" src="' . SITE . substr($anime->getImgPath(), 3) . '" alt="anime image">
                                 <div class="card-body">
                                     <h5 class="card-title">' . $anime->getNom() . '</h5>
                                     <p class="card-text">' . $anime->getDescription() . '</p>

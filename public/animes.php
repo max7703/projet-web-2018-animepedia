@@ -48,10 +48,11 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
     <div class="container">
         <div id="animesListe" class="row">
             <?php
-            $nb_elem_per_page = 10;
+            $nb_elem_per_page = 9;
             $page = isset($_GET['page'])?intval($_GET['page']-1):0;
             $number_of_pages = intval(count($listeAnimes)/$nb_elem_per_page)+1;
 
+            //echo $page;
             foreach (array_slice($listeAnimes, $page*$nb_elem_per_page, $nb_elem_per_page) as $anime)
             {
                 echo '<div class="d-flex flex-wrap justify-content-center pt-4 col-md-4">
@@ -74,13 +75,13 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
             if($i == 1)
             {
                 echo '
-                <li class="page-item active"><a class="page-link" href="' . SITE . 'animes/page/' . $i . '">' . $i . '</a></li>
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'animes/page/' . $i . '">' . $i . '</a></li>
                 ';
             }
             else
             {
                 echo '
-                <li class="page-item"><a class="page-link" href="' . SITE . 'animes/page/' . $i . '">' . $i . '</a></li>
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'animes/page/' . $i . '">' . $i . '</a></li>
                 ';
             }
         }
