@@ -50,12 +50,13 @@ class Anime
 		"Lien-trailer-trop-long"=>"le chemin vers le trailer est trop long",
 
     ];
+	
     public $listeErreursActives = [];
 
-    public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
+    public function __construct($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath, $lienTrailer, $descriptionDetaillee)
     {
        $this->valid = true;
-       $this->construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath);
+       $this->construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath, $lienTrailer, $descriptionDetaillee);
     }
 	
 	public function construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
