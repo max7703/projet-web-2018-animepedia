@@ -8,11 +8,12 @@
 
 define("NOMDEPAGE", "Profil");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
+
+if (!isset($_SESSION['logged_in']))
+    header("location: " . SITE . "home");
+
 require ENTETE;
 require_once UTILISATEURDAO;
-
-if( !isset($_SESSION['logged_in']))
-    header( "url: https://www.dev.animepedia.fr/home" );
 
 $utilisateurDAO = new UtilisateurDAO();
 $profil = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
