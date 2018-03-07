@@ -189,7 +189,7 @@ class Anime
         }		
 	}
 
-	public function construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
+	public function construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath, $lienTrailer, $descriptionDetaillee)
     {
         $this->valid = true;
         $this->id = $id;
@@ -200,6 +200,8 @@ class Anime
         $this->studio = $studio;
         $this->nbEpisodes = $nbEpisodes;
         $this->imgPath = $imgPath;
+		$this->lienTrailer = $lienTrailer
+		$this->descriptionDetaillee = $descriptionDetaillee
     }
 
     public function getId()
