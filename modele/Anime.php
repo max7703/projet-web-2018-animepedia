@@ -41,7 +41,11 @@ class Anime
         "Studio-invalide"=>"le nom du studio ne doit contenir que des caracteres alphanumeriques",
         "Nombre-episodes-vide"=>"le nombre d'episodes ne doit pas être vide",
         "Nombre-episodes-invalide"=>"le nombre d'episodes doit etre un entier",
-        "Chemin-image-vide"=>"le chemin vers l'image ne doit pas être vide"
+        "Chemin-image-vide"=>"le chemin vers l'image ne doit pas être vide",
+		"Chemin-image-trop-long"=>"le chemin vers l'image est trop long",
+        "Description--detaillee-vide"=>"la description detaillée de l'anime ne doit pas être vide",
+        "Description-detaillee-trop-longue"=>"la description detaillée de l'anime est trop longue",
+        "Description-detaillee-invalide"=>"la description detaillée ne doit contenir que des caracteres alphanumeriques",
 
     ];
     public $listeErreursActives = [];
