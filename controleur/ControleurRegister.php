@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 {
                     $_SESSION['logged_in'] = true; // So we know the user has logged in
                     $_SESSION['message'] = "";
-                    header("location: https://www.dev.animepedia.fr/home");
+                    header("location: " . SITE . "home");
                 }
                 else
                 {
