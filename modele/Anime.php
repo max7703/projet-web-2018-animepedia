@@ -251,6 +251,16 @@ class Anime
     {
         $this->imgPath = filter_var($imgPath, FILTER_SANITIZE_STRING);
     }
+	
+	public function getLienTrailer()
+	{
+		return $this->lienTrailer;
+	}
+	
+	public function setLienTrailer()
+	{
+		$this->lienTrailer = filter_var($lienTrailer, FILTER_SANITIZE_STRING);
+	}
 
     public function estValide(){
         return empty($this->listeErreursActives);
