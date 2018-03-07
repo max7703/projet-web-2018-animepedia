@@ -8,4 +8,4 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 session_destroy();
 
-header("location: https://www.dev.animepedia.fr/home");
+header("location: " . SITE);

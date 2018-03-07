@@ -37,14 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 else
                 {
                     $_SESSION['message'] = "Une erreur c'est produite durant l'enregistrement";
-                    header("location: https://www.dev.animepedia.fr/register");
+                    header("location: " . SITE . "register");
 
                 }
             }
             else
             {
                 $_SESSION['message'] = 'Pseudo ou email deja utilisé';
-                header("location: https://www.dev.animepedia.fr/register");
+                header("location: " . SITE . "register");
             }
         }
         catch(Throwable $e) {
