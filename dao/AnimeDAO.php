@@ -9,7 +9,7 @@ class AnimeDAO
         $listeAnimes = [];
         $basededonnee = BaseDeDonnees::getInstance();
 
-        $requete = $basededonnee->prepare('SELECT * FROM anime');
+        $requete = $basededonnee->prepare('SELECT * FROM anime ORDER BY nom_anime ASC');
 
         $requete->execute();
 
