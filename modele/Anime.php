@@ -43,10 +43,10 @@ class Anime
         "Nombre-episodes-invalide"=>"le nombre d'episodes doit etre un entier",
         "Chemin-image-vide"=>"le chemin vers l'image ne doit pas être vide",
 		"Chemin-image-trop-long"=>"le chemin vers l'image est trop long",
-        "Description--detaillee-vide"=>"la description detaillée de l'anime ne doit pas être vide",
+        "Description-detaillee-vide"=>"la description detaillée de l'anime ne doit pas être vide",
         "Description-detaillee-trop-longue"=>"la description detaillée de l'anime est trop longue",
         "Description-detaillee-invalide"=>"la description detaillée ne doit contenir que des caracteres alphanumeriques",
-		"Lien-trailer"=>"le chemin vers le trailer ne doit pas être vide",
+		"Lien-trailer-vide"=>"le chemin vers le trailer ne doit pas être vide",
 		"Lien-trailer-trop-long"=>"le chemin vers le trailer est trop long",
 
     ];
@@ -59,7 +59,7 @@ class Anime
        $this->construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath, $lienTrailer, $descriptionDetaillee);
     }
 	
-	public function construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
+	public function construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath, $lienTrailer, $descriptionDetaillee)
 	{
 	    $this->valid = true;
 
@@ -71,6 +71,8 @@ class Anime
         $this->studioTemporaire = filter_var($studio, FILTER_SANITIZE_STRING);
         $this->nbEpisodesTemporaire = filter_var($nbEpisodes, FILTER_SANITIZE_NUMBER_INT);
         $this->imgPathTemporaire = filter_var($imgPath, FILTER_SANITIZE_STRING);
+		$this->lienTrailerTemporaire = filter_var($lienTrailer, FILTER_SANITIZE_STRING);
+		$this->descriptionDetailleeTemporaire = filter_var($descriptionDetaillee, FILTER_SANITIZE_STRING);
 
         if(ctype_digit($this->idTemporaire)){
             $this->id = $this->idTemporaire;
@@ -162,7 +164,29 @@ class Anime
         if(empty($this->listeErreursActives["cheminImage"]))
         {
             $this->imgPath = $this->imgPathTemporaire;
+        }	
+		
+        if(strlen($this->descriptionDetailleeTemporaire)>255){
+            $this->listeErreursActives["descriptionDetaillee"][] = $this->listeMessagesErreur["Description-detaillee-trop-longue"];
+            $this->valid = false;
         }
+        if(empty($this->descriptionTemporaire)){
+            $this->listeErreursActives["descriptionDetaillee"][] = $this->listeMessagesErreur["Description-detaillee-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["descriptionDetaillee"]))
+        {
+            $this->descriptionDetaillee = $this->descriptionDetailleeTemporaire;
+        }	
+		
+		if(empty($this->lienTrailerTemporaire)){
+            $this->listeErreursActives["lienTrailer"][] = $this->listeMessagesErreur["Lien-trailer-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["lienTrailer"]))
+        {
+            $this->lienTrailer = $this->lienTrailerTemporaire;
+        }		
 	}
 
 	public function construireAvecDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbEpisodes, $imgPath)
