@@ -8,6 +8,9 @@
 define("NOMDEPAGE", "Connexion");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 
+if (isset($_SESSION['logged_in']))
+    header("location: " . SITE . "home");
+
 require ENTETE;?>
 
 <link rel="stylesheet" href=<?php echo CSS_CONNEXION?>>

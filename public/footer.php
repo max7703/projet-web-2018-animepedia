@@ -12,7 +12,7 @@
         <div class="row">
         <div class="col-sm-3">
             <h4 class="title"><?php echo _("A propos")?></h4>
-            <p> <?php echo _("Nous sommes une équipe de 4 étudiants en DEC Technique de l'Informatique - Informatique de Gestion. 
+            <p> <?php echo _("Nous sommes une équipe de 4 étudiants finissant en DEC Technique de l'Informatique - Informatique de Gestion.
             Nous avons eu l'idée de créer un site communautaire qui reference les animes.")?></p>
         </div>
         <div class="col-sm-3">
