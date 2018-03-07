@@ -5,7 +5,7 @@
  * Date: 12/02/2018
  * Time: 13:21
  */
-define("NOMDEPAGE", "Index");
+define("NOMDEPAGE", "Animepedia");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require ENTETE;
 require_once ANIMEDAO;

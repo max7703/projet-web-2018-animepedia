@@ -13,7 +13,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require_once CONTROLEURINSCRIPTION;
 
 
-if($_SESSION['logged_in'] == true)
+if(!empty($_SESSION['logged_in']))
     header( HOMEPAGE );
 require ENTETE;?>
 
