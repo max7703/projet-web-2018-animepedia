@@ -8,12 +8,7 @@
 define("NOMDEPAGE", "Connexion");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 
-if( isset($_SESSION['logged_in']))
-    header( "url: https://www.dev.animepedia.fr/home" );
-
 require ENTETE;?>
-
-
 
 <link rel="stylesheet" href=<?php echo CSS_CONNEXION?>>
 <div class="container">

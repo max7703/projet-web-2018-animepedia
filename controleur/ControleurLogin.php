@@ -34,19 +34,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     $_SESSION['logged_in'] = true;
 
                     $_SESSION['message'] = "";
-                    header("location: https://www.dev.animepedia.fr/home");
+                    header("location: " . SITE);
                 }
                 else
                 {
                     $_SESSION['message'] = 'Mot de passe incorrect';
-                    header("location: https://www.dev.animepedia.fr/login");
+                    header("location: " . SITE . "login");
 
                 }
             }
             else
             {
                 $_SESSION['message'] = 'Utilisateur inconnu';
-                header("location: https://www.dev.animepedia.fr/login");
+                header("location: " . SITE . "login");
             }
         }
         catch(Throwable $e) {
