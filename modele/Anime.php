@@ -261,6 +261,16 @@ class Anime
 	{
 		$this->lienTrailer = filter_var($lienTrailer, FILTER_SANITIZE_STRING);
 	}
+	
+	public function getDescriptionDetaillee()
+	{
+		return $this->descriptionDetaillee;
+	}
+	
+	public function setDescriptionDetaillee()
+	{
+		$this->descriptionDetaillee = filter_var($descriptionDetaillee, FILTER_SANITIZE_STRING);
+	}
 
     public function estValide(){
         return empty($this->listeErreursActives);
