@@ -54,6 +54,9 @@ function afficherPrivilege(id, nom) {
     document.getElementById('modifierIdPrivilege').value = id;
     document.getElementById('modifierNomPrivilege').value = nom;
 }
+function afficherAjouterPrivilege(nom) {
+    document.getElementById('ajouterNomPrivilege').value = nom;
+}
 function afficherPrivilegeSupprimer(nom) {
     document.getElementById('supprimerPrivilegeNom').value = nom;
 }

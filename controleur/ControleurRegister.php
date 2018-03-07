@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $_SESSION['username'] = $_POST['registerUsername'];
             $_SESSION['email'] = $_POST['registerEmail'];
 
-            $utilisateur = new Utilisateur(0, $username, $password, $email, 0,"","");
+            $utilisateur = new Utilisateur(0, $username, $password, $email, 2,"","");
 
             if(!$utilisateurDAO->estExistant($utilisateur))
             {
