@@ -46,6 +46,8 @@ class Anime
         "Description--detaillee-vide"=>"la description detaillée de l'anime ne doit pas être vide",
         "Description-detaillee-trop-longue"=>"la description detaillée de l'anime est trop longue",
         "Description-detaillee-invalide"=>"la description detaillée ne doit contenir que des caracteres alphanumeriques",
+		"Lien-trailer"=>"le chemin vers le trailer ne doit pas être vide",
+		"Lien-trailer-trop-long"=>"le chemin vers le trailer est trop long",
 
     ];
     public $listeErreursActives = [];
