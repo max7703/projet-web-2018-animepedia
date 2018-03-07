@@ -10,12 +10,12 @@
 
 define("NOMDEPAGE", _("S'enregistrer"));
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
-require ENTETE;
 require_once CONTROLEURINSCRIPTION;
 
 
-if( isset($_SESSION['logged_in']))
-    header( HOMEPAGE );?>
+if( !empty($_SESSION['logged_in']))
+    header( HOMEPAGE );
+require ENTETE;?>
 
 <link rel="stylesheet" href=<?php echo CSS_INSCRIPTION?>>
 <div class="container">
