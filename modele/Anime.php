@@ -9,6 +9,8 @@ class Anime
     private $studio;
     private $nbEpisodes;
     private $imgPath;
+	private $lienTrailer;
+	private $descriptionDetaillee;
     private $valid ;
 
     private $idTemporaire;
@@ -19,6 +21,8 @@ class Anime
     private $studioTemporaire;
     private $nbEpisodesTemporaire;
     private $imgPathTemporaire;
+	private $lienTrailerTemporaire;
+	private $descriptionDetailleeTemporaire;
 
     private $listeMessagesErreur = [
         "Nom-vide"=>"le nom de l'anime ne doit pas être vide",
