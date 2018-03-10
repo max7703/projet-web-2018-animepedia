@@ -24,7 +24,7 @@ class AnimeDAO
                     $anime['studio_anime'],
                     $anime['nb_episodes_anime'],
                     $anime['img_path_anime'],
-					$anime['lien_triler_anime'],
+					$anime['lien_trailer_anime'],
 					$anime['description_detail_anime']);
             }
         }
@@ -51,7 +51,7 @@ class AnimeDAO
             $anime['studio_anime'],
             $anime['nb_episodes_anime'],
             $anime['img_path_anime'],
-			$anime['lien_triler_anime'],
+			$anime['lien_trailer_anime'],
 			$anime['description_detail_anime']);
 
     }
@@ -74,7 +74,7 @@ class AnimeDAO
             $anime['studio_anime'],
             $anime['nb_episodes_anime'],
             $anime['img_path_anime'],
-			$anime['lien_triler_anime'],
+			$anime['lien_trailer_anime'],
 			$anime['description_detail_anime']);
 
     }
@@ -89,7 +89,9 @@ class AnimeDAO
 		auteur_anime, 
         studio_anime, 
 		nb_episodes_anime,
-		img_path_anime) 
+		img_path_anime,
+		lien_trailer_anime,
+		description_detail_anime) 
 		
 		VALUES(:nom_anime, 
 		:description_anime, 
@@ -97,7 +99,9 @@ class AnimeDAO
 		:auteur_anime, 
         :studio_anime, 
 		:nb_episodes_anime,
-		:img_path_anime)');
+		:img_path_anime,
+		:lien_trailer_anime,
+		:description_detail_anime)');
 
         $requete->execute(array('nom_anime' => $anime->getNom(),
             'description_anime' => $anime->getDescription(),
@@ -105,7 +109,9 @@ class AnimeDAO
             'auteur_anime'=> $anime->getAuteur(),
             'studio_anime'=> $anime->getStudio(),
             'nb_episodes_anime'=> $anime->getNbEpisodes(),
-            'img_path_anime'=> $anime->getImgPath()));
+            'img_path_anime'=> $anime->getImgPath(),
+			'lien_trailer_anime'=> $anime->getLienTrailer(),
+			'description_detail_anime'=> $anime->getDescriptionDetaillee()));
     }
 
     public function supprimerUnAnime(Anime $anime)
