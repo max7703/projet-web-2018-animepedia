@@ -135,7 +135,9 @@ class AnimeDAO
 		auteur_anime = :auteur_anime, 
         studio_anime = :studio_anime, 
 		nb_episodes_anime = :nb_episodes_anime,
-		img_path_anime = :img_path_anime
+		img_path_anime = :img_path_anime,
+		lien_trailer_anime = :lien_trailer_anime,
+		description_detail_anime = :description_detail_anime
 		WHERE id_anime = :id_anime');
 
         $requete->execute(array('nom_anime' => $anime->getNom(),
@@ -145,7 +147,9 @@ class AnimeDAO
             'studio_anime'=> $anime->getStudio(),
             'nb_episodes_anime'=> $anime->getNbEpisodes(),
             'img_path_anime'=> $anime->getImgPath(),
-            'id_anime'=> $anime->getId()));
+            'id_anime'=> $anime->getId(),
+			'lien_trailer_anime'=> $anime->getLienTrailer(),
+			'description_detail_anime'=> $anime->getDescriptionDetaillee()));
     }
 
 }
