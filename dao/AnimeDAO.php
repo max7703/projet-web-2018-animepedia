@@ -23,7 +23,9 @@ class AnimeDAO
                     $anime['auteur_anime'],
                     $anime['studio_anime'],
                     $anime['nb_episodes_anime'],
-                    $anime['img_path_anime']);
+                    $anime['img_path_anime'],
+					$anime['lien_triler_anime'],
+					$anime['description_detail_anime']);
             }
         }
 
