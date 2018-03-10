@@ -200,8 +200,8 @@ class Anime
         $this->studio = $studio;
         $this->nbEpisodes = $nbEpisodes;
         $this->imgPath = $imgPath;
-		$this->lienTrailer = $lienTrailer
-		$this->descriptionDetaillee = $descriptionDetaillee
+		$this->lienTrailer = $lienTrailer;
+		$this->descriptionDetaillee = $descriptionDetaillee;
     }
 
     public function getId()
@@ -284,7 +284,7 @@ class Anime
 		return $this->lienTrailer;
 	}
 	
-	public function setLienTrailer()
+	public function setLienTrailer($lienTrailer)
 	{
 		$this->lienTrailer = filter_var($lienTrailer, FILTER_SANITIZE_STRING);
 	}
@@ -294,7 +294,7 @@ class Anime
 		return $this->descriptionDetaillee;
 	}
 	
-	public function setDescriptionDetaillee()
+	public function setDescriptionDetaillee($descriptionDetaillee)
 	{
 		$this->descriptionDetaillee = filter_var($descriptionDetaillee, FILTER_SANITIZE_STRING);
 	}
