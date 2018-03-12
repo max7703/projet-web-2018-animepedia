@@ -54,10 +54,10 @@ require_once UTILISATEURDAO;
             </ul>
             <form class="form-inline pr-2 my-lg-0">
             <ul id="livesearch" class="dropdown-menu" style="left: auto"></ul>
-                <input id="animeSearch" class="form-control mr-sm-2" placeholder="Rechercher" autocomplete="off" onkeyup="trouverAnime(this.value)" type="text">
-                <button class="btn-lg btn-success search-index" type="button">
-                    <span class="fa fa-search"></span>
-                </button>
+                <input id="animeSearch" type="text" class="form-control input-lg" maxlength="100" placeholder="Rechercher" autocomplete="off" onkeyup="trouverAnime(this.value)">
+                <div class="input-group-append">
+                    <button class="btn btn-info" type="submit"><span class="fa fa-search"></span></button>
+                </div>
             </form>
             <ul class="nav navbar-nav navbar-right pr-2">
                 <li class="dropdown">
