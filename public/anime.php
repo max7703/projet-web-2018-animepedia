@@ -8,9 +8,13 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 include_once CONTROLEURANIME;
 require_once ANIMEDAO;
+require_once GENREDAO;
 
 $animeDAO = new AnimeDAO();
 $anime = $animeDAO->obtenirAnimeParId($_SESSION["animeid"]);
+
+$genreDAO = new GenreDAO();
+$genre = $genreDAO->obtenirGenreParId($anime->getGenre());
 
 define("NOMDEPAGE", $anime->getNom());
 require ENTETE;
@@ -30,7 +34,7 @@ require ENTETE;
       <hr>
 
       <p>Auteur: <?php echo $anime->getAuteur() ?></p>
-      <p>Genre: <?php echo $anime->getGenre() ?></p>
+      <p>Genre: <?php echo $genre->getNom() ?></p>
       <p>Studio d’animation: <?php echo $anime->getStudio() ?></p>
       <p>Nombre d'épisodes: <?php echo $anime->getNbEpisodes() ?></p>
 
