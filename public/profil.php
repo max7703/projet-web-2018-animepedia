@@ -12,11 +12,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 if (!isset($_SESSION['logged_in']))
     header("location: " . SITE . "home");
 
-require ENTETE;
+require_once ENTETE;
 require_once UTILISATEURDAO;
+require_once PRIVILEGEDAO;
 
 $utilisateurDAO = new UtilisateurDAO();
 $profil = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
+
+$privilegeDAO = new PrivilegeDAO();
+$privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
 
 ?>
 <link rel="stylesheet" href="<?php echo CSS_PROFIL?>">
@@ -30,7 +34,7 @@ $profil = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
         <div class="col-sm-10">
             <dl class="row" style="margin: 20px 0 15px 0;">
                 <dt class="col-sm-2"><?php echo _("ID:")?></dt><dd class="col-sm-10"><?php  echo $profil->getId(); ?></dd>
-                <dt class="col-sm-2"><?php echo _("Classe:")?></dt><dd class="col-sm-10"><?php  echo $profil->getId_Privilege(); ?></dd>
+                <dt class="col-sm-2"><?php echo _("Classe:")?></dt><dd class="col-sm-10"><?php  echo $privilege->getNom(); ?></dd>
                 <dt class="col-sm-2"><?php echo _("Créé le:")?></dt><dd class="col-sm-10">2017-07-07 15:51:25</dd>
             </dl>
         </div>
