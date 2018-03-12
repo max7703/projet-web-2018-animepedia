@@ -36,7 +36,7 @@ define("MODELEUTILISATEUR", MODELE . '/Utilisateur.php');
 define("MODELEGENRE", MODELE . '/Genre.php');
 define("MODELEPRIVILEGE", MODELE . '/Privilege.php');
 
-define("CONTROLEUR", $_SERVER['DOCUMENT_ROOT'] . '/controleur');
+define("CONTROLEUR", '../controleur');
 define("CONTROLEURINDEX", CONTROLEUR . '/ControleurIndex.php');
 define("CONTROLEURANIME", CONTROLEUR . '/ControleurAnime.php');
 define("CONTROLEURPROFIL", CONTROLEUR . '/ControleurProfil.php');
@@ -51,12 +51,13 @@ define("GENREDAO", DAO . '/GenreDAO.php');
 define("PRIVILEGEDAO", DAO . '/PrivilegeDAO.php');
 define("UTILISATEURDAO", DAO . '/UtilisateurDAO.php');
 
-define("JS", $_SERVER['DOCUMENT_ROOT'] . "/js");
+define("JS", SITE . "/js");
 define("JSWIZARD", JS . "/wizard.js");
 define("JSANIMES", JS . "/animes.js");
 define("JSADMIN", JS . "/admin.js");
+define("JSHEADER", JS . "/header.js");
 
-define("CSS", $_SERVER['DOCUMENT_ROOT'] . "/css");
+define("CSS", SITE . "/css");
 define("CSS_PROFIL", CSS . "/profil_.css");
 define("CSS_404", CSS . '/404_.css');
 define("CSS_ADMIN", CSS . '/admin_.css');

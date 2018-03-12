@@ -5,7 +5,6 @@
  * Date: 16/02/2018
  * Time: 11:33
  */
-
 define("NOMDEPAGE", "Admin");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require ENTETE;
@@ -23,6 +22,5 @@ include_once CONTROLEURADMIN;
     </div>
 </div>
 <script src=<?php echo JSADMIN?>></script>
-<script> loadData();</script>
 <?php include PIEDDEPAGE;?>
 
