@@ -43,12 +43,15 @@ require ENTETE;
 
       <!-- Post Content -->
       <p class="lead">« <?php echo $anime->getDescription() ?> »</p>
+      <hr>
 
+      <p><?php echo $anime->getDescriptionDetaillee() ?></p>
       <hr>
 
       <h1 class="mt-6">Videos</h1>
-      <p></p>
-      <hr>
+        <iframe width="640" height="360" src="<?php echo $anime->getLienTrailer() ?>">
+        </iframe>
+        <hr>
 
     </div>
 
