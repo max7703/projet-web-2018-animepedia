@@ -66,6 +66,8 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
 	<h2>Animes aleatoire</h2>
 	<div class="row">
         <?php
+        $nombreDeBoucle = 1;
+        shuffle($listeAnimes);
 foreach ($listeAnimes as $anime)
 {
     echo '<div class="col-lg-3 col-md-4 col-sm-6 pb-3">
@@ -82,7 +84,9 @@ foreach ($listeAnimes as $anime)
 				</div>
 			</article>
 		</div>';
-}?>
+    if ($nombreDeBoucle++ == 8) break;
+}
+?>
 	</div>
 </section>
 
