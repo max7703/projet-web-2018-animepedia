@@ -14,10 +14,11 @@ require ENTETE;
     <ul class="pagination pt-4 flex-wrap" style="justify-content: center;">
         <li id="all" class="page-item active"><a class="page-link" href="https://dev.animepedia.fr/animes">Tous</a></li>
         <?php
-        foreach(range('A','Z') as $letter)
-        {
-            echo '<li id="' . $letter . '" class="page-item"><a class="page-link" onclick="afficherAnimesListe(\'' . $letter . '\')" href="#' .$letter . '">'; echo $letter . '</a></li>';
-        }
+        foreach(range('A','Z') as $letter):?>
+
+            <li id="<?php echo $letter; ?>" class="page-item"><a class="page-link" onclick="afficherAnimesListe('<?php echo $letter;?>')" href="#<?php echo $letter;?>"> <?php echo $letter ?></a></li>
+        <?php
+        endforeach;
         ?>
     </ul>
 
@@ -30,10 +31,11 @@ require ENTETE;
                     <select class="btn btn-secondary" id="selecteurGenre">
                         <option selected>Genres : none</option>
                         <?php
-                        foreach ($listeGenres as $genre)
-                        {
-                            echo '<option value="' . $genre->getId() . '">' . $genre->getNom() . '</option>';
-                        }?>
+                        foreach ($listeGenres as $genre):
+                        ?>
+                            <option value="<?php echo $genre->getId()?>"> <?php echo $genre->getNom()?></option>';
+                        <?php
+                        endforeach;?>
                     </select>
                 </div>
                 <input type="text" class="form-control input-lg" size="40" maxlength="100" placeholder="Rechercher" autocomplete="off" onkeyup="afficherAnimesListe(this.value)">
@@ -52,19 +54,18 @@ require ENTETE;
             $number_of_pages = intval(count($listeAnimes)/$nb_elem_per_page)+1;
 
             //echo $page;
-            foreach (array_slice($listeAnimes, $page*$nb_elem_per_page, $nb_elem_per_page) as $anime)
-            {
-                echo '<div class="d-flex flex-wrap justify-content-center pt-4 col-md-4">
+            foreach (array_slice($listeAnimes, $page*$nb_elem_per_page, $nb_elem_per_page) as $anime):?>
+                <div class="d-flex flex-wrap justify-content-center pt-4 col-md-4">
                 <div class="card" style="width: 22rem;">
-                    <img class="card-img-top" src="' . SITE; echo substr($anime->getImgPath(), 3); echo '" alt="anime image">
+                    <img class="card-img-top" src="<?php echo SITE; echo substr($anime->getImgPath(), 3);?>" alt="anime image">
                     <div class="card-body">
-                        <h5 class="card-title">'; echo $anime->getNom(); echo '</h5>
-                        <p class="card-text">'; echo $anime->getDescription(); echo '</p>
-                        <a href="'; echo SITE  . 'anime/' . $anime->getId() . '" class="btn btn-primary">Go</a>
+                        <h5 class="card-title"><?php echo $anime->getNom();?></h5>
+                        <p class="card-text"><?php echo $anime->getDescription();?></p>
+                        <a href="<?php echo SITE  . 'anime/' . $anime->getId()?>" class="btn btn-primary">Go</a>
                     </div>
                 </div>
-            </div>';
-            }?>
+            </div>
+            <?php endforeach;?>
         </div>
     </div>
 
