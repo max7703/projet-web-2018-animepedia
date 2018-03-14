@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : animepedao77.mysql.db
--- Généré le :  jeu. 22 fév. 2018 à 14:53
+-- Généré le :  mer. 14 mars 2018 à 05:00
 -- Version du serveur :  5.6.34-log
 -- Version de PHP :  7.0.27
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `privilege` (
   `id_privilege` int(11) NOT NULL,
-  `nom_privilege` text NOT NULL
+  `nom_privilege` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -60,7 +60,7 @@ ALTER TABLE `privilege`
 -- AUTO_INCREMENT pour la table `privilege`
 --
 ALTER TABLE `privilege`
-  MODIFY `id_privilege` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
+  MODIFY `id_privilege` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
