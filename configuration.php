@@ -35,6 +35,7 @@ define("MODELEANIME", MODELE . '/Anime.php');
 define("MODELEUTILISATEUR", MODELE . '/Utilisateur.php');
 define("MODELEGENRE", MODELE . '/Genre.php');
 define("MODELEPRIVILEGE", MODELE . '/Privilege.php');
+define("MODELEPAIEMENT", MODELE . '/Paiement.php');
 
 define("CONTROLEUR", '../controleur');
 define("CONTROLEURINDEX", CONTROLEUR . '/ControleurIndex.php');
