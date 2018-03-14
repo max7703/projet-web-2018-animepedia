@@ -260,7 +260,19 @@ class Anime
 
 	public function setGenre($genre)
     {
-        $this->genre = filter_var($genre, FILTER_SANITIZE_STRING);
+        $this->genreTemporaire = filter_var($genre, FILTER_SANITIZE_STRING);
+        if(!ctype_digit($this->genreTemporaire)){
+            $this->listeErreursActives["genre"][] = $this->listeMessagesErreur["Genre-invalide"];
+            $this->valid = false;
+        }
+        if(empty($this->genreTemporaire)){
+            $this->listeErreursActives["genre"][] = $this->listeMessagesErreur["Genre-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["genre"]))
+        {
+            $this->genre = $this->genreTemporaire;
+        }
     }
 
     public function getAuteur()
