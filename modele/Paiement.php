@@ -34,4 +34,24 @@ class Paiement
     {
         return $this->date_paiement;
     }
+	
+	public function setId($id)
+	{
+		$this->id = filter_var($id, FILTER_SANITIZE_EMAIL);
+	}
+	
+	public function setPaiement_Id_Paypal($paiement_id_paypal)
+	{
+		$this->paiement_id_paypal = filter_var($paiement_id_paypal, FILTER_SANITIZE_EMAIL);
+	}
+	
+	public function setId_Utilisateur($id_utilisateur)
+	{
+		$this->id_utilisateur = filter_var($id_utilisateur, FILTER_SANITIZE_EMAIL);
+	}
+	
+	public function setDate_Paiement($date_paiement)
+	{
+		$this->date_paiement = filter_var($date_paiement, FILTER_SANITIZE_EMAIL);
+	}
 }
