@@ -216,7 +216,19 @@ class Anime
 
 	public function setNom($nom)
     {
-        $this->nom = filter_var($nom, FILTER_SANITIZE_STRING);
+        $this->nomTemporaire = filter_var($nom, FILTER_SANITIZE_STRING);
+        if(strlen($this->nomTemporaire)>35){
+            $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-trop-long"];
+            $this->valid = false;
+        }
+        if(empty($this->nomTemporaire)){
+            $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["nom"]))
+        {
+            $this->nom = $this->nomTemporaire;
+        }
     }
 
     public function getDescription()
