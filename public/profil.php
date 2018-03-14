@@ -28,8 +28,8 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
 <div class="container">
     <h2><?php echo _("Profil de")?> <strong class="text-default"><?php  echo $profil->getPseudo(); ?></strong></h2>
     <div class="row" style="margin-bottom: 20px;">
-        <div class="col-sm-2" style="max-width: 150px;">
-            <img class="avatar" src="https://www.gravatar.com/avatar/b95af81b980e4148dea02dc6be3c2dce?s=120&amp;d=https%3A%2F%2Fnyaa.si%2Fstatic%2Fimg%2Favatar%2Fdefault.png&amp;r=pg">
+        <div class="img-profile col-sm-2" style="max-width: 150px;">
+            <img id="img-utilisateur" class="avatar" src="<?php  echo $profil->getImage(); ?>">
         </div>
         <div class="col-sm-10">
             <dl class="row" style="margin: 20px 0 15px 0;">
@@ -49,6 +49,9 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
             <a class="nav-link" data-toggle="tab" href="#email">Email</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#image">Image</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#transactions">Transactions</a>
         </li>
     </ul>
@@ -61,7 +64,7 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="current_password"><?php echo _("Mot de passe actuel")?></label>
-                            <input class="form-control" id="current_password" name="current_password" placeholder="Mot de passe actuel" title="" type="password" value="">
+                            <input required="required" class="form-control" id="current_password" name="current_password" placeholder="Mot de passe actuel" title="" type="password" value="">
                         </div>
 
                     </div>
@@ -70,7 +73,7 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="new_password"><?php echo _("Nouveau mot de passe")?></label>
-                            <input class="form-control" id="new_password" name="new_password" placeholder="Nouveau mot de passe" title="" type="password" value="">
+                            <input required="required"class="form-control" id="new_password" name="new_password" placeholder="Nouveau mot de passe" title="" type="password" value="">
                         </div>
 
                     </div>
@@ -79,7 +82,7 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="password_confirm"><?php echo _("Répéter le mot de passe")?></label>
-                            <input class="form-control" id="password_confirm" name="password_confirm" placeholder="Confirmation du mot de passe" title="" type="password" value="">
+                            <input required="required" class="form-control" id="password_confirm" name="password_confirm" placeholder="Confirmation du mot de passe" title="" type="password" value="">
                         </div>
 
                     </div>
@@ -87,6 +90,29 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                 <div class="row">
                     <div class="col-md-4">
                         <input type="submit" value="Mettre à jour" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane container" id="image">
+            <form action="<?php echo CONTROLEURPROFIL?>" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <p class="pt-2">Selectionner une image:</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group">
+                            <input required="required" class="btn btn-primary" type="file" name="fileToUpload" id="fileToUpload">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <div class="form-group">
+                            <input required="required" class="btn btn-primary" type="submit" value="Upload" name="upload-img">
+                        </div>
                     </div>
                 </div>
             </form>
@@ -103,16 +129,15 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="email"><?php echo _("Nouvelle adresse email")?></label>
-                            <input class="form-control" id="email" name="email" placeholder="Nouvelle adresse email" title="" type="email" value="">
+                            <input required="required" class="form-control" id="email" name="email" placeholder="Nouvelle adresse email" title="" type="email" value="">
                         </div>
-
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="current_password"><?php echo _("Mot de passe actuel")?></label>
-                            <input class="form-control" id="current_password" name="current_password" placeholder="Mot de passe actuel" title="" type="password" value="">
+                            <input required="required" class="form-control" id="current_password" name="current_password" placeholder="Mot de passe actuel" title="" type="password" value="">
                         </div>
 
                     </div>
@@ -136,6 +161,11 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
     </div>
 </div>
 
+<script>
+    function uploadImage() {
+        document.getElementById('fileToUpload').click();
+    }
 
+</script>
 
 <?php include PIEDDEPAGE;?>
