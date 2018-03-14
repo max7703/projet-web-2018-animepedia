@@ -282,7 +282,19 @@ class Anime
 
 	public function setAuteur($auteur)
     {
-        $this->auteur = filter_var($auteur, FILTER_SANITIZE_STRING);
+        $this->auteurTemporaire = filter_var($auteur, FILTER_SANITIZE_STRING);
+        if(strlen($this->auteurTemporaire)>30){
+            $this->listeErreursActives["auteur"][] = $this->listeMessagesErreur["Nom-auteur-trop-long"];
+            $this->valid = false;
+        }
+        if(empty($this->auteurTemporaire)){
+            $this->listeErreursActives["auteur"][] = $this->listeMessagesErreur["Auteur-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["auteur"]))
+        {
+            $this->auteur = $this->auteurTemporaire;
+        }
     }
 
     public function getStudio()
@@ -292,7 +304,20 @@ class Anime
 
 	public function setStudio($studio)
     {
-        $this->studio = filter_var($studio, FILTER_SANITIZE_STRING);
+        $this->studioTemporaire = filter_var($studio, FILTER_SANITIZE_STRING);
+        if(strlen($this->studioTemporaire)>30){
+            $this->listeErreursActives["studio"][] = $this->listeMessagesErreur["Nom-studio-trop-long"];
+            $this->valid = false;
+        }
+        if(empty($this->studioTemporaire)){
+            $this->listeErreursActives["studio"][] = $this->listeMessagesErreur["Studio-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["studio"]))
+        {
+            $this->studio = $this->studioTemporaire;
+            $this->valid = false;
+        }
     }
 
     public function getNbEpisodes()
@@ -302,7 +327,19 @@ class Anime
 
 	public function setNbEpisodes($nbEpisodes)
     {
-        $this->nbEpisodes = filter_var($nbEpisodes, FILTER_SANITIZE_NUMBER_INT);
+        $this->nbEpisodesTemporaire = filter_var($nbEpisodes, FILTER_SANITIZE_NUMBER_INT);
+        if(!ctype_digit($this->nbEpisodesTemporaire)){
+            $this->listeErreursActives["nbEpisodes"][] = $this->listeMessagesErreur["Nombre-episodes-invalide"];
+            $this->valid = false;
+        }
+        else if(empty($this->nbEpisodesTemporaire)){
+            $this->listeErreursActives["nbEpisodes"][] = $this->listeMessagesErreur["Nombre-episodes-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["nbEpisodes"]))
+        {
+            $this->nbEpisodes = $this->nbEpisodesTemporaire;
+        }
     }
 
     public function getImgPath()
@@ -312,7 +349,15 @@ class Anime
 
     public function setImgPath($imgPath)
     {
-        $this->imgPath = filter_var($imgPath, FILTER_SANITIZE_STRING);
+        $this->imgPathTemporaire = filter_var($imgPath, FILTER_SANITIZE_STRING);
+        if(empty($this->imgPathTemporaire)){
+            $this->listeErreursActives["cheminImage"][] = $this->listeMessagesErreur["Chemin-image-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["cheminImage"]))
+        {
+            $this->imgPath = $this->imgPathTemporaire;
+        }
     }
 	
 	public function getLienTrailer()
@@ -322,7 +367,15 @@ class Anime
 	
 	public function setLienTrailer($lienTrailer)
 	{
-		$this->lienTrailer = filter_var($lienTrailer, FILTER_SANITIZE_STRING);
+        $this->lienTrailerTemporaire = filter_var($lienTrailer, FILTER_SANITIZE_STRING);
+        if(empty($this->lienTrailerTemporaire)){
+            $this->listeErreursActives["lienTrailer"][] = $this->listeMessagesErreur["Lien-trailer-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["lienTrailer"]))
+        {
+            $this->lienTrailer = $this->lienTrailerTemporaire;
+        }
 	}
 	
 	public function getDescriptionDetaillee()
@@ -332,7 +385,19 @@ class Anime
 	
 	public function setDescriptionDetaillee($descriptionDetaillee)
 	{
-		$this->descriptionDetaillee = filter_var($descriptionDetaillee, FILTER_SANITIZE_STRING);
+        $this->descriptionDetailleeTemporaire = filter_var($descriptionDetaillee, FILTER_SANITIZE_STRING);
+        if(strlen($this->descriptionDetailleeTemporaire)>255){
+            $this->listeErreursActives["descriptionDetaillee"][] = $this->listeMessagesErreur["Description-detaillee-trop-longue"];
+            $this->valid = false;
+        }
+        if(empty($this->descriptionTemporaire)){
+            $this->listeErreursActives["descriptionDetaillee"][] = $this->listeMessagesErreur["Description-detaillee-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["descriptionDetaillee"]))
+        {
+            $this->descriptionDetaillee = $this->descriptionDetailleeTemporaire;
+        }
 	}
 
     public function estValide(){
