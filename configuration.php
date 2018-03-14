@@ -52,6 +52,7 @@ define("ANIMEDAO", DAO . '/AnimeDAO.php');
 define("GENREDAO", DAO . '/GenreDAO.php');
 define("PRIVILEGEDAO", DAO . '/PrivilegeDAO.php');
 define("UTILISATEURDAO", DAO . '/UtilisateurDAO.php');
+define("PAIEMENTDAO", DAO . '/PaiementDAO.php');
 
 define("JS", SITE . "/js");
 define("JSWIZARD", JS . "/wizard.js");
