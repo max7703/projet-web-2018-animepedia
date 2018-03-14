@@ -45,12 +45,29 @@ class PaiementDAO
 
         $requete->execute(array('id_paiement' => $id));
 
-        $anime = $requete->fetch();
+        $paiement = $requete->fetch();
 
         return new Paiement($paiement['id_paiement'],
 			$paiement['paiement_id_paypal'],
 			$paiement['id_utilisateur'],
 			$paiement['date_paiement']);
 
+    }
+	
+	public function ajouterUnPaiement(Paiement $paiement)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('INSERT INTO paiement(paiement_id_paypal, 
+		id_utilisateur, 
+		date_paiement) 
+		
+		VALUES(:paiement_id_paypal, 
+		:id_utilisateur, 
+		:date_paiement)');
+
+        $requete->execute(array('paiement_id_paypal' => $paiement->getPaiement_Id_Paypal(),
+            'id_utilisateur' => $paiement->getId_Utilisateur(),
+            'date_paiement'=> $paiement->getDate_Paiement())));
     }
 }
