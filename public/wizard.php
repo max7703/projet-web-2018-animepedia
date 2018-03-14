@@ -9,9 +9,8 @@
 define("NOMDEPAGE", _("Abonnement en cours..."));
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
 require ENTETE;?>
-
 <link rel="stylesheet" href=<?php echo CSS_WIZARD?>>
-<div class="container pt-3">
+<div id="page-wizard" class="container pt-3">
 
       <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
@@ -31,15 +30,11 @@ require ENTETE;?>
               <h3> <?php echo _("Etape 1")?></h3>
               <div class="form-group">
             <label class="control-label"><?php echo _("Nom")?></label>
-            <input  type="text" required="required" class="form-control" placeholder=<?php echo _("Entrer nom");?>  />
+            <input id="paiement-nom" type="text" required="required" class="form-control" placeholder=<?php echo _("Entrer nom");?>  />
           </div>
               <div class="form-group">
             <label class="control-label"><?php echo _("Prenom")?></label>
-            <input type="text" required="required" class="form-control" placeholder=<?php echo _("Entrer prenom")?> />
-          </div>
-              <div class="form-group">
-            <label class="control-label"><?php echo _("Adresse")?></label>
-            <textarea required="required" class="form-control" placeholder=<?php echo _("Entrer adresse")?> ></textarea>
+            <input id="paiement-prenom" type="text" required="required" class="form-control" placeholder=<?php echo _("Entrer prenom")?> />
           </div>
               <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" ><?php echo _("Suivant")?></button>
             </div>
@@ -49,7 +44,7 @@ require ENTETE;?>
               <h3> <?php echo _("Etape 2")?></h3>
               <div class="form-group">
              <label class="control-label"><?php echo _("Email PayPal")?></label>
-             <input type="email" required="required" class="form-control" placeholder=<?php echo _("Entrer email")?> />
+             <input id="paiement-email" type="email" required="required" class="form-control" placeholder=<?php echo _("Entrer email")?> />
              </div>
 <!--              <button id="paypal-button" class="btn btn-success btn-lg pull-right pt-2" type="submit" name="paypal-button">--><?php //echo _("Payer")?><!--</button>-->
             <div id="paypal-button"></div>

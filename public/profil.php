@@ -40,17 +40,22 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
         </div>
     </div>
 
-    <ul class="nav nav-tabs" id="profileTabs" role="tablist">
-        <li role="presentation" class="active">
-            <a href="#password-change" id="password-change-tab" role="tab" data-toggle="tab" aria-controls="profile" aria-expanded="true"><?php echo _("Mot de passe")?></a>
+
+    <ul class="nav nav-tabs" id="profileTabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#password">Mot de passe</a>
         </li>
-        <li role="presentation">
-            <a href="#email-change" id="email-change-tab" role="tab" data-toggle="tab" aria-controls="profile" aria-expanded="false"><?php echo _("Email")?></a>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#email">Email</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#transactions">Transactions</a>
         </li>
     </ul>
 
+    <!-- Tab panes -->
     <div class="tab-content">
-        <div class="tab-pane fade in active show" role="tabpanel" id="password-change" aria-labelledby="password-change-tab">
+        <div class="tab-pane active container" id="password">
             <form method="POST">
                 <div class="row">
                     <div class="form-group col-md-4">
@@ -86,7 +91,7 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                 </div>
             </form>
         </div>
-        <div class="tab-pane fade" role="tabpanel" id="email-change" aria-labelledby="email-change-tab">
+        <div class="tab-pane container" id="email">
             <form method="POST">
                 <div class="row">
                     <div class="form-group col-md-4">
@@ -115,6 +120,15 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                 <div class="row">
                     <div class="col-md-4">
                         <input type="submit" value="Mettre à jour" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane container" id="transactions">
+            <form method="POST">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        //all previous payment
                     </div>
                 </div>
             </form>
