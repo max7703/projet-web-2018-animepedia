@@ -238,7 +238,19 @@ class Anime
 
 	public function setDescription($description)
     {
-        $this->description = filter_var($description, FILTER_SANITIZE_STRING);
+        $this->descriptionTemporaire = filter_var($description, FILTER_SANITIZE_STRING);
+        if(strlen($this->descriptionTemporaire)>160){
+            $this->listeErreursActives["description"][] = $this->listeMessagesErreur["Description-trop-longue"];
+            $this->valid = false;
+        }
+        if(empty($this->descriptionTemporaire)){
+            $this->listeErreursActives["description"][] = $this->listeMessagesErreur["Description-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["description"]))
+        {
+            $this->description = $this->descriptionTemporaire;
+        }
     }
 
     public function getGenre()
