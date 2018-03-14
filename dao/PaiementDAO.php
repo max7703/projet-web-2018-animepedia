@@ -35,4 +35,22 @@ class PaiementDAO
 
         $requete->execute(array('id_paiement' => $paiement->getPaiement()));
     }
+	
+	public function obtenirPaiementParId($id)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+        $id = intval($id);
+
+        $requete = $basededonnee->prepare('SELECT * FROM paiement WHERE id_paiement = :id_paiement');
+
+        $requete->execute(array('id_paiement' => $id));
+
+        $anime = $requete->fetch();
+
+        return new Paiement($paiement['id_paiement'],
+			$paiement['paiement_id_paypal'],
+			$paiement['id_utilisateur'],
+			$paiement['date_paiement']);
+
+    }
 }
