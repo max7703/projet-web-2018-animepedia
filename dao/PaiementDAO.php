@@ -25,4 +25,14 @@ class PaiementDAO
 
         return $listePaiements;
     }
+	
+	public function supprimerUnPaiement(Paiement $paiement)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('DELETE FROM paiement 
+		WHERE id_paiement=:id_paiement');
+
+        $requete->execute(array('id_paiement' => $paiement->getPaiement()));
+    }
 }
