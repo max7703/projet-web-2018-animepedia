@@ -18,9 +18,10 @@ include_once CONTROLEURADMIN;
     <button class="tablink" onclick="openPage('Membres', this)">Membres</button>
     <button class="tablink" onclick="openPage('Genres', this)">Genres</button>
     <button class="tablink" onclick="openPage('Privileges', this)">Privileges</button>
+    <button class="tablink" onclick="openPage('Transactions', this)">Transactions</button>
     <div id="Dashboard" class="tabcontent">
         <h3>Tableau de bord</h3>
-        <p>Home is where the heart is..</p>
+        <?php include './fragment-admin-dashboard.php';?>
     </div>
 
     <div id="Animes" class="tabcontent">
@@ -41,6 +42,11 @@ include_once CONTROLEURADMIN;
     <div id="Privileges" class="tabcontent">
         <h3>Privileges</h3>
         <?php include './fragment-admin-privilege.php';?>
+    </div>
+
+    <div id="Transactions" class="tabcontent">
+        <h3>Transactions</h3>
+        <?php include './fragment-admin-transaction.php';?>
     </div>
 
 <script src=<?php echo JSADMIN?>></script>

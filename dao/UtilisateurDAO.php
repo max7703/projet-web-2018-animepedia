@@ -26,6 +26,28 @@ class UtilisateurDAO
         return $list;
     }
 
+    public function obtenirListeUtilisateursAbonnes()
+    {
+        $list = [];
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('SELECT * FROM utilisateur WHERE id_privilege = 3');
+
+        $requete->execute();
+
+        foreach ($requete->fetchAll() as $utilisateur) {
+            $list[] = new Utilisateur($utilisateur['id_utilisateur'],
+                $utilisateur['pseudo_utilisateur'],
+                $utilisateur['mdp_utilisateur'],
+                $utilisateur['email_utilisateur'],
+                $utilisateur['id_privilege'],
+                $utilisateur['image_utilisateur'],
+                $utilisateur['description_utilisateur']);
+        }
+
+        return $list;
+    }
+
     public function obtenirUtilisateurById($id)
     {
         $basededonnee = BaseDeDonnees::getInstance();

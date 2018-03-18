@@ -27,7 +27,10 @@ $listeGenres = $genreDAO->obtenirListeGenres();
         </thead>
         <tbody>
         <?php
-        foreach ($listeGenres as $genre) :
+        $nb_elem_per_page = 9;
+        $page = isset($_GET['page-genre'])?intval($_GET['page-genre']-1):0;
+        $number_of_pages = intval(count($listeGenres)/$nb_elem_per_page)+1;
+        foreach (array_slice($listeGenres, $page*$nb_elem_per_page, $nb_elem_per_page) as $genre) :
             echo '<tr>';
             echo '<td>' . $genre->getNom() . '</td>';
             echo '<td>';?>
@@ -38,6 +41,24 @@ $listeGenres = $genreDAO->obtenirListeGenres();
         <?php endforeach;?>
         </tbody>
     </table>
+    <ul id="paginator" class="pagination pt-4 flex-wrap" style="justify-content: center;">
+        <?php
+        for($i=1;$i<=$number_of_pages;$i++){
+            if($i == 1)
+            {
+                echo '
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'admin/genre/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+            else
+            {
+                echo '
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'admin/genre/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+        }
+        ?>
+    </ul>
 </div>
 </div>
 <!-- Edit Modal HTML -->

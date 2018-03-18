@@ -32,7 +32,10 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
         </thead>
         <tbody>
         <?php
-        foreach ($listeUtilisateurs as $membre) :
+        $nb_elem_per_page = 9;
+        $page = isset($_GET['page-utilisateur'])?intval($_GET['page-utilisateur']-1):0;
+        $number_of_pages = intval(count($listeUtilisateurs)/$nb_elem_per_page)+1;
+        foreach (array_slice($listeUtilisateurs, $page*$nb_elem_per_page, $nb_elem_per_page) as $membre) :
             echo '<tr>';
             echo '<td>' . $membre->getPseudo() . '</td>';
             echo '<td>' . $membre->getEmail() . '</td>';
@@ -47,6 +50,24 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
         <?php endforeach;?>
         </tbody>
     </table>
+    <ul id="paginator" class="pagination pt-4 flex-wrap" style="justify-content: center;">
+        <?php
+        for($i=1;$i<=$number_of_pages;$i++){
+            if($i == 1)
+            {
+                echo '
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'admin/utilisateur/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+            else
+            {
+                echo '
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'admin/utilisateur/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+        }
+        ?>
+    </ul>
 </div>
 </div>
 <!-- Edit Modal HTML -->

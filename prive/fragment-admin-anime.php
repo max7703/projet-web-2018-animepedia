@@ -35,7 +35,11 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
         </thead>
         <tbody>
         <?php
-        foreach ($listeAnimes as $anime) :
+        $nb_elem_per_page = 9;
+        $page = isset($_GET['page-anime'])?intval($_GET['page-anime']-1):0;
+        $number_of_pages = intval(count($listeAnimes)/$nb_elem_per_page)+1;
+
+        foreach (array_slice($listeAnimes, $page*$nb_elem_per_page, $nb_elem_per_page) as $anime) :
             echo '<tr>';
             echo '<td>' . $anime->getNom() . '</td>';
             echo '<td>' . $anime->getDescription() . '</td>';
@@ -52,18 +56,24 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
         <?php endforeach;?>
         </tbody>
     </table>
-    <!--                                <div class="clearfix">-->
-    <!--                                    <div class="hint-text">Il y a <b>5</b> entrées sur <b>25</b></div>-->
-    <!--                                    <ul class="pagination">-->
-    <!--                                        <li class="page-item disabled"><a href="#">Avant</a></li>-->
-    <!--                                        <li class="page-item active"><a href="#" class="page-link">1</a></li>-->
-    <!--                                        <li class="page-item"><a href="#" class="page-link">2</a></li>-->
-    <!--                                        <li class="page-item"><a href="#" class="page-link">3</a></li>-->
-    <!--                                        <li class="page-item"><a href="#" class="page-link">4</a></li>-->
-    <!--                                        <li class="page-item"><a href="#" class="page-link">5</a></li>-->
-    <!--                                        <li class="page-item"><a href="#" class="page-link">Suivant</a></li>-->
-    <!--                                    </ul>-->
-    <!--                                </div>-->
+    <ul id="paginator" class="pagination pt-4 flex-wrap" style="justify-content: center;">
+        <?php
+        for($i=1;$i<=$number_of_pages;$i++){
+            if($i == 1)
+            {
+                echo '
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'admin/anime/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+            else
+            {
+                echo '
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'admin/anime/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+        }
+        ?>
+    </ul>
 </div>
 </div>
 <!-- Edit Modal HTML -->

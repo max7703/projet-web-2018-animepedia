@@ -16,4 +16,9 @@ RewriteRule ^logout$ /controleur/ControleurLogout.php
 RewriteRule ^profile$ /public/profil.php
 RewriteRule ^anime/([0-9]+) public/anime.php?id=$1 [L]
 RewriteRule ^animes/page/([0-9]+) public/animes.php?page=$1 [L]
+RewriteRule ^admin/page/([0-9]+) prive/admin.php?page-anime=$1 [L]
+RewriteRule ^admin/anime/page/([0-9]+) prive/admin.php?page-anime=$1 [L]
+RewriteRule ^admin/utilisateur/page/([0-9]+) prive/admin.php?page-utilisateur=$1 [L]
+RewriteRule ^admin/privilege/page/([0-9]+) prive/admin.php?page-privilege=$1 [L]
+RewriteRule ^admin/genre/page/([0-9]+) prive/admin.php?page-genre=$1 [L]
 ErrorDocument 404 /public/404.php

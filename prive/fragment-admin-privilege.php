@@ -27,7 +27,10 @@ $listePrivileges = $privilegeDAO->obtenirListePrivileges();
         </thead>
         <tbody>
         <?php
-        foreach ($listePrivileges as $privilege) :
+        $nb_elem_per_page = 9;
+        $page = isset($_GET['page-privilege'])?intval($_GET['page-privilege']-1):0;
+        $number_of_pages = intval(count($listePrivileges)/$nb_elem_per_page)+1;
+        foreach (array_slice($listePrivileges, $page*$nb_elem_per_page, $nb_elem_per_page) as $privilege) :
             echo '<tr>';
             echo '<td>' . $privilege->getNom() . '</td>';
             echo '<td>';?>
@@ -38,6 +41,24 @@ $listePrivileges = $privilegeDAO->obtenirListePrivileges();
         <?php endforeach;?>
         </tbody>
     </table>
+    <ul id="paginator" class="pagination pt-4 flex-wrap" style="justify-content: center;">
+        <?php
+        for($i=1;$i<=$number_of_pages;$i++){
+            if($i == 1)
+            {
+                echo '
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'admin/privilege/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+            else
+            {
+                echo '
+                <li id="page-' . $i . '" class="' . (('page-' . ($page + 1)=='page-' .$i)?'page-item active':'') . '"><a class="page-link" href="' . SITE . 'admin/privilege/page/' . $i . '">' . $i . '</a></li>
+                ';
+            }
+        }
+        ?>
+    </ul>
 </div>
 </div>
 <!-- Edit Modal HTML -->
