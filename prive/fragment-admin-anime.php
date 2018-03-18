@@ -33,6 +33,8 @@ $genreDAO = new GenreDAO();
             <th><?php echo _("Studio")?></th>
             <th><?php echo _("Nombres d'episodes")?></th>
             <th><?php echo _("Chemin de l'image")?></th>
+            <th><?php echo _("Opening")?></th>
+            <th><?php echo _("Description Détaillé")?></th>
             <th></th>
         </tr>
         </thead>
@@ -51,6 +53,8 @@ $genreDAO = new GenreDAO();
             echo '<td>' . $anime->getStudio() . '</td>';
             echo '<td>' . $anime->getNbEpisodes() . '</td>';
             echo '<td>' . $anime->getImgPath() . '</td>';
+            echo '<td>' . $anime->getLienTrailer() . '</td>';
+            echo '<td>' . $anime->getDescriptionDetaillee() . '</td>';
             echo '<td>';?>
             <a href="#modifierAnimeModal" onclick="afficherAnime('<?php echo $anime->getId()?>','<?php echo $anime->getNom()?>','<?php echo htmlspecialchars($anime->getDescription())?>','<?php echo $anime->getGenre()?>','<?php echo $anime->getAuteur()?>','<?php echo $anime->getStudio()?>','<?php echo $anime->getNbEpisodes()?>','<?php echo $anime->getImgPath()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
             <a href="#supprimerAnimeModal" onclick="afficherAnimeSupprimer('<?php echo $anime->getNom()?>')" class="delete pl-2" data-toggle="modal"><span class="fa fa-trash"></span></a>

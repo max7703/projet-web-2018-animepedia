@@ -9,7 +9,6 @@
 require_once UTILISATEURDAO;
 
 $utilisateurDAO = new UtilisateurDAO();
-$utilisateur = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
 
 ?>
 <!DOCTYPE html>
@@ -50,11 +49,18 @@ $utilisateur = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username'
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo SITE ?>contact"><?php echo _("Contact")?></a>
                 </li>
-                <?php if($utilisateurDAO->estAdmin($utilisateur))
-                echo '
-                <li class="nav-item">
-                    <a class="nav-link" href="' . SITE .'admin">' . _("Admin") . '</a>
-                </li>';?>
+                <?php
+                if(isset($_SESSION['logged_in']))
+                {
+                    $utilisateur = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
+                    if($utilisateurDAO->estAdmin($utilisateur))
+                    {
+                        echo '
+                    <li class="nav-item">
+                        <a class="nav-link" href="' . SITE .'admin">' . _("Admin") . '</a>
+                    </li>';
+                    }
+                }?>
             </ul>
             <form class="form-inline pr-2 my-lg-0">
             <ul id="livesearch" class="dropdown-menu" style="left: auto"></ul>
