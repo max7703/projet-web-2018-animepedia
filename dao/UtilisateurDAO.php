@@ -142,4 +142,16 @@ class UtilisateurDAO
             'description_utilisateur' => $utilisateur->getDescription(),
             'id_utilisateur' => $utilisateur->getId()));
     }
+
+    public function modifierUtilisateurMdp(Utilisateur $utilisateur)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('UPDATE utilisateur 
+		SET mdp_utilisateur = :mdp_utilisateur
+		WHERE id_utilisateur = :id_utilisateur');
+
+        $requete->execute(array('mdp_utilisateur' => $utilisateur->getMdp(),
+            'id_utilisateur' => $utilisateur->getId()));
+    }
 }

@@ -15,12 +15,16 @@ if (!isset($_SESSION['logged_in']))
 require_once ENTETE;
 require_once UTILISATEURDAO;
 require_once PRIVILEGEDAO;
+require_once PAIEMENTDAO;
 
 $utilisateurDAO = new UtilisateurDAO();
 $profil = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
 
 $privilegeDAO = new PrivilegeDAO();
 $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
+
+$paiementDAO = new PaiementDAO();
+$listePaiement = $paiementDAO->obtenirListePaiementsParUtilisateur($profil->getId());
 
 ?>
 <link rel="stylesheet" href="<?php echo CSS_PROFIL?>">
@@ -40,6 +44,23 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
         </div>
     </div>
 
+    <?php
+    if( isset($_SESSION['messageError']) && !empty($_SESSION['messageError']))
+    {
+        echo '<div class="alert alert-danger" role="alert">';
+        echo $_SESSION['messageError'];
+        $_SESSION['messageError'] = null;
+        echo '</div>';
+    }?>
+
+    <?php
+    if( isset($_SESSION['messageSuccess']) && !empty($_SESSION['messageSuccess']))
+    {
+        echo '<div class="alert alert-success" role="alert">';
+        echo $_SESSION['messageSuccess'];
+        $_SESSION['messageSuccess'] = null;
+        echo '</div>';
+    }?>
 
     <ul class="nav nav-tabs" id="profileTabs">
         <li class="nav-item">
@@ -59,12 +80,12 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active container" id="password">
-            <form method="POST">
+            <form method="POST" action="<?php echo CONTROLEURPROFIL?>">
                 <div class="row">
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="current_password"><?php echo _("Mot de passe actuel")?></label>
-                            <input required="required" class="form-control" id="current_password" name="current_password" placeholder="Mot de passe actuel" title="" type="password" value="">
+                            <input required="required" class="form-control" id="passwordActuel" name="passwordActuel" placeholder="Mot de passe actuel" title="" type="password" value="">
                         </div>
 
                     </div>
@@ -73,7 +94,7 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="new_password"><?php echo _("Nouveau mot de passe")?></label>
-                            <input required="required"class="form-control" id="new_password" name="new_password" placeholder="Nouveau mot de passe" title="" type="password" value="">
+                            <input required="required"class="form-control" id="nouveauPassword" name="nouveauPassword" placeholder="Nouveau mot de passe" title="" type="password" value="">
                         </div>
 
                     </div>
@@ -82,14 +103,14 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="password_confirm"><?php echo _("Répéter le mot de passe")?></label>
-                            <input required="required" class="form-control" id="password_confirm" name="password_confirm" placeholder="Confirmation du mot de passe" title="" type="password" value="">
+                            <input required="required" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="Confirmation du mot de passe" title="" type="password" value="">
                         </div>
 
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <input type="submit" value="Mettre à jour" class="btn btn-primary">
+                        <input type="submit" name="modifierPassword" value="Mettre à jour" class="btn btn-primary">
                     </div>
                 </div>
             </form>
@@ -118,7 +139,7 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
             </form>
         </div>
         <div class="tab-pane container" id="email">
-            <form method="POST">
+            <form method="POST" action="<?php echo CONTROLEURPROFIL?>">
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label class="control-label" for="current_email"><?php echo _("Adresse email actuelle")?></label>
@@ -129,7 +150,7 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="email"><?php echo _("Nouvelle adresse email")?></label>
-                            <input required="required" class="form-control" id="email" name="email" placeholder="Nouvelle adresse email" title="" type="email" value="">
+                            <input required="required" class="form-control" id="email" name="emailModifier" placeholder="Nouvelle adresse email" title="" type="email" value="">
                         </div>
                     </div>
                 </div>
@@ -137,34 +158,55 @@ $privilege = $privilegeDAO->obtenirPrivilegeById($profil->getId_Privilege());
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label class="control-label" for="current_password"><?php echo _("Mot de passe actuel")?></label>
-                            <input required="required" class="form-control" id="current_password" name="current_password" placeholder="Mot de passe actuel" title="" type="password" value="">
+                            <input required="required" class="form-control" id="emailPasswordModifier" name="emailPasswordModifier" placeholder="Mot de passe actuel" title="" type="password" value="">
                         </div>
 
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <input type="submit" value="Mettre à jour" class="btn btn-primary">
+                        <input type="submit" name="modifierEmail" value="Mettre à jour" class="btn btn-primary">
                     </div>
                 </div>
             </form>
         </div>
         <div class="tab-pane container" id="transactions">
-            <form method="POST">
-                <div class="row">
-                    <div class="form-group col-md-4">
-                        //all previous payment
-                    </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <?php
+                    if (empty($listePaiement))
+                    {
+                        echo '<p>Aucun paiement effectué</p>';
+                    }
+                    else
+                    {
+                    echo '<table class="table table-striped table-hover">';
+                        echo '<thead>';
+                        echo '<tr>';
+                        echo '<th>Paiement ID Paypal</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>';
+                            foreach ($listePaiement as $paiement)
+                            {
+                                echo '<tr>';
+                                echo '<td>' . $paiement->getPaiement_Id_Paypal() . '</td>';
+                                echo '<td>' . $paiement->getDate_Paiement() . '</td>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        echo '</tbody>';
+                    echo '</table>';
+                    }
+                    ?>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    function uploadImage() {
-        document.getElementById('fileToUpload').click();
-    }
 
 </script>
 

@@ -12,7 +12,7 @@ class Paiement
         $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$this->paiement_id_paypal = filter_var($paiement_id_paypal, FILTER_SANITIZE_STRING);
 		$this->id_utilisateur = filter_var($id_utilisateur, FILTER_SANITIZE_STRING);
-		$this->date_paiement = filter_var($date_paiement, FILTER_SANITIZE_EMAIL);
+		$this->date_paiement = filter_var($date_paiement, FILTER_SANITIZE_STRING);
 	}
 	
 	public function getId()
@@ -37,21 +37,21 @@ class Paiement
 	
 	public function setId($id)
 	{
-		$this->id = filter_var($id, FILTER_SANITIZE_EMAIL);
+		$this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 	}
 	
 	public function setPaiement_Id_Paypal($paiement_id_paypal)
 	{
-		$this->paiement_id_paypal = filter_var($paiement_id_paypal, FILTER_SANITIZE_EMAIL);
+		$this->paiement_id_paypal = filter_var($paiement_id_paypal, FILTER_SANITIZE_STRING);
 	}
 	
 	public function setId_Utilisateur($id_utilisateur)
 	{
-		$this->id_utilisateur = filter_var($id_utilisateur, FILTER_SANITIZE_EMAIL);
+		$this->id_utilisateur = filter_var($id_utilisateur, FILTER_SANITIZE_NUMBER_INT);
 	}
 	
 	public function setDate_Paiement($date_paiement)
 	{
-		$this->date_paiement = filter_var($date_paiement, FILTER_SANITIZE_EMAIL);
+		$this->date_paiement = filter_var($date_paiement, FILTER_SANITIZE_STRING);
 	}
 }

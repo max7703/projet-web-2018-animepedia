@@ -25,7 +25,27 @@ class PaiementDAO
 
         return $listePaiements;
     }
-	
+    public function obtenirListePaiementsParUtilisateur($utilisateurId)
+    {
+        $listePaiements = [];
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('SELECT * FROM paiement WHERE id_utilisateur = :id_utilisateur ORDER BY date_paiement DESC');
+
+        $requete->execute(array('id_utilisateur' => $utilisateurId));
+
+        foreach($requete->fetchAll() as $paiement)
+        {
+            if (isset($paiement)) {
+                $listePaiements[] = new Paiement($paiement['id_paiement'],
+                    $paiement['paiement_id_paypal'],
+                    $paiement['id_utilisateur'],
+                    $paiement['date_paiement']);
+            }
+        }
+
+        return $listePaiements;
+    }
 	public function supprimerUnPaiement(Paiement $paiement)
     {
         $basededonnee = BaseDeDonnees::getInstance();
@@ -68,6 +88,6 @@ class PaiementDAO
 
         $requete->execute(array('paiement_id_paypal' => $paiement->getPaiement_Id_Paypal(),
             'id_utilisateur' => $paiement->getId_Utilisateur(),
-            'date_paiement'=> $paiement->getDate_Paiement())));
+            'date_paiement'=> $paiement->getDate_Paiement()));
     }
 }
