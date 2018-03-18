@@ -35,6 +35,7 @@ define("MODELEANIME", MODELE . '/Anime.php');
 define("MODELEUTILISATEUR", MODELE . '/Utilisateur.php');
 define("MODELEGENRE", MODELE . '/Genre.php');
 define("MODELEPRIVILEGE", MODELE . '/Privilege.php');
+define("MODELEPAIEMENT", MODELE . '/Paiement.php');
 
 define("CONTROLEUR", '../controleur');
 define("CONTROLEURINDEX", CONTROLEUR . '/ControleurIndex.php');
@@ -44,12 +45,14 @@ define("CONTROLEURINSCRIPTION", CONTROLEUR . '/ControleurRegister.php');
 define("CONTROLEURCONNEXION", CONTROLEUR . '/ControleurLogin.php');
 define("CONTROLEURDECONNEXION", CONTROLEUR . '/ControleurLogout.php');
 define("CONTROLEURADMIN", CONTROLEUR . '/ControleurAdmin.php');
+define("CONTROLEURWIZARD", CONTROLEUR . '/ControleurWizard.php');
 
 define("DAO", $_SERVER['DOCUMENT_ROOT'] . '/dao');
 define("ANIMEDAO", DAO . '/AnimeDAO.php');
 define("GENREDAO", DAO . '/GenreDAO.php');
 define("PRIVILEGEDAO", DAO . '/PrivilegeDAO.php');
 define("UTILISATEURDAO", DAO . '/UtilisateurDAO.php');
+define("PAIEMENTDAO", DAO . '/PaiementDAO.php');
 
 define("JS", SITE . "/js");
 define("JSWIZARD", JS . "/wizard.js");

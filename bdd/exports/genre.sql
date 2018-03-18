@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : animepedao77.mysql.db
--- Généré le :  jeu. 22 fév. 2018 à 14:53
+-- Généré le :  mer. 14 mars 2018 à 04:59
 -- Version du serveur :  5.6.34-log
 -- Version de PHP :  7.0.27
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `genre` (
   `id_genre` int(11) NOT NULL,
-  `nom_genre` text NOT NULL
+  `nom_genre` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -80,8 +80,7 @@ INSERT INTO `genre` (`id_genre`, `nom_genre`) VALUES
 (40, 'Thriller'),
 (41, 'Vampire'),
 (42, 'Yaoi'),
-(43, 'Yuri'),
-(44, 'mmmmmkkkkk');
+(43, 'Yuri');
 
 --
 -- Index pour les tables déchargées
@@ -101,7 +100,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT pour la table `genre`
 --
 ALTER TABLE `genre`
-  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;COMMIT;
+  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

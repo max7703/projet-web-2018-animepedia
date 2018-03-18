@@ -1,4 +1,4 @@
-<?php
+)<?php
 // Initialisation des variables d'erreur.
 $nomErreur ="";
 $prenomErreur ="";

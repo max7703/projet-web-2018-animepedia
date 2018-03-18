@@ -8,7 +8,7 @@ class GenreDAO
         $listeGenres = [];
         $basededonnee = BaseDeDonnees::getInstance();
 
-        $requete = $basededonnee->prepare('SELECT * FROM genre');
+        $requete = $basededonnee->prepare('SELECT * FROM genre ORDER BY nom_genre ASC');
 
         $requete->execute();
 

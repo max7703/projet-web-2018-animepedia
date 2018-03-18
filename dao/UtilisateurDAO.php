@@ -26,6 +26,28 @@ class UtilisateurDAO
         return $list;
     }
 
+    public function obtenirListeUtilisateursAbonnes()
+    {
+        $list = [];
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('SELECT * FROM utilisateur WHERE id_privilege = 3');
+
+        $requete->execute();
+
+        foreach ($requete->fetchAll() as $utilisateur) {
+            $list[] = new Utilisateur($utilisateur['id_utilisateur'],
+                $utilisateur['pseudo_utilisateur'],
+                $utilisateur['mdp_utilisateur'],
+                $utilisateur['email_utilisateur'],
+                $utilisateur['id_privilege'],
+                $utilisateur['image_utilisateur'],
+                $utilisateur['description_utilisateur']);
+        }
+
+        return $list;
+    }
+
     public function obtenirUtilisateurById($id)
     {
         $basededonnee = BaseDeDonnees::getInstance();
@@ -65,6 +87,24 @@ class UtilisateurDAO
             $utilisateur['description_utilisateur']);
     }
 
+    public function estAdmin(Utilisateur $utilisateur)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('SELECT * FROM utilisateur WHERE pseudo_utilisateur = :pseudo_utilisateur
+        AND id_privilege = 1');
+
+        $requete->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo()));
+
+        if ( $requete->rowCount() > 0 )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public function estExistant(Utilisateur $utilisateur)
     {
         $basededonnee = BaseDeDonnees::getInstance();
@@ -140,6 +180,18 @@ class UtilisateurDAO
             'id_privilege' => $utilisateur->getId_Privilege(),
             'image_utilisateur' => $utilisateur->getImage(),
             'description_utilisateur' => $utilisateur->getDescription(),
+            'id_utilisateur' => $utilisateur->getId()));
+    }
+
+    public function modifierUtilisateurMdp(Utilisateur $utilisateur)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('UPDATE utilisateur 
+		SET mdp_utilisateur = :mdp_utilisateur
+		WHERE id_utilisateur = :id_utilisateur');
+
+        $requete->execute(array('mdp_utilisateur' => $utilisateur->getMdp(),
             'id_utilisateur' => $utilisateur->getId()));
     }
 }
