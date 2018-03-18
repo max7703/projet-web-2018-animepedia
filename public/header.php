@@ -7,6 +7,10 @@
  */
 
 require_once UTILISATEURDAO;
+
+$utilisateurDAO = new UtilisateurDAO();
+$utilisateur = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -46,7 +50,7 @@ require_once UTILISATEURDAO;
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo SITE ?>contact"><?php echo _("Contact")?></a>
                 </li>
-                <?php if( isset($_SESSION['logged_in']) && !empty($_SESSION['logged_in']))
+                <?php if($utilisateurDAO->estAdmin($utilisateur))
                 echo '
                 <li class="nav-item">
                     <a class="nav-link" href="' . SITE .'admin">' . _("Admin") . '</a>

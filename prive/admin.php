@@ -8,6 +8,14 @@
 
 define("NOMDEPAGE", "Admin");
 include_once $_SERVER['DOCUMENT_ROOT'] . '/configuration.php';
+require_once UTILISATEURDAO;
+
+$utilisateurDAO = new UtilisateurDAO();
+$utilisateur = $utilisateurDAO->obtenirUtilisateurParString($_SESSION['username']);
+
+if (!$utilisateurDAO->estAdmin($utilisateur))
+    header("location: " . SITE . "home");
+
 require ENTETE;
 include_once CONTROLEURADMIN;
 

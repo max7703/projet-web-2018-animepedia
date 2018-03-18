@@ -20,8 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $pass = $_POST['loginPassword'];
             $username = $_POST['loginUser'];
 
-            $_SESSION['username'] = $_POST['loginUser'];
-
             $utilisateurTemporaire = new Utilisateur("",$username, "", "none", 0,"","");
 
             if($utilisateurDAO->estExistant($utilisateurTemporaire))
@@ -32,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 if ( password_verify($pass, $utilisateur->getMdp()) )
                 {
                     $_SESSION['logged_in'] = true;
-
+                    $_SESSION['username'] = $_POST['loginUser'];
                     $_SESSION['message'] = "";
                     header("location: " . SITE);
                 }

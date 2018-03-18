@@ -21,4 +21,5 @@ RewriteRule ^admin/anime/page/([0-9]+) prive/admin.php?page-anime=$1 [L]
 RewriteRule ^admin/utilisateur/page/([0-9]+) prive/admin.php?page-utilisateur=$1 [L]
 RewriteRule ^admin/privilege/page/([0-9]+) prive/admin.php?page-privilege=$1 [L]
 RewriteRule ^admin/genre/page/([0-9]+) prive/admin.php?page-genre=$1 [L]
+RewriteRule ^admin/transaction/page/([0-9]+) prive/admin.php?page-transaction=$1 [L]
 ErrorDocument 404 /public/404.php

@@ -11,6 +11,9 @@ require_once ANIMEDAO;
 $animeDAO = new AnimeDAO();
 $listeAnimes = $animeDAO->obtenirListeAnimes();
 
+require_once GENREDAO;
+
+$genreDAO = new GenreDAO();
 ?>
 <div class="table-wrapper">
     <div class="table-title">
@@ -43,7 +46,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
             echo '<tr>';
             echo '<td>' . $anime->getNom() . '</td>';
             echo '<td>' . $anime->getDescription() . '</td>';
-            echo '<td>' . $anime->getGenre() . '</td>';
+            echo '<td>' . $genreDAO->obtenirGenreParId($anime->getGenre())->getNom() . '</td>';
             echo '<td>' . $anime->getAuteur() . '</td>';
             echo '<td>' . $anime->getStudio() . '</td>';
             echo '<td>' . $anime->getNbEpisodes() . '</td>';

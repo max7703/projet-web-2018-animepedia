@@ -87,6 +87,24 @@ class UtilisateurDAO
             $utilisateur['description_utilisateur']);
     }
 
+    public function estAdmin(Utilisateur $utilisateur)
+    {
+        $basededonnee = BaseDeDonnees::getInstance();
+
+        $requete = $basededonnee->prepare('SELECT * FROM utilisateur WHERE pseudo_utilisateur = :pseudo_utilisateur
+        AND id_privilege = 1');
+
+        $requete->execute(array('pseudo_utilisateur' => $utilisateur->getPseudo()));
+
+        if ( $requete->rowCount() > 0 )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public function estExistant(Utilisateur $utilisateur)
     {
         $basededonnee = BaseDeDonnees::getInstance();

@@ -7,7 +7,9 @@
  */
 
 require_once UTILISATEURDAO;
+require_once PRIVILEGEDAO;
 
+$privilegeDAO = new PrivilegeDAO();
 $utilisateurDAO = new UtilisateurDAO();
 $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
 ?>
@@ -39,7 +41,7 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
             echo '<tr>';
             echo '<td>' . $membre->getPseudo() . '</td>';
             echo '<td>' . $membre->getEmail() . '</td>';
-            echo '<td>' . $membre->getId_Privilege() . '</td>';
+            echo '<td>' . $privilegeDAO->obtenirPrivilegeById($membre->getId_Privilege())->getNom() . '</td>';
             echo '<td>' . $membre->getImage() . '</td>';
             echo '<td>' . $membre->getDescription() . '</td>';
             echo '<td>';?>
