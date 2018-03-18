@@ -57,12 +57,7 @@ class Privilege
     {
         return $this->id;
     }
-	
-	public function setId($id)
-	{
-		$this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
-	}
-	
+
 	public function getNom()
     {
         return $this->nom;
@@ -70,7 +65,20 @@ class Privilege
 	
 	public function setNom($nom)
 	{
-		$this->nom = filter_var($nom, FILTER_SANITIZE_STRING);
+        $this->nomtemporaire = filter_var($nom, FILTER_SANITIZE_STRING);
+
+        if(strlen($this->nomTemporaire)>15){
+            $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-trop-long"];
+            $this->valid = false;
+        }
+        if(empty($this->nomTemporaire)){
+            $this->listeErreursActives["nom"][] = $this->listeMessagesErreur["Nom-vide"];
+            $this->valid = false;
+        }
+        if(empty($this->listeErreursActives["nom"]))
+        {
+            $this->nom = $this->nomTemporaire;
+        }
 	}
 
 	public function estValide(){
