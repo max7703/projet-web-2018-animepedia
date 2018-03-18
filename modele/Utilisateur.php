@@ -20,6 +20,7 @@ class Utilisateur
 	
 	 public function __construct($id, $pseudo, $mdp, $email, $id_privilege, $image, $description)
     {
+        $this->construireAvecDonneesSecurisees($id, $pseudo, $mdp, $email, $id_privilege, $image, $description)
         $this->idtemporaire = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$this->pseudotemporaire = filter_var($pseudo, FILTER_SANITIZE_STRING);
 		$this->mdptemporaire = filter_var($mdp, FILTER_SANITIZE_STRING);
@@ -28,6 +29,16 @@ class Utilisateur
 		$this->imagetemporaire = filter_var($image, FILTER_SANITIZE_STRING);
 		$this->descriptiontemporaire = filter_var($description, FILTER_SANITIZE_STRING);
 	}
+
+	public function construireAvecDonneesSecurisees($id, $pseudo, $mdp, $email, $id_privilege, $image, $description) {
+        $this->id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+        $this->pseudo = filter_var($pseudo, FILTER_SANITIZE_STRING);
+        $this->mdp = filter_var($mdp, FILTER_SANITIZE_STRING);
+        $this->email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $this->id_privilege = filter_var($id_privilege, FILTER_SANITIZE_NUMBER_INT);
+        $this->image = filter_var($image, FILTER_SANITIZE_STRING);
+        $this->description = filter_var($description, FILTER_SANITIZE_STRING);
+    }
 	
 	public function getId()
     {
