@@ -51,16 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $studio = $_POST['ajouterStudioAnime'];
             $nbepisode = $_POST['ajouterNbEpisodeAnime'];
             $cheminepisode = $_POST['ajouterCheminEpisodeAnime'];
+            $lien = $_POST['ajouterOpeningAnime'];
+            $descriptiondetaille = $_POST['ajouterDescriptionDetailleAnime'];
 
-            $anime = new Anime(null. null, null, null, null, null, null, null, null);
-            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode);
+            $anime = new Anime(null. null, null, null, null, null, null, null, null, null, null);
+            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode, $lien, $descriptiondetaille);
             if($anime->estValide()){
                 echo "Ajout anime";
                 $animeDAO->ajouterUnAnime($anime);
             }
             else {
                 echo '<script> loadData = function() {
-                    afficherAjouterAnime("' . $anime->getNom() . '","' . htmlspecialchars($anime->getDescription(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '");
+                    afficherAjouterAnime("' . $anime->getNom() . '","' . htmlspecialchars($anime->getDescription(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '","' . $anime->getLienTrailer() . '","' . htmlspecialchars($anime->getDescriptionDetaillee(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '");
                     $("#ajouterAnimeModal").modal();
                 };
                 </script>';
@@ -87,19 +89,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $studio = $_POST['modifierStudioAnime'];
             $nbepisode = $_POST['modifierNbEpisodeAnime'];
             $cheminImage = $_POST['modifierCheminImageAnime'];
+            $lien = $_POST['modifierOpeningAnime'];
+            $descriptiondetaille = $_POST['modifierDescriptionDetailleAnime'];
 
             /*$animeTemporaire = $animeDAO->obtenirAnimeParId($id);
             $id = $animeTemporaire->getId();*/
 
-            $anime = new Anime(null, null, null, null, null, null, null, null);
-            $anime->construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage);
+            $anime = new Anime(null, null, null, null, null, null, null, null, null, null);
+            $anime->construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage, $lien, $descriptiondetaille);
 
             if($anime->estValide()){
                 $animeDAO->modifierUnAnime($anime);
             }
             else {
                 echo '<script> loadData =function() {
-                    afficherAnime("'. $anime->getId(). '","' . $anime->getNom() . '","' . $anime->getDescription() . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '");
+                    afficherAnime("'. $anime->getId(). '","' . $anime->getNom() . '","' . $anime->getDescription() . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '","' . $anime->getLienTrailer() . '","' . $anime->getDescriptionDetaillee() . '");
                     $("#modifierAnimeModal").modal();
                 };</script>';
                 $_SESSION["anime"] = $anime;

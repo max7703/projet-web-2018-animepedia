@@ -57,7 +57,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
             echo '<td>' . $anime->getLienTrailer() . '</td>';
             echo '<td>' . $anime->getDescriptionDetaillee() . '</td>';
             echo '<td>';?>
-            <a href="#modifierAnimeModal" onclick="afficherAnime('<?php echo $anime->getId()?>','<?php echo $anime->getNom()?>','<?php echo htmlspecialchars($anime->getDescription())?>','<?php echo $anime->getGenre()?>','<?php echo $anime->getAuteur()?>','<?php echo $anime->getStudio()?>','<?php echo $anime->getNbEpisodes()?>','<?php echo $anime->getImgPath()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
+            <a href="#modifierAnimeModal" onclick="afficherAnime('<?php echo $anime->getId()?>','<?php echo $anime->getNom()?>','<?php echo htmlspecialchars($anime->getDescription())?>','<?php echo $anime->getGenre()?>','<?php echo $anime->getAuteur()?>','<?php echo $anime->getStudio()?>','<?php echo $anime->getNbEpisodes()?>','<?php echo $anime->getImgPath()?>','<?php echo $anime->getLienTrailer()?>','<?php echo $anime->getDescriptionDetaillee()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
             <a href="#supprimerAnimeModal" onclick="afficherAnimeSupprimer('<?php echo $anime->getNom()?>')" class="delete pl-2" data-toggle="modal"><span class="fa fa-trash"></span></a>
             </td>
             </tr>
@@ -205,6 +205,36 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                     <label><?php echo _("Chemin de l'image")?></label>
                     <input name="ajouterCheminEpisodeAnime" type="text" class="form-control" required>
                 </div>
+                <?php
+                if(isset($_SESSION["anime"])) {
+                    $anime = $_SESSION["anime"];
+                    if(!empty($anime->listeErreursActives['lienTrailer'])) {
+                        foreach ($anime->listeErreursActives['lienTrailer'] as $erreur) {
+                            echo '<div class="alert alert-danger" role="alert">' .
+                                $erreur .
+                                '</div>';
+                        }
+                    }
+                } ?>
+                <div class="form-group">
+                    <label><?php echo _("Opening")?></label>
+                    <input name="ajouterOpeningAnime" type="text" class="form-control" required>
+                </div>
+                <?php
+                if(isset($_SESSION["anime"])) {
+                    $anime = $_SESSION["anime"];
+                    if(!empty($anime->listeErreursActives['descriptionDetaillee'])) {
+                        foreach ($anime->listeErreursActives['descriptionDetaillee'] as $erreur) {
+                            echo '<div class="alert alert-danger" role="alert">' .
+                                $erreur .
+                                '</div>';
+                        }
+                    }
+                } ?>
+                <div class="form-group">
+                    <label><?php echo _("Description détaillé")?></label>
+                    <textarea name="ajouterDescriptionDetailleAnime" class="form-control" required></textarea>
+                </div>
             </div>
             <div class="modal-footer">
                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
@@ -337,6 +367,36 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 <div class="form-group">
                     <label><?php echo _("Chemin de l'image")?></label>
                     <input id="modifierCheminImageAnime" name="modifierCheminImageAnime" type="text" class="form-control" required>
+                </div>
+                <?php
+                if(isset($_SESSION["anime"])) {
+                    $anime = $_SESSION["anime"];
+                    if(!empty($anime->listeErreursActives['lienTrailer'])) {
+                        foreach ($anime->listeErreursActives['lienTrailer'] as $erreur) {
+                            echo '<div class="alert alert-danger" role="alert">' .
+                                $erreur .
+                                '</div>';
+                        }
+                    }
+                } ?>
+                <div class="form-group">
+                    <label><?php echo _("Opening")?></label>
+                    <input id="modifierOpeningAnime" name="modifierOpeningAnime" type="text" class="form-control" required>
+                </div>
+                <?php
+                if(isset($_SESSION["anime"])) {
+                    $anime = $_SESSION["anime"];
+                    if(!empty($anime->listeErreursActives['descriptionDetaillee'])) {
+                        foreach ($anime->listeErreursActives['descriptionDetaillee'] as $erreur) {
+                            echo '<div class="alert alert-danger" role="alert">' .
+                                $erreur .
+                                '</div>';
+                        }
+                    }
+                } ?>
+                <div class="form-group">
+                    <label><?php echo _("Description Détaillé")?></label>
+                    <textarea id="modifierDescriptionDetailleAnime" name="modifierDescriptionDetailleAnime" class="form-control" required></textarea>
                 </div>
             </div>
             <div class="modal-footer">
