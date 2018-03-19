@@ -65,7 +65,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
 <div id="ajouterGenreModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Ajouter un genre")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -99,7 +99,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
 <div id="modifierGenreModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Modification du genre")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -136,7 +136,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
 <div id="supprimerGenreModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Suppression du genre")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

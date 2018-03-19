@@ -77,7 +77,7 @@ $listePrivileges = $privilegeDAO->obtenirListePrivileges();
 <div id="ajouterMembreModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Ajouter un membre")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -122,7 +122,7 @@ $listePrivileges = $privilegeDAO->obtenirListePrivileges();
 <div id="modifierMembreModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Modification du membre")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -170,7 +170,7 @@ $listePrivileges = $privilegeDAO->obtenirListePrivileges();
 <div id="supprimerMembreModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Suppression du membre")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

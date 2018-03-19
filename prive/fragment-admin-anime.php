@@ -88,7 +88,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
 <div id="ajouterAnimeModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>" enctype="multipart/form-data">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Ajouter un anime")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -107,7 +107,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Nom")?></label>
-                    <input name="ajouterNomAnime" type="text" class="form-control" required>
+                    <input id="ajouterNomAnime" name="ajouterNomAnime" type="text" class="form-control" required>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -122,7 +122,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Description")?></label>
-                    <textarea name="ajouterDescriptionAnime" class="form-control" required></textarea>
+                    <textarea id="ajouterDescriptionAnime" name="ajouterDescriptionAnime" class="form-control" required></textarea>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -158,7 +158,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Auteur")?></label>
-                    <input name="ajouterAuteurAnime" type="text" class="form-control" required>
+                    <input id="ajouterAuteurAnime" name="ajouterAuteurAnime" type="text" class="form-control" required>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -173,7 +173,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Studio")?></label>
-                    <input name="ajouterStudioAnime" type="text" class="form-control" required>
+                    <input id="ajouterStudioAnime" name="ajouterStudioAnime" type="text" class="form-control" required>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -188,7 +188,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Nombres d'episodes")?></label>
-                    <input name="ajouterNbEpisodeAnime" type="number" class="form-control" required>
+                    <input id="ajouterNbEpisodeAnime" name="ajouterNbEpisodeAnime" type="number" class="form-control" required>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -200,10 +200,16 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                                 '</div>';
                         }
                     }
+                }
+                if(isset($_SESSION["erreurImageAjouter"])) {
+                    echo '<div class="alert alert-danger" role="alert">' .
+                        $_SESSION["erreurImageAjouter"] .
+                        '</div>';
+                    $_SESSION["erreurImageAjouter"] = null;
                 } ?>
                 <div class="form-group">
-                    <label><?php echo _("Chemin de l'image")?></label>
-                    <input name="ajouterCheminEpisodeAnime" type="text" class="form-control" required>
+                    <label><?php echo _("Image")?></label>
+                    <input class="form-control" type="file" name="imageAnimeAjouter" id="imageAnimeAjouter" required>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -218,7 +224,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Opening")?></label>
-                    <input name="ajouterOpeningAnime" type="text" class="form-control" required>
+                    <input id="ajouterOpeningAnime" name="ajouterOpeningAnime" type="text" class="form-control" required>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -233,7 +239,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Description détaillé")?></label>
-                    <textarea name="ajouterDescriptionDetailleAnime" class="form-control" required></textarea>
+                    <textarea id="ajouterDescriptionDetailleAnime" name="ajouterDescriptionDetailleAnime" class="form-control" required></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -248,7 +254,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
 <div id="modifierAnimeModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>" enctype="multipart/form-data">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Modification de l'anime")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -364,9 +370,17 @@ $listeGenres = $genreDAO->obtenirListeGenres();
                         }
                     }
                 } ?>
+                <?php
+                if(isset($_SESSION["erreurImage"])) {
+                    echo '<div class="alert alert-danger" role="alert">' .
+                        $_SESSION["erreurImage"] .
+                        '</div>';
+                    $_SESSION["erreurImage"] = null;
+                } ?>
                 <div class="form-group">
                     <label><?php echo _("Chemin de l'image")?></label>
                     <input id="modifierCheminImageAnime" name="modifierCheminImageAnime" type="text" class="form-control" required>
+                    <input class="form-control" type="file" name="fileToUpload" id="fileToUpload">
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -411,7 +425,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
 <div id="supprimerAnimeModal" class="modal fade">
 <div class="modal-dialog">
     <div class="modal-content">
-        <form method="post" action="admin">
+        <form method="post" action="<?php echo SITE  . "admin"?>">
             <div class="modal-header">
                 <h4 class="modal-title"><?php echo _("Suppression de l'anime")?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

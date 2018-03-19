@@ -16,7 +16,7 @@ function afficherAnime(id, nom, description, genre, auteur, studio, nbepisodes, 
     document.getElementById("select-genre-modifier-anime").selectedIndex = document.getElementById("modifierGenreAnime").value -1;
 }
 
-function afficherAjouterAnime(nom, description, genre, auteur, studio, nbepisodes, cheminimg, trailer, descriptiondetaille) {
+function afficherAjouterAnime(nom, description, genre, auteur, studio, nbepisodes, trailer, descriptiondetaille) {
     document.getElementById('ajouterNomAnime').value = nom;
     document.getElementById('ajouterDescriptionAnime').value = description.replace(/&#(\d+);/g, function(match, dec) {
         return String.fromCharCode(dec);
@@ -25,7 +25,6 @@ function afficherAjouterAnime(nom, description, genre, auteur, studio, nbepisode
     document.getElementById('ajouterAuteurAnime').value = auteur;
     document.getElementById('ajouterStudioAnime').value = studio;
     document.getElementById('ajouterNbEpisodeAnime').value = nbepisodes;
-    document.getElementById('ajouterCheminImageAnime').value = cheminimg;
     document.getElementById('ajouterDescriptionDetailleAnime').value = descriptiondetaille.replace(/&#(\d+);/g, function(match, dec) {
         return String.fromCharCode(dec);
     });

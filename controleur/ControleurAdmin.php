@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $animeTemporaire = $animeDAO->obtenirAnimeParString($nom);
 
+            unlink($animeTemporaire->getImgPath());
+            
             $animeDAO->supprimerUnAnime($animeTemporaire);
 
 
@@ -50,19 +52,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $auteur = $_POST['ajouterAuteurAnime'];
             $studio = $_POST['ajouterStudioAnime'];
             $nbepisode = $_POST['ajouterNbEpisodeAnime'];
-            $cheminepisode = $_POST['ajouterCheminEpisodeAnime'];
+
+            $target_dir = "../img/";
+            $cheminImage = $target_dir . $nom . "-" . basename($_FILES["imageAnimeAjouter"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($cheminImage,PATHINFO_EXTENSION));
+
+            $check = getimagesize($_FILES["imageAnimeAjouter"]["tmp_name"]);
+            if($check !== false)
+            {
+                $uploadOk = 1;
+            }
+            else
+            {
+                $_SESSION['erreurImageAjouter'] = 'File is not an image.';
+                $uploadOk = 0;
+            }
+
+            // Check if file already exists
+            if (file_exists($cheminImage))
+            {
+                $_SESSION['erreurImageAjouter'] = 'Sorry, file already exists.';
+                $uploadOk = 0;
+            }
+            // Check file size
+            if ($_FILES["imageAnimeAjouter"]["size"] > 5000000)
+            {
+                $_SESSION['erreurImageAjouter'] = 'Sorry, your file is too large. 1Mo max';
+                $uploadOk = 0;
+            }
+            // Allow certain file formats
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" )
+            {
+                $_SESSION['erreurImageAjouter'] = 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.';
+                $uploadOk = 0;
+            }
+
             $lien = $_POST['ajouterOpeningAnime'];
             $descriptiondetaille = $_POST['ajouterDescriptionDetailleAnime'];
 
             $anime = new Anime(null. null, null, null, null, null, null, null, null, null, null);
-            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminepisode, $lien, $descriptiondetaille);
+            $anime->construireSansDonneesSecurisees(0, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage, $lien, $descriptiondetaille);
             if($anime->estValide()){
-                echo "Ajout anime";
-                $animeDAO->ajouterUnAnime($anime);
+                // Check if $uploadOk is set to 0 by an error
+                if ($uploadOk == 0)
+                {
+                    // if everything is ok, try to upload file
+                }
+                else
+                {
+                    if (move_uploaded_file($_FILES["imageAnimeAjouter"]["tmp_name"], $cheminImage))
+                    {
+                        $animeDAO->ajouterUnAnime($anime);
+                    }
+                    else
+                    {
+                        $_SESSION['erreurImageAjouter'] = 'Sorry, there was an error uploading your file.';
+                    }
+                }
             }
             else {
+                echo "dans le nonvalide";
                 echo '<script> loadData = function() {
-                    afficherAjouterAnime("' . $anime->getNom() . '","' . htmlspecialchars($anime->getDescription(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '","' . $anime->getLienTrailer() . '","' . htmlspecialchars($anime->getDescriptionDetaillee(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '");
+                    afficherAjouterAnime("' . $anime->getNom() . '","' . htmlspecialchars($anime->getDescription(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getLienTrailer() . '","' . htmlspecialchars($anime->getDescriptionDetaillee(),  ENT_QUOTES | ENT_HTML5 , 'UTF-8') . '");
                     $("#ajouterAnimeModal").modal();
                 };
                 </script>';
@@ -88,7 +141,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $auteur = $_POST['modifierAuteurAnime'];
             $studio = $_POST['modifierStudioAnime'];
             $nbepisode = $_POST['modifierNbEpisodeAnime'];
-            $cheminImage = $_POST['modifierCheminImageAnime'];
+
+            if(empty($_FILES["fileToUpload"]["name"]))
+            {
+                $cheminImage = $_POST['modifierCheminImageAnime'];
+            }
+            else
+            {
+                $target_dir = "../img/";
+                $cheminImage = $target_dir . $nom . "-" . basename($_FILES["fileToUpload"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($cheminImage,PATHINFO_EXTENSION));
+
+                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                if($check !== false)
+                {
+                    $uploadOk = 1;
+                }
+                else
+                {
+                    $_SESSION['erreurImage'] = 'File is not an image.';
+                    $uploadOk = 0;
+                }
+
+                // Check if file already exists
+                if (file_exists($cheminImage))
+                {
+                    $_SESSION['erreurImage'] = 'Sorry, file already exists.';
+                    $uploadOk = 0;
+                }
+                // Check file size
+                if ($_FILES["fileToUpload"]["size"] > 5000000)
+                {
+                    $_SESSION['erreurImage'] = 'Sorry, your file is too large. 1Mo max';
+                    $uploadOk = 0;
+                }
+                // Allow certain file formats
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif" )
+                {
+                    $_SESSION['erreurImage'] = 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.';
+                    $uploadOk = 0;
+                }
+            }
+
             $lien = $_POST['modifierOpeningAnime'];
             $descriptiondetaille = $_POST['modifierDescriptionDetailleAnime'];
 
@@ -97,11 +193,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $anime = new Anime(null, null, null, null, null, null, null, null, null, null);
             $anime->construireSansDonneesSecurisees($id, $nom, $description, $genre, $auteur, $studio, $nbepisode, $cheminImage, $lien, $descriptiondetaille);
+            $animeAncienneImage = $animeDAO->obtenirAnimeParId($id);
 
-            if($anime->estValide()){
-                $animeDAO->modifierUnAnime($anime);
+            if($anime->estValide())
+            {
+                if(!empty($_FILES["fileToUpload"]["name"]))
+                {
+                    // Check if $uploadOk is set to 0 by an error
+                    if ($uploadOk == 0)
+                    {
+                        // if everything is ok, try to upload file
+                    }
+                    else
+                    {
+                        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $cheminImage))
+                        {
+                            $animeDAO->modifierUnAnime($anime);
+                            unlink($animeAncienneImage->getImgPath());
+                        }
+                        else
+                        {
+                            $_SESSION['erreurImage'] = 'Sorry, there was an error uploading your file.';
+                        }
+                    }
+                }
+                else
+                {
+                    $animeDAO->modifierUnAnime($anime);
+                }
             }
-            else {
+            else
+            {
                 echo '<script> loadData =function() {
                     afficherAnime("'. $anime->getId(). '","' . $anime->getNom() . '","' . $anime->getDescription() . '","' . $anime->getGenre() . '","' . $anime->getAuteur() . '","' . $anime->getStudio() . '","' . $anime->getNbEpisodes() . '","' . $anime->getImgPath() . '","' . $anime->getLienTrailer() . '","' . $anime->getDescriptionDetaillee() . '");
                     $("#modifierAnimeModal").modal();
@@ -124,6 +246,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $pseudo = $_POST['supprimerMembrePseudo'];
 
             $membreTemporaire = $utilisateurDAO->obtenirUtilisateurParString($pseudo);
+
+            unlink($membreTemporaire->getImage());
 
             $utilisateurDAO->supprimerUnUtilisateur($membreTemporaire);
 
