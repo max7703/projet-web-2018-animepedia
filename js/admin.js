@@ -9,6 +9,8 @@ function afficherAnime(id, nom, description, genre, auteur, studio, nbepisodes, 
     document.getElementById('modifierStudioAnime').value = studio;
     document.getElementById('modifierNbEpisodeAnime').value = nbepisodes;
     document.getElementById('modifierCheminImageAnime').value = cheminimg;
+
+    document.getElementById("select-genre-modifier-anime").selectedIndex = document.getElementById("modifierGenreAnime").value -1;
 }
 
 function afficherAjouterAnime(nom, description, genre, auteur, studio, nbepisodes, cheminimg) {
@@ -34,6 +36,7 @@ function afficherMembre(id, pseudo, email, privilege, image, description) {
     document.getElementById('modifierPrivilegeMembre').value = privilege;
     document.getElementById('modifierImageMembre').value = image;
     document.getElementById('modifierDescriptionMembre').value = description;
+    document.getElementById("select-privilege-modifier-membre").selectedIndex = document.getElementById("modifierPrivilegeMembre").value -1;
 }
 function afficherMembreSupprimer(pseudo) {
     document.getElementById('supprimerMembrePseudo').value = pseudo;
@@ -60,6 +63,26 @@ function afficherAjouterPrivilege(nom) {
 function afficherPrivilegeSupprimer(nom) {
     document.getElementById('supprimerPrivilegeNom').value = nom;
 }
+function changePrivilegeAjouter() {
+    var select = document.getElementById("select-privilege-ajouter-membre");
+    var inputprivilege = document.getElementById("ajouterPrivilegeMembre");
+    inputprivilege.value = select.value;
+}
+function changePrivilegeModifier() {
+    var select = document.getElementById("select-privilege-modifier-membre");
+    var inputprivilege = document.getElementById("modifierPrivilegeMembre");
+    inputprivilege.value = select.value;
+}
+function changeGenreAjouter() {
+    var select = document.getElementById("select-genre-ajouter-anime");
+    var inputgenre = document.getElementById("ajouterGenreAnime");
+    inputgenre.value = select.value;
+}
+function changeGenreModifier() {
+    var select = document.getElementById("select-genre-modifier-anime");
+    var inputprivilege = document.getElementById("modifierGenreAnime");
+    inputprivilege.value = select.value;
+}
 function openPage(pageName, elmnt) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
@@ -77,6 +100,5 @@ function openPage(pageName, elmnt) {
     // Show the specific tab content
     document.getElementById(pageName).style.display = "block";
 }
-
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();

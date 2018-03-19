@@ -12,6 +12,7 @@ require_once PRIVILEGEDAO;
 $privilegeDAO = new PrivilegeDAO();
 $utilisateurDAO = new UtilisateurDAO();
 $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
+$listePrivileges = $privilegeDAO->obtenirListePrivileges();
 ?>
 <div class="table-wrapper">
     <div class="table-title">
@@ -92,7 +93,13 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
                 </div>
                 <div class="form-group">
                     <label><?php echo _("Privilege")?></label>
-                    <input name="ajouterPrivilegeMembre" type="text" class="form-control" required>
+                    <select class="form-control" id="select-privilege-ajouter-membre">
+                        <?php
+                        foreach ($listePrivileges as $privilege) :?>
+                            <option onclick="changePrivilegeAjouter()" value="<?php echo $privilege->getId() ?>"><?php echo $privilege->getNom() ?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <input id="ajouterPrivilegeMembre" name="ajouterPrivilegeMembre"  type="hidden" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label><?php echo _("Chemin de l'image")?></label>
@@ -134,7 +141,13 @@ $listeUtilisateurs = $utilisateurDAO->obtenirListeUtilisateurs();
                 </div>
                 <div class="form-group">
                     <label><?php echo _("Privilege")?></label>
-                    <input id="modifierPrivilegeMembre" name="modifierPrivilegeMembre" type="text" class="form-control" required>
+                    <input id="modifierPrivilegeMembre" name="modifierPrivilegeMembre" type="hidden" class="form-control" required>
+                    <select class="form-control" id="select-privilege-modifier-membre">
+                        <?php
+                        foreach ($listePrivileges as $privilege) :?>
+                            <option onclick="changePrivilegeModifier()" value="<?php echo $privilege->getId() ?>"><?php echo $privilege->getNom() ?></option>
+                        <?php endforeach;?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label><?php echo _("Chemin de l'image")?></label>

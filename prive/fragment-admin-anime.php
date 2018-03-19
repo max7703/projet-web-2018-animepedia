@@ -14,6 +14,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
 require_once GENREDAO;
 
 $genreDAO = new GenreDAO();
+$listeGenres = $genreDAO->obtenirListeGenres();
 ?>
 <div class="table-wrapper">
     <div class="table-title">
@@ -136,7 +137,13 @@ $genreDAO = new GenreDAO();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Genre")?></label>
-                    <input name="ajouterGenreAnime" type="text" class="form-control" required>
+                    <select class="form-control" id="select-genre-ajouter-anime">
+                        <?php
+                        foreach ($listeGenres as $genre) :?>
+                            <option onclick="changeGenreAjouter()" value="<?php echo $genre->getId() ?>"><?php echo $genre->getNom() ?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <input id="ajouterGenreAnime" name="ajouterGenreAnime" type="hidden" class="form-control" required>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
@@ -263,7 +270,13 @@ $genreDAO = new GenreDAO();
                 } ?>
                 <div class="form-group">
                     <label><?php echo _("Genre")?></label>
-                    <input id="modifierGenreAnime" name="modifierGenreAnime" type="number" class="form-control" required>
+                    <select class="form-control" id="select-genre-modifier-anime">
+                        <?php
+                        foreach ($listeGenres as $genre) :?>
+                            <option onclick="changeGenreModifier()" value="<?php echo $genre->getId() ?>"><?php echo $genre->getNom() ?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <input id="modifierGenreAnime" name="modifierGenreAnime" type="hidden" class="form-control" required>
                 </div>
                 <?php
                 if(isset($_SESSION["anime"])) {
