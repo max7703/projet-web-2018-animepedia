@@ -59,6 +59,7 @@ define("JSWIZARD", JS . "/wizard.js");
 define("JSANIMES", JS . "/animes.js");
 define("JSADMIN", JS . "/admin.js");
 define("JSHEADER", JS . "/header.js");
+define("JSDASHBOARD", JS . "/dashboard.js");
 
 define("CSS", SITE . "/css");
 define("CSS_PROFIL", CSS . "/profil_.css");

@@ -49,7 +49,7 @@
             </div>
         </div>
         <hr>
-        <div class="pl-1"><a href="http://dev.animepedia.fr/" style="color: #fff;"><?php echo _("Copyright © Animepedia 2018")?></a></div>
+        <div class="pl-1"><a href="<?php echo SITE; ?>" style="color: #fff;"><?php echo _("Copyright © Animepedia 2018")?></a></div>
     </div>	
 </footer>
 </body>

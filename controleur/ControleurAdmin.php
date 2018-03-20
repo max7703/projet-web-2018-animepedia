@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $animeTemporaire = $animeDAO->obtenirAnimeParString($nom);
 
             unlink($animeTemporaire->getImgPath());
-            
+
             $animeDAO->supprimerUnAnime($animeTemporaire);
 
 

@@ -49,7 +49,7 @@ require ENTETE;
       <hr>
 
       <h1 class="mt-6">Videos</h1>
-        <iframe width="640" height="360" src="<?php echo $anime->getLienTrailer() ?>">
+        <iframe width="640" height="360" src="<?php echo $anime->getLienTrailer() ?>" allowfullscreen>
         </iframe>
         <hr>
 
