@@ -57,7 +57,7 @@ $listeGenres = $genreDAO->obtenirListeGenres();
             echo '<td>' . $anime->getLienTrailer() . '</td>';
             echo '<td>' . $anime->getDescriptionDetaillee() . '</td>';
             echo '<td>';?>
-            <a href="#modifierAnimeModal" onclick="afficherAnime('<?php echo $anime->getId()?>','<?php echo $anime->getNom()?>','<?php echo htmlspecialchars($anime->getDescription())?>','<?php echo $anime->getGenre()?>','<?php echo $anime->getAuteur()?>','<?php echo $anime->getStudio()?>','<?php echo $anime->getNbEpisodes()?>','<?php echo $anime->getImgPath()?>','<?php echo $anime->getLienTrailer()?>','<?php echo $anime->getDescriptionDetaillee()?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
+            <a href="#modifierAnimeModal" onclick="afficherAnime('<?php echo $anime->getId()?>','<?php echo $anime->getNom()?>','<?php echo htmlspecialchars($anime->getDescription())?>','<?php echo $anime->getGenre()?>','<?php echo $anime->getAuteur()?>','<?php echo $anime->getStudio()?>','<?php echo $anime->getNbEpisodes()?>','<?php echo $anime->getImgPath()?>','<?php echo $anime->getLienTrailer()?>','<?php echo htmlspecialchars($anime->getDescriptionDetaillee())?>')" class="edit" data-toggle="modal"><span class="fa fa-edit"></span></a>
             <a href="#supprimerAnimeModal" onclick="afficherAnimeSupprimer('<?php echo $anime->getNom()?>')" class="delete pl-2" data-toggle="modal"><span class="fa fa-trash"></span></a>
             </td>
             </tr>

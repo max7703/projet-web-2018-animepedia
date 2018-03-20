@@ -46,6 +46,7 @@ define("CONTROLEURCONNEXION", CONTROLEUR . '/ControleurLogin.php');
 define("CONTROLEURDECONNEXION", CONTROLEUR . '/ControleurLogout.php');
 define("CONTROLEURADMIN", CONTROLEUR . '/ControleurAdmin.php');
 define("CONTROLEURWIZARD", CONTROLEUR . '/ControleurWizard.php');
+define("CONTROLEURCONTACT", CONTROLEUR . '/ControleurContact.php');
 
 define("DAO", $_SERVER['DOCUMENT_ROOT'] . '/dao');
 define("ANIMEDAO", DAO . '/AnimeDAO.php');

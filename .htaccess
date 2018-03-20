@@ -8,12 +8,15 @@ RewriteRule ^login$ /public/login.php
 RewriteRule ^register$ /public/register.php
 RewriteRule ^forum$ /public/forum.php
 RewriteRule ^admin$ /prive/admin.php
-RewriteRule ^home$ /public/index.php
-RewriteRule ^index.php /public/index.php
+RewriteRule ^home$ /public/wordpress/index.php
+RewriteRule ^index.php /public/wordpress/index.php
 RewriteRule ^wizard$ /public/wizard.php
 RewriteRule ^discord$ /public/discord.php
 RewriteRule ^logout$ /controleur/ControleurLogout.php
 RewriteRule ^profile$ /public/profil.php
+#RewriteRule ^article/^(.*) /public/wordpress/$1 [L]
+RewriteRule ^article/([^/.]+)/?$ /public/wordpress/$1 [L,QSA]
+RewriteRule ^adminwp/^(.*) /public/wordpress/wp-admin/$1 [L]
 RewriteRule ^anime/([0-9]+) public/anime.php?id=$1 [L]
 RewriteRule ^animes/page/([0-9]+) public/animes.php?page=$1 [L]
 RewriteRule ^admin/page/([0-9]+) prive/admin.php?page-anime=$1 [L]
