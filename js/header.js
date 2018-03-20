@@ -18,6 +18,6 @@ function trouverAnime(str) {
             document.getElementById("livesearch").className = "dropdown-menu show";
         }
     }
-    xmlhttp.open("GET","../controleur/ControleurAnime.php?q="+str,true);
+    xmlhttp.open("GET","https://dev.animepedia.fr/controleur/ControleurAnime.php?q="+str,true);
     xmlhttp.send();
 }

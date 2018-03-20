@@ -35,11 +35,11 @@ $utilisateurDAO = new UtilisateurDAO();
                     <a class="nav-link" href="<?php echo SITE ?>animes"><?php echo _("Animes")?></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="<?php echo SITE ?>forum" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="<?php echo SITE ?>discord" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo _("Communautés")?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="<?php echo SITE ?>forum"><?php echo _("Forum")?></a>
+<!--                        <a class="dropdown-item" href="--><?php //echo SITE ?><!--forum">--><?php //echo _("Forum")?><!--</a>-->
                         <a class="dropdown-item" href="<?php echo SITE ?>discord"><?php echo _("Discord")?></a>
                     </div>
                 </li>

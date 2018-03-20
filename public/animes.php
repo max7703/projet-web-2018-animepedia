@@ -12,7 +12,7 @@ $listeAnimes = $animeDAO->obtenirListeAnimes();
 require ENTETE;
 ?>
     <ul class="pagination pt-4 flex-wrap" style="justify-content: center;">
-        <li id="all" class="page-item active"><a class="page-link" href="https://dev.animepedia.fr/animes">Tous</a></li>
+        <li id="all" class="page-item active"><a class="page-link" href="<?php echo SITE; ?>animes">Tous</a></li>
         <?php
         foreach(range('A','Z') as $letter):?>
 
