@@ -26,8 +26,8 @@ class BaseDeDonnees {
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-define("HOMEPAGE", "url: https://dev.animepedia.fr/home");
-define("SITE", "https://dev.animepedia.fr/");
+define("HOMEPAGE", "url: https://animepedia.fr/home");
+define("SITE", "https://animepedia.fr/");
 define("LIENS", $_SERVER['DOCUMENT_ROOT'] .'/links.html');
 
 define("MODELE", $_SERVER['DOCUMENT_ROOT'] . '/modele');

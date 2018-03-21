@@ -20,7 +20,7 @@ class Utilisateur
 	
 	 public function __construct($id, $pseudo, $mdp, $email, $id_privilege, $image, $description)
     {
-        $this->construireAvecDonneesSecurisees($id, $pseudo, $mdp, $email, $id_privilege, $image, $description)
+        $this->construireAvecDonneesSecurisees($id, $pseudo, $mdp, $email, $id_privilege, $image, $description);
         $this->idtemporaire = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$this->pseudotemporaire = filter_var($pseudo, FILTER_SANITIZE_STRING);
 		$this->mdptemporaire = filter_var($mdp, FILTER_SANITIZE_STRING);

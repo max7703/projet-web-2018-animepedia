@@ -107,7 +107,7 @@ paypal.Button.render({
                     document.getElementById("page-wizard").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET","https://dev.animepedia.fr/controleur/ControleurWizard.php?paiementID=" + data.paymentID,true);
+            xmlhttp.open("GET","https://animepedia.fr/controleur/ControleurWizard.php?paiementID=" + data.paymentID,true);
             xmlhttp.send();
         });
     }

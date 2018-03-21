@@ -1,6 +1,6 @@
 RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://dev.animepedia.fr/$1 [R,L]
+RewriteRule ^(.*)$ https://animepedia.fr/$1 [R,L]
 RewriteRule ^subscribe$ /public/subscribe.php
 RewriteRule ^animes$ /public/animes.php
 RewriteRule ^contact$ /public/contact.php
@@ -8,15 +8,11 @@ RewriteRule ^login$ /public/login.php
 RewriteRule ^register$ /public/register.php
 RewriteRule ^forum$ /public/forum.php
 RewriteRule ^admin$ /prive/admin.php
-RewriteRule ^home$ /public/wordpress/index.php
 RewriteRule ^index.php /public/wordpress/index.php
 RewriteRule ^wizard$ /public/wizard.php
 RewriteRule ^discord$ /public/discord.php
 RewriteRule ^logout$ /controleur/ControleurLogout.php
 RewriteRule ^profile$ /public/profil.php
-#RewriteRule ^article/^(.*) /public/wordpress/$1 [L]
-RewriteRule ^article/([^/.]+)/?$ /public/wordpress/$1 [L,QSA]
-RewriteRule ^adminwp/^(.*) /public/wordpress/wp-admin/$1 [L]
 RewriteRule ^anime/([0-9]+) public/anime.php?id=$1 [L]
 RewriteRule ^animes/page/([0-9]+) public/animes.php?page=$1 [L]
 RewriteRule ^admin/page/([0-9]+) prive/admin.php?page-anime=$1 [L]

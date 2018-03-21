@@ -25,7 +25,7 @@ function afficherAnimesListe(str) {
             if (str.length == 1)
             {
                 if(window.location.href.indexOf("page") > -1) {
-                    window.history.pushState(null, null, "https://dev.animepedia.fr/animes#"+str);
+                    window.history.pushState(null, null, "https://animepedia.fr/animes#"+str);
                 }
                 if(activePagination != str)
                 {
@@ -40,6 +40,6 @@ function afficherAnimesListe(str) {
             }
         }
     }
-    xmlhttp.open("GET","https://dev.animepedia.fr/controleur/ControleurAnime.php?name="+str,true);
+    xmlhttp.open("GET","https://animepedia.fr/controleur/ControleurAnime.php?name="+str,true);
     xmlhttp.send();
 }

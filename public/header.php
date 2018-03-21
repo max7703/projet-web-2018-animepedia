@@ -24,7 +24,7 @@ $utilisateurDAO = new UtilisateurDAO();
 <link rel="stylesheet" href=<?php echo CSS_ENTETE ?>>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="<?php echo SITE ?>home"><?php echo _("Animepedia")?></a>
+        <a class="navbar-brand" href="<?php echo SITE ?>"><?php echo _("Animepedia")?></a>
         <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -58,7 +58,11 @@ $utilisateurDAO = new UtilisateurDAO();
                         echo '
                     <li class="nav-item">
                         <a class="nav-link" href="' . SITE .'admin">' . _("Admin") . '</a>
-                    </li>';
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://animepedia.fr/public/wordpress/wp-admin/">' . _("Admin WordPress") . '</a>
+                    </li>
+                    ';
                     }
                 }?>
             </ul>
